@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="/artyom.window.min.js">
+    </script>
+
+    <script>
+        let Jarvis = new Artyom();
+
+        Jarvis.on(['hola']).then(() => {
+            Jarvis.say("que se dice");
+        });
+
+        Jarvis.initialize({
+            lang: "es-ES",
+            continuous: true,
+            listen: true,
+            debug: true, // Muestra un informe en la consola 
+            speed: 1,
+            volume: 5,
+            soundex: true,
+            mode: 'quick',
+            // name: "jarvis"
+        })
+    </script>
+
+</body>
+
+</html>
