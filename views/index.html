@@ -16,8 +16,24 @@
     <script>
         let Jarvis = new Artyom();
 
-        Jarvis.on(['hola']).then(() => {
-            Jarvis.say("que se dice");
+        // Jarvis.on(['hola']).then(() => {
+        //     Jarvis.say("que se dice");
+        // });
+
+
+        // Jarvis.on(['que hace']).then(() => {
+        //     Jarvis.say("Nada, ¿Y tu?");
+        // });
+
+        Jarvis.on(['Hola', 'que hace']).then(function(i) {
+            switch (i) {
+                case 0:
+                    Jarvis.say("Que mas");
+                    break;
+                case 1:
+                    Jarvis.say("Nada, ¿Y tu?");
+                    break;
+            }
         });
 
         Jarvis.initialize({
