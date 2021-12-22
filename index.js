@@ -18,7 +18,7 @@ https.createServer({
   cert: fs.readFileSync('localhost.crt'),
   key: fs.readFileSync('localhost.key')
 }, expressApp).listen(50000, function () {
-  console.log('Servidor https correindo en el puerto 50000');
+  console.log('Servidor https corriendo en el puerto 50000');
 });
 
 expressApp.get('/', function (req, res) {

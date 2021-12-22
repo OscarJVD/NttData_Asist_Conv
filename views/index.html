@@ -2,53 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
-<body>
+<body id="cuerpo">
 
-    <script src="/artyom.window.min.js">
-    </script>
+  <video muted autoplay loop preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="reposoTrack">
+    <source src="/media/video/reposo/reposo.mp4" type="video/mp4">
+    <source src="/media/video/reposo/reposo.wav" type="video/wav">
+    <source src="/media/video/reposo/reposo.webm" type="video/webm">
+    <source src="/media/video/reposo/reposo.ogg" type="video/ogg">
+    Tu navegador no soporta HTML5 video.
+  </video>
 
-    <script>
-        let Jarvis = new Artyom();
+  <video style="display:none;" src="/media/video/saludo/saludo.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
 
-        // Jarvis.on(['hola']).then(() => {
-        //     Jarvis.say("que se dice");
-        // });
+  <script src="/artyom.window.min.js"></script>
 
+  <script>
+    let reposoTrack = document.getElementById('reposoTrack'),
+      saludoTrack = document.getElementById('saludoTrack');
 
-        // Jarvis.on(['que hace']).then(() => {
-        //     Jarvis.say("Nada, ¿Y tu?");
-        // });
+    reposoTrack.style.width = screen.width;
+    reposoTrack.style.height = screen.height;
+    saludoTrack.style.width = screen.width;
+    saludoTrack.style.height = screen.height;
 
-        Jarvis.on(['Hola', 'que hace']).then(function(i) {
-            switch (i) {
-                case 0:
-                    Jarvis.say("Que mas");
-                    break;
-                case 1:
-                    Jarvis.say("Nada, ¿Y tu?");
-                    break;
-            }
-        });
+    let Jarvis = new Artyom();
 
-        Jarvis.initialize({
-            lang: "es-ES",
-            continuous: true,
-            listen: true,
-            debug: true, // Muestra un informe en la consola 
-            speed: 1,
-            volume: 5,
-            soundex: true,
-            mode: 'quick',
-            // name: "jarvis"
-        })
-    </script>
+    // ERROR DE QUE SE ESCUCHA ASI MISMO VALIDAR LA PALABRA Y CAMBIARLA POR UN SINONIMO CON UN DICCIONARIO en JS
+    Jarvis.on(['Saludos', 'reposo']).then(function(i) {
+      switch (i) {
+        case 0:
+          // video.removeAttribute('loop')
+          document.getElementById('reposoTrack').style.display = 'none';
+          document.getElementById('reposoTrack').pause();
+          document.getElementById('saludoTrack').style.display = 'inherit';
+          // document.getElementById('saludoTrack').removeAttribute('style');
+          document.getElementById('saludoTrack').play();
+          // video.setAttribute('src', '/media/video/saludo/saludo.mp4');
+          // Jarvis.say("Hola, encantada, soy Eva, la asistente virtual de la feria");
+          break;
+        case 1:
+          document.getElementById('reposoTrack').style.display = 'inherit';
+          document.getElementById('reposoTrack').play();
+          Jarvis.say("Estoy sin hacer nada");
+          break;
+      }
+    });
+
+    Jarvis.initialize({
+      lang: "es-ES",
+      continuous: true,
+      listen: true,
+      debug: true, // Muestra un informe en la consola 
+      // speed: 1,
+      // speed: 2,
+      speed: 1.07,
+      volume: 5,
+      soundex: true,
+      mode: 'quick',
+      // name: "jarvis"
+    })
+  </script>
 
 </body>
 
 </html>
+
+<!-- HACER CLIC AL CARGAR LA PÁGINA POR PRIMERA VEZ -->
