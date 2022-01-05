@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
   <title>IA</title>
 
   <style>
@@ -13,6 +14,17 @@
       padding: 0;
       height: 100vh;
       overflow: hidden;
+    }
+
+    .videoMsg {
+      position: absolute;
+      z-index: 10;
+      top: 72%;
+    }
+
+    .spanVideoMsg{
+      color: white;
+      font-size: 20px;
     }
   </style>
 </head>
@@ -35,6 +47,14 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
+  <div class="container-fluid videoMsg d-none" id="videoMsgRespuesta">
+    <div class="row justify-content-center d-flex align-items-center text-center">
+      <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
+        <span class="spanVideoMsg text-center">Contesta y al final menciona la palabra 'ahora'</span>
+      </div>
+    </div>
+  </div>
+
   <video style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
     Tu navegador no soporta HTML5 video.
   </video>
@@ -44,6 +64,7 @@
   </video>
 
   <script src="/artyom.window.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
 
   <script>
     // SWITCH LENGUAGE
@@ -73,77 +94,6 @@
       Jarvis.fatality();
       setTimeout(_startArtyom, 250);
     }
-
-    // function initJarvisCommands(IA) {
-    //   /**
-    //    * Note that this commands will work only in english mode .. in other language they will be not so good 
-    //    * recognized.
-    //    */
-    //   IA.addCommands({
-    //     // note that if you're in spanish for example
-    //     // the command should be instead : "Iniciar en ingles, Iniciar en alemán" etc...
-    //     indexes: ["pasar a italiano", "pasar a alemán",
-    //       "pasar a francés", "pasar a español",
-    //       "pasar a portuges", "pasar a holandés",
-    //       "pasar a polaco", "pasar a indonesio",
-    //       "pasar a inglés"
-    //     ],
-    //     action: function(i) {
-    //       switch (i) {
-    //         case 0:
-    //           stop();
-    //           start("it-IT");
-    //           break;
-    //         case 1:
-    //           start("de-IT");
-    //           break;
-    //         case 2:
-    //           start("fr-FR");
-    //           break;
-    //         case 3:
-    //           start("es-ES");
-    //           break;
-    //         case 4:
-    //           start("pt-PT");
-    //           break;
-    //         case 5:
-    //           start("nl-NL");
-    //           break;
-    //         case 6:
-    //           start("pl-PL");
-    //           break;
-    //         case 7:
-    //           start("id-ID");
-    //           break;
-    //         case 8:
-    //           start("en-GB");
-    //           break;
-    //       }
-    //     }
-    //   });
-
-    //   // ERROR DE QUE SE ESCUCHA ASI MISMO VALIDAR LA PALABRA Y CAMBIARLA POR UN SINONIMO CON UN DICCIONARIO en JS
-    //   IA.on(['reposo', 'saludos', 'La monalisa', 'a bueno', 'me alegra', 'sí Joan sabe']).then(function(i) {
-    //     switch (i) {
-    //       case 0:
-    //         playVideo('reposoTrack');
-    //         Jarvis.say("Estoy sin hacer nada");
-    //         break;
-    //       case 1:
-    //         playVideo('saludoTrack');
-    //         break;
-    //       case 2:
-    //         playVideo('respuestaTrack');
-    //         break;
-    //       case 3:
-    //       case 4:
-    //       case 5:
-    //         playVideo('cierreTrack');
-    //         break;
-    //     }
-    //   });
-
-    // }
   </script>
 
   <script>
@@ -155,7 +105,15 @@
       }, 1200);
     });
 
+    document.getElementById('respuestaTrack').addEventListener('play', () => {
+      setTimeout(() => {
+        document.getElementById("videoMsgRespuesta").classList.remove("d-none");
+      }, 140);
+    });
+
     document.getElementById('respuestaTrack').addEventListener('ended', () => {
+      
+      document.getElementById("videoMsgRespuesta").classList.add("d-none");
       // stop artyom if stills active
       Jarvis.fatality();
       setTimeout(() => {
@@ -163,9 +121,13 @@
         // initJarvisCommands(Jarvis);
       }, 250)
 
-      setTimeout(() => {
-        Jarvis.say("Responde la pregunta y al final menciona la palabra 'ahora' para que se ejecute la orden");
-      }, 140);
+      // setTimeout(() => {
+      //   Jarvis.say("Contesta la pregunta y al final menciona la palabra 'ahora' para que se ejecute la orden");
+      // }, 140);
+
+      // setTimeout(() => {
+      //   document.getElementById("videoMsgRespuesta").classList.remove("d-none");
+      // }, 140);
 
       // setTimeout(() => {
       //   Jarvis.say("Para desactivar las ordenes activadas con una palabra al final menciona la palabra 'desactivar' y al final menciona la palabra 'ahora' para que se ejecute la orden");
@@ -295,8 +257,6 @@
     // or 
     // start("en-US");
   </script>
-
-
 
 </body>
 
