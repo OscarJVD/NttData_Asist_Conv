@@ -13,6 +13,7 @@ expressApp.set("trust proxy", true);
 // expressApp.set("view engine", "html");
 expressApp.set("views", path.resolve(__dirname, "views"));
 expressApp.use(express.static(path.join(__dirname, 'public')));
+expressApp.use(express.static(path.join(__dirname, 'utils')));
 
 https.createServer({
   cert: fs.readFileSync('localhost.crt'),
