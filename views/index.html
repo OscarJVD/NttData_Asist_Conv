@@ -73,7 +73,6 @@
       if (!language)
         language = Jarvis.getLanguage();
 
-
       let _startArtyom = function() {
         Jarvis.initialize({
           lang: language, // Start artyom with provided language
@@ -85,6 +84,7 @@
           soundex: true,
           mode: mode, // Opciones: quick, normal, slow
           // name: "jarvis"
+          obeyKeyword: "start again",
           executionKeyword: "now" // say "now" at the end of a command to execute it immediately
         });
 
@@ -101,14 +101,16 @@
     // let respuestaMode = 'normal';
     let respuestaMode = 'quick';
 
-    document.getElementById('saludoTrack').addEventListener('play', function() {
-      Jarvis.dontObey();
-    });
+    // document.getElementById('respuestaTrack').addEventListener('play', () => {
+    //   Jarvis.dontObey();
+    // });
+
+    // document.getElementById('saludoTrack').addEventListener('play', () => {
+    //   Jarvis.dontObey();
+    // });
 
     document.getElementById('saludoTrack').addEventListener('ended', function() {
-      Jarvis.obey();
-      this.removeAttribute('muted')
-      this.defaultMuted = false;
+      // Jarvis.obey();
 
       setTimeout(() => {
         playVideo('preguntaTrack');
@@ -132,6 +134,8 @@
     });
 
     function configVideos(arrVideoElementsIds = ["reposoTrack", "saludoTrack", "preguntaTrack", "respuestaTrack", "cierreTrack"]) {
+
+
       arrVideoElementsIds.forEach(video => {
         let videoElement = document.getElementById(video);
         videoElement.style.width = screen.width;
@@ -161,6 +165,47 @@
 
   <script>
     let Jarvis = new Artyom();
+
+    if (!Jarvis.recognizingSupported()) {
+      alert("navegador no soportado. Se necesita Google Chrome versión 25 y posteriores")
+    }
+
+    Jarvis.when("SPEECH_SYNTHESIS_START", function() {
+      if (Jarvis.isRecognizing()) {
+        Jarvis.dontObey();
+      }
+    });
+
+    Jarvis.when("SPEECH_SYNTHESIS_END", function() {
+      if (!Jarvis.isRecognizing() || !Jarvis.isSpeaking()) {
+        Jarvis.obey();
+      }
+    });
+
+    // let obeyFlag = false;
+
+    // if (!obeyFlag) {
+    document.querySelectorAll('video').forEach(elem => {
+      if (elem.id != 'reposoTrack') {
+        elem.addEventListener('play', function() {
+          Jarvis.dontObey();
+        });
+
+        elem.addEventListener('ended', function() {
+          setTimeout(() => {
+            Jarvis.obey();
+          }, 1000);
+        });
+      }
+
+      // obeyFlag = true;
+    });
+    // }
+
+    // Jarvis.on("TEXT_RECOGNIZED", true).then((i, wildcard) => {
+    //   console.log('dicho:',wildcard)
+    //   console.log('dicho:',i)
+    // });
 
     //   /**
     //    * Note that this commands will work only in english mode .. in other language they will be not so good 
@@ -211,7 +256,7 @@
 
     const commands = {
       saludos: ['saludos', 'hola', 'Buenas', 'Buenos días'],
-      respuestasPreguntaArteFavorito: ['La monalisa'],
+      respuestasPreguntaArteFavorito: ['La monalisa', 'La odisea', 'romeo y julieta'],
       respuestasOpinionRobot: ['a bueno', 'me alegra', 'si sabe'],
       modoReposo: ['reposo'],
       modoFrasesLentas: ['lento', 'cortas', 'lento'],
@@ -272,7 +317,9 @@
 
     let flag = false
 
-    Jarvis.on(arrAttachedCommands).then(function(i) {
+    Jarvis.on(arrAttachedCommands).then(
+      // async 
+      function(i) {
 
       console.log('variables:', arrSec, i)
 
@@ -281,7 +328,6 @@
       console.log('defCommand', defCommand)
       switch (defCommand) {
         case 0:
-          Jarvis.dontObey();
 
           // console.log(Jarvis.getVoices());
 
@@ -295,20 +341,25 @@
              * Say something random of what is in the array when this function is triggered.
              */
             Jarvis.sayRandom([
-              "Buenos días",
-              "Ey, que bueno verte de nuevo",
-              "Hola, ¿cómo vas?",
-              "Que onda, ¿cómo estás?"
-            ], {
-              onStart() {
-                Jarvis.dontObey();
-              },
-              onEnd() {
-                Jarvis.obey();
-              },
-            });
+                "Buenos días",
+                "Ey, que bueno verte de nuevo",
+                "Hola, ¿cómo vas?",
+                "Que onda, ¿cómo estás?"
+              ]
+              ,{
+                onStart() {
+                  Jarvis.dontObey();
+                },
+                onEnd() {
+                  Jarvis.obey();
+                  setTimeout(() => {
+                    playVideo('preguntaTrack');
+                  }, 1200);
+                },
+              }
+            );
+
           }
-          Jarvis.obey();
 
           break;
         case 1:
@@ -358,36 +409,48 @@
           if (respuestaMode) respuestaMode = 'quick'
           break;
         case 7:
-          if(!flag){
-            document.querySelectorAll('video').forEach(elem => {
-  
-              console.log(elem)
-              // elem.setAttribute('muted', 'true')
-              // elem.defaultMuted = true;
-              elem.pause();
-              // elem.currentTime = 0;
-            });
+          console.log('PAUSADO')
+          // if (!flag) {
+          //   document.querySelectorAll('video').forEach(elem => {
 
-            flag = true;
-          }
+          //     console.log(elem)
+          //     // elem.setAttribute('muted', 'true')
+          //     // elem.defaultMuted = true;
+          //     elem.pause();
+          //     // elem.currentTime = 0;
+          //   });
+
+          //   flag = true;
+          // }
           Jarvis.shutUp();
 
           break;
       }
     });
 
-    // on command recognition end
-    Jarvis.when("COMMAND_RECOGNITION_END", function(status) {
-      if (status.code == "continuous_mode_enabled") {
-        console.info("Command reconition finalized, restarting because the continuous mode is enabled");
-      }
-    });
+    // Jarvis.when("SPEECH_SYNTHESIS_END", () => {
+    //   Jarvis.ArtyomWebkitSpeechRecognition.abort();
+    // });
 
-    // Catch errors
+    // Jarvis.on('*').then(function (i, recognizedTxt) {
+    //   console.log('recognizedTxt',recognizedTxt)
+    // })
+
+    // on command recognition end
+    // Jarvis.when("COMMAND_RECOGNITION_END", function(status) {
+    //   if (status.code == "continuous_mode_enabled") {
+    //     console.info("Command reconition finalized, restarting because the continuous mode is enabled");
+    //   }
+    // });
+
+    // // Catch errors
     Jarvis.when("ERROR", function(data) {
       console.error(data);
     });
 
+    // Jarvis.when("TEXT_RECOGNIZED", function(data) {
+    //   console.log('Texto reconocido:'+JSON.stringify(data));
+    // });
 
     start("es-ES", 'quick');
     // let UserDictation = Jarvis.newDictation({
