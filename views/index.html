@@ -47,10 +47,18 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <div class="container-fluid videoMsg d-none" id="videoMsgRespuesta">
+  <!-- <div class="container-fluid videoMsg d-none" id="videoMsgRespuesta">
     <div class="row justify-content-center d-flex align-items-center text-center">
       <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
         <span class="spanVideoMsg text-center">Contesta y al final menciona la palabra 'ahora'</span>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container-fluid videoMsg d-none" id="recognizedTxtCaption">
+    <div class="row justify-content-center d-flex align-items-center text-center">
+      <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
+        <span class="spanVideoMsg text-center" id="spanRecognizedTxtCaption">Contesta y al final menciona la palabra 'ahora'</span>
       </div>
     </div>
   </div>
@@ -63,7 +71,7 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <script src="/artyom.window.min.js"></script>
+  <script src="/artyom.window.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/functions.js"></script>
 
@@ -221,6 +229,7 @@
         "pasar a inglés"
       ],
       action: function(i) {
+
         switch (i) {
           case 0:
             stop();
@@ -321,32 +330,31 @@
       // async 
       function(i) {
 
-      console.log('variables:', arrSec, i)
+        console.log('textooo:', i)
 
-      const defCommand = identifySection(arrSec, i)
+        const defCommand = identifySection(arrSec, i)
 
-      console.log('defCommand', defCommand)
-      switch (defCommand) {
-        case 0:
+        console.log('defCommand', defCommand)
+        switch (defCommand) {
+          case 0:
 
-          // console.log(Jarvis.getVoices());
+            // console.log(Jarvis.getVoices());
 
-          if (getRandomArbitrary(1, 2) == 1) {
-            playVideo('saludoTrack');
-          } else {
-            // document.getElementById('saludoTrack').setAttribute('muted','true');
-            // document.getElementById('saludoTrack').defaultMuted = true;
-            // playVideo('saludoTrack');
-            /**
-             * Say something random of what is in the array when this function is triggered.
-             */
-            Jarvis.sayRandom([
+            if (getRandomArbitrary(1, 2) == 1) {
+              playVideo('saludoTrack');
+            } else {
+              // document.getElementById('saludoTrack').setAttribute('muted','true');
+              // document.getElementById('saludoTrack').defaultMuted = true;
+              // playVideo('saludoTrack');
+              /**
+               * Say something random of what is in the array when this function is triggered.
+               */
+              Jarvis.sayRandom([
                 "Buenos días",
                 "Ey, que bueno verte de nuevo",
                 "Hola, ¿cómo vas?",
                 "Que onda, ¿cómo estás?"
-              ]
-              ,{
+              ], {
                 onStart() {
                   Jarvis.dontObey();
                 },
@@ -356,77 +364,76 @@
                     playVideo('preguntaTrack');
                   }, 1200);
                 },
-              }
-            );
+              });
 
-          }
+            }
 
-          break;
-        case 1:
-          playVideo('respuestaTrack');
-          break;
-        case 2:
-          playVideo('cierreTrack');
-          break;
-        case 3:
-          playVideo('reposoTrack');
-          Jarvis.say("Estoy sin hacer nada");
-          break;
-        case 4:
-          Jarvis.say("Modo frases lentas activado", {
-            onStart() {
-              Jarvis.dontObey();
-            },
-            onEnd() {
-              Jarvis.obey();
-            },
-          })
-          start('es-ES', 'slow');
-          if (respuestaMode) respuestaMode = 'slow'
-          break;
-        case 5:
-          Jarvis.say("Modo frases normales activado", {
-            onStart() {
-              Jarvis.dontObey();
-            },
-            onEnd() {
-              Jarvis.obey();
-            },
-          })
-          start('es-ES', 'normal');
-          if (respuestaMode) respuestaMode = 'normal'
-          break;
-        case 6:
-          Jarvis.say("Modo frases rápidas activado", {
-            onStart() {
-              Jarvis.dontObey();
-            },
-            onEnd() {
-              Jarvis.obey();
-            },
-          })
-          start('es-ES', 'quick');
-          if (respuestaMode) respuestaMode = 'quick'
-          break;
-        case 7:
-          console.log('PAUSADO')
-          // if (!flag) {
-          //   document.querySelectorAll('video').forEach(elem => {
+            break;
+          case 1:
+            playVideo('respuestaTrack');
+            break;
+          case 2:
+            playVideo('cierreTrack');
+            break;
+          case 3:
+            playVideo('reposoTrack');
+            Jarvis.say("Estoy sin hacer nada");
+            break;
+          case 4:
+            Jarvis.say("Modo frases lentas activado", {
+              onStart() {
+                Jarvis.dontObey();
+              },
+              onEnd() {
+                Jarvis.obey();
+              },
+            })
+            start('es-ES', 'slow');
+            if (respuestaMode) respuestaMode = 'slow'
+            break;
+          case 5:
+            Jarvis.say("Modo frases normales activado", {
+              onStart() {
+                Jarvis.dontObey();
+              },
+              onEnd() {
+                Jarvis.obey();
+              },
+            })
+            start('es-ES', 'normal');
+            if (respuestaMode) respuestaMode = 'normal'
+            break;
+          case 6:
+            Jarvis.say("Modo frases rápidas activado", {
+              onStart() {
+                Jarvis.dontObey();
+              },
+              onEnd() {
+                Jarvis.obey();
+              },
+            })
+            start('es-ES', 'quick');
+            if (respuestaMode) respuestaMode = 'quick'
+            break;
+          case 7:
+            console.log('PAUSADO')
+            // if (!flag) {
+            //   document.querySelectorAll('video').forEach(elem => {
 
-          //     console.log(elem)
-          //     // elem.setAttribute('muted', 'true')
-          //     // elem.defaultMuted = true;
-          //     elem.pause();
-          //     // elem.currentTime = 0;
-          //   });
+            //     console.log(elem)
+            //     // elem.setAttribute('muted', 'true')
+            //     // elem.defaultMuted = true;
+            //     elem.pause();
+            //     // elem.currentTime = 0;
+            //   });
 
-          //   flag = true;
-          // }
-          Jarvis.shutUp();
+            //   flag = true;
+            // }
+            Jarvis.shutUp();
 
-          break;
-      }
-    });
+            break;
+        }
+      });
 
     // Jarvis.when("SPEECH_SYNTHESIS_END", () => {
     //   Jarvis.ArtyomWebkitSpeechRecognition.abort();
