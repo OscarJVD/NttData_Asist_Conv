@@ -191,7 +191,7 @@ var Artyom = (function () {
           // OWN CODE
           let recognizedTxtCaption = document.getElementById('recognizedTxtCaption');
           let spanRecognizedTxtCaption = document.getElementById('spanRecognizedTxtCaption');
-          const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED']
+          const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
 
           if (recognizedTxtCaption && spanRecognizedTxtCaption && arrForbidden.every(value => !message.includes(value))) {
             spanRecognizedTxtCaption.textContent = message.replace('Quick mode :', '');
@@ -200,8 +200,9 @@ var Artyom = (function () {
 
           if (!recognizedTxtCaption.classList.contains("d-none")) {
             setTimeout(() => {
-              recognizedTxtCaption.classList.add('d-none');
-            }, 7000);
+              if (recognizedTxtCaption)
+                recognizedTxtCaption.classList.add('d-none');
+            }, 10000);
           }
 
           break;
@@ -827,7 +828,9 @@ var Artyom = (function () {
             interim += event.results[i][0].transcript;
           }
         }
-        _this.debug("Artyom is not obeying", "warn");
+        _this.debug("Artyom is not obeying :D", "warn");
+
+        console.warn("Artyom is not obeying :D")
         // If the obeyKeyword is found in the recognized text
         // enable command recognition again
         if (((interim).indexOf(_this.ArtyomProperties.obeyKeyword) > -1) || (temporal).indexOf(_this.ArtyomProperties.obeyKeyword) > -1) {
