@@ -46,15 +46,7 @@
   <video style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
     Tu navegador no soporta HTML5 video.
   </video>
-
-  <!-- <div class="container-fluid videoMsg d-none" id="videoMsgRespuesta">
-    <div class="row justify-content-center d-flex align-items-center text-center">
-      <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
-        <span class="spanVideoMsg text-center">Contesta y al final menciona la palabra 'ahora'</span>
-      </div>
-    </div>
-  </div> -->
-
+  
   <div class="container-fluid videoMsg d-none" id="recognizedTxtCaption">
     <div class="row justify-content-center d-flex align-items-center text-center">
       <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
@@ -149,60 +141,21 @@
   </script>
 
   <script>
-    // let respuestaMode = 'normal';
     let respuestaMode = 'quick';
-
-    // document.getElementById('respuestaTrack').addEventListener('play', () => {
-    //   Jarvis.dontObey();
-    // });
-
-    // document.getElementById('saludoTrack').addEventListener('play', () => {
-    //   Jarvis.dontObey();
-    // });
 
     document.getElementById('saludoTrack').addEventListener('ended', () => {
       setTimeout(() => {
         playVideo('preguntaTrack')
       }, 1200);
     });
-
-    // let flagObey = false;
-    // document.querySelectorAll('video').forEach(elem => {
-    //   if (elem.id != 'reposoTrack') {
-    //     elem.addEventListener('play', function() {
-    //       Jarvis.dontObey();
-    //     });
-
-    //     elem.addEventListener('ended', function() {
-    //       setTimeout(() => {
-    //         Jarvis.obey();
-    //       }, 1000);
-    //     });
-    //   }
-
-    //   // obeyFlag = true;
-    // });
-
-    // document.getElementById('saludoTrack').addEventListener('ended', function() {
-    //   // Jarvis.obey();
-
-    //   setTimeout(() => {
-    //     playVideo('preguntaTrack');
-    //   }, 800);
-    // });
-
-    // document.getElementById('respuestaTrack').addEventListener('play', () => {
-    //   setTimeout(() => {
-    //     document.getElementById("videoMsgRespuesta").classList.remove("d-none");
-    //   }, 140);
-    // });
-
+    
     document.getElementById('respuestaTrack').addEventListener('ended', () => {
 
       if (document.getElementById("videoMsgRespuesta"))
         document.getElementById("videoMsgRespuesta").classList.add("d-none");
-      // stop artyom if stills active
-      Jarvis.fatality();
+     
+      Jarvis.fatality();  // stop artyom if stills active
+
       setTimeout(() => {
         start('es-ES', respuestaMode);
       }, 250)
@@ -256,65 +209,6 @@
         }
       }, 1000);
     });
-
-    // let obeyFlag = false;
-
-    // if (!obeyFlag) {
-
-    // }
-
-    // Jarvis.on("TEXT_RECOGNIZED", true).then((i, wildcard) => {
-    //   console.log('dicho:',wildcard)
-    //   console.log('dicho:',i)
-    // });
-
-    //   /**
-    //    * Note that this commands will work only in english mode .. in other language they will be not so good 
-    //    * recognized.
-    //    */
-    // Jarvis.addCommands({
-    //   // note that if you're in spanish for example
-    //   // the command should be instead : "Iniciar en ingles, Iniciar en alemán" etc...
-    //   indexes: ["pasar a italiano", "pasar a alemán",
-    //     "pasar a francés", "pasar a español",
-    //     "pasar a portuges", "pasar a holandés",
-    //     "pasar a polaco", "pasar a indonesio",
-    //     "pasar a inglés"
-    //   ],
-    //   action: function(i) {
-
-    //     switch (i) {
-    //       case 0:
-    //         stop();
-    //         start("it-IT");
-    //         break;
-    //       case 1:
-    //         start("de-IT");
-    //         break;
-    //       case 2:
-    //         start("fr-FR");
-    //         break;
-    //       case 3:
-    //         start("es-ES");
-    //         break;
-    //       case 4:
-    //         start("pt-PT");
-    //         break;
-    //       case 5:
-    //         start("nl-NL");
-    //         break;
-    //       case 6:
-    //         start("pl-PL");
-    //         break;
-    //       case 7:
-    //         start("id-ID");
-    //         break;
-    //       case 8:
-    //         start("en-GB");
-    //         break;
-    //     }
-    //   }
-    // });
 
     const commands = {
       saludos: ['saludos', 'hola', 'Buenas', 'Buenos días'],
@@ -374,16 +268,9 @@
       return defValue
     }
 
-    // Sigue validacion con arrSec
-    console.log(arrSec)
-
     let flag = false
 
-    Jarvis.on(arrAttachedCommands).then(
-      // async 
-      function(i) {
-
-        console.log('textooo:', i)
+    Jarvis.on(arrAttachedCommands).then(function(i) {
 
         const defCommand = identifySection(arrSec, i)
 
@@ -391,17 +278,9 @@
         switch (defCommand) {
           case 0:
 
-            // console.log(window)
-
-            // console.log(Jarvis.getVoices());
-
             if (getRandomArbitrary(1, 2) == 1) {
-              // Jarvis.dontObey();
               playVideo('saludoTrack');
             } else {
-              // document.getElementById('saludoTrack').setAttribute('muted','true');
-              // document.getElementById('saludoTrack').defaultMuted = true;
-              // playVideo('saludoTrack');
               /**
                * Say something random of what is in the array when this function is triggered.
                */
@@ -440,42 +319,42 @@
             break;
           case 4:
             Jarvis.say("Modo frases lentas activado"
-              // , {
-              //   onStart() {
-              //     Jarvis.dontObey();
-              //   },
-              //   onEnd() {
-              //     Jarvis.obey();
-              //   },
-              // }
+              , {
+                onStart() {
+                  Jarvis.dontObey();
+                },
+                onEnd() {
+                  Jarvis.obey();
+                },
+              }
             )
             start('es-ES', 'slow');
             if (respuestaMode) respuestaMode = 'slow'
             break;
           case 5:
             Jarvis.say("Modo frases normales activado"
-              // , {
-              //   onStart() {
-              //     Jarvis.dontObey();
-              //   },
-              //   onEnd() {
-              //     Jarvis.obey();
-              //   },
-              // }
+              , {
+                onStart() {
+                  Jarvis.dontObey();
+                },
+                onEnd() {
+                  Jarvis.obey();
+                },
+              }
             )
             start('es-ES', 'normal');
             if (respuestaMode) respuestaMode = 'normal'
             break;
           case 6:
             Jarvis.say("Modo frases rápidas activado"
-              // , {
-              //   onStart() {
-              //     Jarvis.dontObey();
-              //   },
-              //   onEnd() {
-              //     Jarvis.obey();
-              //   },
-              // }
+              , {
+                onStart() {
+                  Jarvis.dontObey();
+                },
+                onEnd() {
+                  Jarvis.obey();
+                },
+              }
             )
             start('es-ES', 'quick');
             if (respuestaMode) respuestaMode = 'quick'
@@ -500,21 +379,6 @@
         }
       });
 
-    // Jarvis.when("SPEECH_SYNTHESIS_END", () => {
-    //   Jarvis.ArtyomWebkitSpeechRecognition.abort();
-    // });
-
-    // Jarvis.on('*').then(function (i, recognizedTxt) {
-    //   console.log('recognizedTxt',recognizedTxt)
-    // })
-
-    // on command recognition end
-    // Jarvis.when("COMMAND_RECOGNITION_END", function(status) {
-    //   if (status.code == "continuous_mode_enabled") {
-    //     console.info("Command reconition finalized, restarting because the continuous mode is enabled");
-    //   }
-    // });
-
     // // Catch errors
     Jarvis.when("ERROR", function(data) {
       console.error(data);
@@ -525,21 +389,6 @@
     // });
 
     start("es-ES", 'quick');
-    // let UserDictation = Jarvis.newDictation({
-    //   continuous: true, // Enable continuous if HTTPS connection
-    //   onResult: function(text) {
-    //     // Do something with the text
-    //     console.log(text);
-    //   },
-    //   onStart: function() {
-    //     console.log("Dictation started by the user");
-    //   },
-    //   onEnd: function() {
-    //     alert("Dictation stopped by the user");
-    //   }
-    // });
-
-    // UserDictation.start();
   </script>
 
   <script>
@@ -561,4 +410,5 @@
 </body>
 
 </html>
+<!-- | -- Recomendaciones -- | -->
 <!-- HACER CLIC AL CARGAR LA PÁGINA POR PRIMERA VEZ -->
