@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <title>IA</title>
 
   <style>
@@ -19,12 +21,28 @@
     .videoMsg {
       position: absolute;
       z-index: 10;
-      top: 72%;
+      top: 52%;
+    }
+
+    .btnVideoCenter {
+      position: absolute;
+      z-index: 10;
+      top: 75%;
+      text-align: center;
     }
 
     .spanVideoMsg {
       color: white;
       font-size: 20px;
+    }
+
+    #btnActiveRecognizer {
+      width: 100px;
+      height: 100px;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+
     }
   </style>
 </head>
@@ -46,7 +64,7 @@
   <video style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
     Tu navegador no soporta HTML5 video.
   </video>
-  
+
   <div class="container-fluid videoMsg d-none" id="recognizedTxtCaption">
     <div class="row justify-content-center d-flex align-items-center text-center">
       <div class="col-md-4 p-3 justify-content-center d-flex align-items-center text-center" style="background-color: black;">
@@ -63,7 +81,13 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <!-- <button style="position: absolute; z-index: 200; top: 5%;" onclick="off()">Alternate Microphone</button> -->
+  <!-- onclick="off()"  bg-danger -->
+  <div class="container-fluid btnVideoCenter">
+    <button id="btnActiveRecognizer" class="btn border border-white shadow">
+      <i class="fas fa-microphone text-white fa-3x p-2"></i>
+      <!-- <i class="fas fa-microphone-slash text-white fa-3x p-2"></i> -->
+    </button>
+  </div>
 
   <script src="/artyom.window.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -72,67 +96,46 @@
   <script>
     // INSTANCIA DE JARVIS
     let Jarvis = new Artyom();
-  </script>
 
-  <script>
-    // let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-    // var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia).bind(navigator);
-    // var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    // START ARTYOM
+    // Esta funcion inicia artyom en el reconocimiento discontinuo (para conexiones http)
+    function startOneCommandArtyom() {
+      artyom.fatality(); // Detener cualquier instancia previa
 
-    // let local_stream;
+      setTimeout(function() { // Esperar 250ms para inicializar
+        artyom.initialize({
+          lang: "en-GB", // Más lenguajes son soportados, lee la documentación
+          continuous: false, // Reconoce 1 solo comando y basta de escuchar
+          listen: true, // Iniciar !
+          debug: true, // Muestra un informe en la consola
+          speed: 1 // Habla normalmente
+        }).then(function() {
+          console.log("Ready to work !");
+        });
+      }, 250);
+    }
 
-    // getUserMedia({
-    //   video: true,
-    //   audio: true
-    // }, (stream) => {
-    //   local_stream = stream;
-    // }, (err) => {
-    //   console.log(err)
-    // })
-
-    // getUserMedia.call(navigator, {
-    //   video: true,
-    //   audio: true
-    // }, (stream) => {
-    //   local_stream = stream;
-    // }, (err) => {
-    //   console.log(err)
-    // })
-
-    // const off = function() { //toggle state
-    //   // local_stream.active = !local_stream.active; 
-    //   local_stream.getAudioTracks()[0].enabled = !local_stream.getAudioTracks()[0].enabled;
-    //   local_stream.getAudioTracks()[0].muted = true
-    //   console.log(local_stream)
-    //   console.log(local_stream.getAudioTracks())
-    // };
-
-    // console.log(local_stream)
-  </script>
-
-  <script>
-    // SWITCH LENGUAGE
-    function start(language, mode) {
+    function startArtyom(language, mode, recognizeType = true) {
       if (!language)
         language = Jarvis.getLanguage();
 
       let _startArtyom = function() {
         Jarvis.initialize({
           lang: language, // Start artyom with provided language
-          continuous: true, // Continuous mode enabled
+          continuous: recognizeType ? true : false, // Continuous mode enabled
           listen: true, // Start recognizing
           debug: true, // Show everything in the console
-          speed: 1, // talk normally
-          volume: 10,
-          // soundex: true,
+          speed: 5, // talk normally
+          volume: 1,
+          soundex: true, // Use the soundex algorithm to understand different words
           mode: mode, // Opciones: quick, normal, slow
           // name: "jarvis"
           // obeyKeyword: "start again",
           // executionKeyword: "now" // say "now" at the end of a command to execute it immediately
         });
+      }
 
-        console.log("Artyom is listening to your commands");
-      };
+      console.log("Artyom is listening to your commands");
 
       // stop artyom if stills active
       Jarvis.fatality();
@@ -148,17 +151,17 @@
         playVideo('preguntaTrack')
       }, 1200);
     });
-    
+
     document.getElementById('respuestaTrack').addEventListener('ended', () => {
 
       if (document.getElementById("videoMsgRespuesta"))
         document.getElementById("videoMsgRespuesta").classList.add("d-none");
-     
-      Jarvis.fatality();  // stop artyom if stills active
 
-      setTimeout(() => {
-        start('es-ES', respuestaMode);
-      }, 250)
+      // Jarvis.fatality(); // stop artyom if stills active
+
+      // setTimeout(() => {
+      //   startArtyom('es-ES', respuestaMode);
+      // }, 250)
     });
 
     function configVideos(arrVideoElementsIds = ["reposoTrack", "saludoTrack", "preguntaTrack", "respuestaTrack", "cierreTrack"]) {
@@ -272,112 +275,106 @@
 
     Jarvis.on(arrAttachedCommands).then(function(i) {
 
-        const defCommand = identifySection(arrSec, i)
+      const defCommand = identifySection(arrSec, i)
 
-        console.log('defCommand', defCommand)
-        switch (defCommand) {
-          case 0:
+      console.log('defCommand', defCommand)
+      switch (defCommand) {
+        case 0:
 
-            if (getRandomArbitrary(1, 2) == 1) {
-              playVideo('saludoTrack');
-            } else {
-              /**
-               * Say something random of what is in the array when this function is triggered.
-               */
-              let randomSay = [
-                "Buenos días",
-                "Ey, que bueno verte de nuevo",
-                "Hola, ¿cómo vas?",
-                "Que onda, ¿cómo estás?"
-              ]
+          if (getRandomArbitrary(1, 2) == 1) {
+            playVideo('saludoTrack');
+          } else {
+            /**
+             * Say something random of what is in the array when this function is triggered.
+             */
+            let randomSay = [
+              "Buenos días",
+              "Ey, que bueno verte de nuevo",
+              "Hola, ¿cómo vas?",
+              "Que onda, ¿cómo estás?"
+            ]
 
-              let randomSayIndex = getRandomArbitrary(0, 3)
+            let randomSayIndex = getRandomArbitrary(0, 3)
 
-              Jarvis.say(randomSay[randomSayIndex], {
-                onStart() {
-                  Jarvis.dontObey();
-                },
-                onEnd() {
-                  setTimeout(() => {
-                    Jarvis.obey();
-                    playVideo('preguntaTrack');
-                  }, 1200);
-                },
-              });
-            }
-
-            break;
-          case 1:
-            playVideo('respuestaTrack');
-            break;
-          case 2:
-            playVideo('cierreTrack');
-            break;
-          case 3:
-            playVideo('reposoTrack');
-            Jarvis.say("Estoy sin hacer nada");
-            break;
-          case 4:
-            Jarvis.say("Modo frases lentas activado"
-              , {
-                onStart() {
-                  Jarvis.dontObey();
-                },
-                onEnd() {
+            Jarvis.say(randomSay[randomSayIndex], {
+              onStart() {
+                Jarvis.dontObey();
+              },
+              onEnd() {
+                setTimeout(() => {
                   Jarvis.obey();
-                },
-              }
-            )
-            start('es-ES', 'slow');
-            if (respuestaMode) respuestaMode = 'slow'
-            break;
-          case 5:
-            Jarvis.say("Modo frases normales activado"
-              , {
-                onStart() {
-                  Jarvis.dontObey();
-                },
-                onEnd() {
-                  Jarvis.obey();
-                },
-              }
-            )
-            start('es-ES', 'normal');
-            if (respuestaMode) respuestaMode = 'normal'
-            break;
-          case 6:
-            Jarvis.say("Modo frases rápidas activado"
-              , {
-                onStart() {
-                  Jarvis.dontObey();
-                },
-                onEnd() {
-                  Jarvis.obey();
-                },
-              }
-            )
-            start('es-ES', 'quick');
-            if (respuestaMode) respuestaMode = 'quick'
-            break;
-          case 7:
-            console.log('PAUSADO')
-            // if (!flag) {
-            //   document.querySelectorAll('video').forEach(elem => {
+                  playVideo('preguntaTrack');
+                }, 1200);
+              },
+            });
+          }
 
-            //     console.log(elem)
-            //     // elem.setAttribute('muted', 'true')
-            //     // elem.defaultMuted = true;
-            //     elem.pause();
-            //     // elem.currentTime = 0;
-            //   });
+          break;
+        case 1:
+          playVideo('respuestaTrack');
+          break;
+        case 2:
+          playVideo('cierreTrack');
+          break;
+        case 3:
+          playVideo('reposoTrack');
+          Jarvis.say("Estoy sin hacer nada");
+          break;
+        case 4:
+          Jarvis.say("Modo frases lentas activado", {
+            onStart() {
+              Jarvis.dontObey();
+            },
+            onEnd() {
+              Jarvis.obey();
+            },
+          })
+          startArtyom('es-ES', 'slow');
+          if (respuestaMode) respuestaMode = 'slow'
+          break;
+        case 5:
+          Jarvis.say("Modo frases normales activado", {
+            onStart() {
+              Jarvis.dontObey();
+            },
+            onEnd() {
+              Jarvis.obey();
+            },
+          })
+          startArtyom('es-ES', 'normal');
+          if (respuestaMode) respuestaMode = 'normal'
+          break;
+        case 6:
+          Jarvis.say("Modo frases rápidas activado", {
+            onStart() {
+              Jarvis.dontObey();
+            },
+            onEnd() {
+              Jarvis.obey();
+            },
+          })
+          startArtyom('es-ES', 'quick');
+          if (respuestaMode) respuestaMode = 'quick'
+          break;
+        case 7:
+          console.log('PAUSADO')
+          // if (!flag) {
+          //   document.querySelectorAll('video').forEach(elem => {
 
-            //   flag = true;
-            // }
-            Jarvis.shutUp();
+          //     console.log(elem)
+          //     // elem.setAttribute('muted', 'true')
+          //     // elem.defaultMuted = true;
+          //     elem.pause();
+          //     // elem.currentTime = 0;
+          //   });
 
-            break;
-        }
-      });
+          //   flag = true;
+          // }
+          Jarvis.shutUp();
+
+          break;
+      }
+    });
 
     // // Catch errors
     Jarvis.when("ERROR", function(data) {
@@ -388,10 +385,6 @@
     //   console.log('Texto reconocido:'+JSON.stringify(data));
     // });
 
-    start("es-ES", 'quick');
-  </script>
-
-  <script>
     document.querySelectorAll('video').forEach(elem => {
       if (elem.id != 'reposoTrack') {
         elem.addEventListener('play', function() {
@@ -404,6 +397,10 @@
           }, 1000);
         });
       }
+    });
+
+    document.getElementById('btnActiveRecognizer').addEventListener('click', function() {
+      startArtyom("es-ES", 'quick', false);
     });
   </script>
 
