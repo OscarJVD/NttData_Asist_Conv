@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "solumobil-e-commerce",
+  "private_key_id": "d4a4fff998401d29d0082650ef8bf318f6cbb21c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQD2+T67r2Y+/cVh\nAhHJIJpDyipRTCiyQzJsBHNbBRWmxqehwuEBPGltqSoTL9Okk19XpNvJc2w0/a4K\n8F6RdbC03rIajpkSP1yWQJbNz5DbQ+cliRLVTVlG1bVJt3hemwxz/lo2O0InVisA\nuuMgWyFoL1FJnlWhqlope8qiQn7ffq8uBsC+L5JlyJ9eUL9FeLz0dK9odmuJCMfK\nvBYHAE5vXJMssWq+9Wt4us9ZljrVIGP9S0xliILSzI7V4gLzkMBv0IM5qSnhYU2A\nAXiYbbYROYYIcs945kiuLcoU0BpPrYK0OZ1RwFz+B6G9tEf3RosUWAqinwVi80FH\n8Sz6MqD5AgMBAAECggEAVUVWKxASwdH1qZpA0MwQZzJwbPRaIr4/tPrOZ1E4mgYB\nz8CM1lPo5MNg8xHyxWJaq1SQzButcxhZVI6MYDWdxr0TCkdMw3eb/Iadar7tOT9X\nGecbWQklN2dG+gY+KY/n+06JECtimllObKiaDcxZGvMnYj8oOrKqAaOroV1LF9ek\ndBk62foz/BAcWyqMV3wAQIR2GkRj1gC1tzhx5tV0L6ENThBuWkP7LW59SncPyejZ\n438TTjgaqZ0ukJYBCxgoveu2qJzYq/pbM+EKztMGgZ2DSO3a2p9GU7MuQ9MfNeiy\n4SP47sw2XxmUVOfkKpuesodln7esjp7EKzxr+3KYlwKBgQD//94n+X7YbvuOb1Jr\nUPQK4QmXkOMt8PJ4SzX02tGdzjz3BEBlRqvmLckfUXOhCCdiqOUNhpRmXDZKoCo7\nNk4JgZX3cHLnfY2xrcRxX1KSPy7I1ErJkybywK0dk17XlAvUUR2TddWvxLXBBTNb\nBWNqBdbdPRjuGqJGolqvPKQuLwKBgQD2+V9iPWDV3E2of+fY/I2F88zEsJDS74qR\nOzi1ckQ7H+yjEzEWugV/dieeCybkNgNJM5Qv3Zu2k1Y2S/FcE8vq0d8aOKshx8EW\nDp3djPnipA6tZ6Ssf0LXNCI+pl2oyw2ZWHWaMh0oBNeJytW7ZBniQiraMc+xzo+F\n/0r7NeNBVwKBgQCuzzoUcfp8MMz2Zm4ReiYrh5/VL8ryBCaOnk0p9oJNEBfxVaXj\ngm6/r2Q3Tpd2zuqWJF7E7bFIdI9eRiCQbnS7aRHO9aqBCOtI+S+7eywXUa3Q1aZ8\nH0/pVEjieU+6Rg4N3ZYkq8JPVDQIqlR3Qyavr20Zhi8P6IAHW7YxE2fJYQKBgQDh\n+eihneGFrM7Nt0KvUt43S4z4B0psBsu1+Qb5VrVBmANQbxYCYnD3YGf9fty2AQne\np7gWV+HLG2LNyYztIBv8Hs3RUzqabQiqIvOlLQHTsyLO3T9aqhLBkC0pP9YAxNIL\nlln8nY/59vw0UwhfLsdUNBC7lsogOg0uoRm9Y2AtfwKBgQCxF96XUr3uEKVGEMM1\nNGLHVJvOvXPUo+LXvYAcPvUFBAuQR1lDy9x/8TGdpRZ4hcWvx7aJrqdh2I7i8zfH\ncHB8/3pI8oTUIeSENcO3wVaQyiK6ZdA9aHb2ochJIKpVKAOed9j9rc0iF0B5GD/m\n9zn0QdBAVPqWbYYVzNl93pS9XQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "solumobilbot@solumobil-e-commerce.iam.gserviceaccount.com",
+  "client_id": "106895376797845868518",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/solumobilbot%40solumobil-e-commerce.iam.gserviceaccount.com"
+}

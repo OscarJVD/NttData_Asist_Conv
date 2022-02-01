@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.videoMsg {
+  position: absolute;
+  z-index: 10;
+  top: 72%;
+}
+
+.btnVideoCenter {
+  position: relative;
+  z-index: 9999;
+  top: 72%;
+  text-align: center;
+}
+
+.spanVideoMsg {
+  color: white;
+  font-size: 20px;
+}
+
+#btnActiveRecognizer {
+  width: 100px;
+  /* height: 100px; */
+  height: 80px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9999;
+  /* right: 27rem; */
+  /* top: 2.9rem; */
+  top: 3.4rem;
+}
+
+#circleSpectrum {
+  position: relative;
+  /* right: 22.4rem; */
+}
+
+.audioViewer {
+  position: absolute;
+  z-index: 20;
+  top: 38%;
+}
+
+.border-fw-black{
+  text-shadow: 0 0 5px #000;
+}
+
+.border-fw-white{
+  text-shadow: 0 0 5px white;
+}
+
+.text-lime{
+  color: rgb(70, 238, 70);
+}

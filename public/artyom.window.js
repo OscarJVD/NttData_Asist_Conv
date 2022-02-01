@@ -194,7 +194,12 @@ var Artyom = (function () {
           const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
 
           if (recognizedTxtCaption && spanRecognizedTxtCaption && arrForbidden.every(value => !message.includes(value))) {
-            spanRecognizedTxtCaption.textContent = message.replace('Quick mode :', '');
+            let recognizedTxt = message.replace('Quick mode :', '').replace('>>', '');
+            
+            // LocalStorage and BD Storing
+            // END LocalStorage and BD Storing
+
+            spanRecognizedTxtCaption.textContent = recognizedTxt;
             recognizedTxtCaption.classList.remove('d-none');
           }
 
@@ -202,7 +207,7 @@ var Artyom = (function () {
             setTimeout(() => {
               if (recognizedTxtCaption)
                 recognizedTxtCaption.classList.add('d-none');
-            }, 10000);
+            }, 20000);
           }
 
           break;
@@ -588,6 +593,11 @@ var Artyom = (function () {
     }
     this.ArtyomWebkitSpeechRecognition.lang = this.ArtyomProperties.lang;
     this.ArtyomWebkitSpeechRecognition.onstart = function () {
+      document.getElementById('microphoneIcon').classList.remove('text-white')
+      document.getElementById('microphoneIcon').classList.add('text-lime')
+      document.getElementById('microphoneIcon').classList.remove('border-fw-black')
+      document.getElementById('microphoneIcon').classList.add('border-fw-white')
+
       _this.debug("Event reached : " + _this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.triggerEvent(_this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.ArtyomProperties.recognizing = true;
@@ -633,6 +643,11 @@ var Artyom = (function () {
      * @returns {undefined}
      */
     _this.ArtyomWebkitSpeechRecognition.onend = function () {
+      document.getElementById('microphoneIcon').classList.remove('text-lime')
+      document.getElementById('microphoneIcon').classList.add('text-white')
+      document.getElementById('microphoneIcon').classList.remove('border-fw-white')
+      document.getElementById('microphoneIcon').classList.add('border-fw-black')
+
       if (_this.ArtyomFlags.restartRecognition === true) {
         if (artyom_is_allowed === true) {
           _this.ArtyomWebkitSpeechRecognition.start();
