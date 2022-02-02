@@ -7,6 +7,13 @@ const answerSchema = new mongoose.Schema({
     trim: true,
     unique: true
   },
+  ask: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+    default: "que te ha gustado de la feria"
+  },
   isActive: {
     type: Boolean,
     default: true

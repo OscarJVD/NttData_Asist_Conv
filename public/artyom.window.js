@@ -199,7 +199,7 @@ var Artyom = (function () {
             // LocalStorage and BD Storing
             // END LocalStorage and BD Storing
 
-            spanRecognizedTxtCaption.textContent = recognizedTxt;
+            spanRecognizedTxtCaption.textContent = capitalizarPrimeraLetra(recognizedTxt);
             recognizedTxtCaption.classList.remove('d-none');
           }
 
@@ -207,7 +207,7 @@ var Artyom = (function () {
             setTimeout(() => {
               if (recognizedTxtCaption)
                 recognizedTxtCaption.classList.add('d-none');
-            }, 20000);
+            }, 10000);
           }
 
           break;

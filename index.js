@@ -10,9 +10,9 @@ const dfff = require('dialogflow-fulfillment');
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 // const synonyms = require("synonyms");
-let sinonimos = require("node-sinonimos");
+// let sinonimos = require("node-sinonimos");
 // let thesaurus = require('thesaurus-synonyms');
-let thesaurus = require("thesaurus");
+// let thesaurus = require("thesaurus");
 const connectDB = require('./utils/connectDB')
 const Answer = require('./models/answerModel')
 connectDB()
@@ -167,6 +167,15 @@ expressApp.post('/dfff', async (req, res) => {
     intentMap.set('webhookDemo', demo)
 
     myAgent.handleRequest(intentMap)
+  } catch (err) {
+    console.log(err);
+    throw err
+  }
+});
+
+expressApp.post('/storeAnswers', async (req, res) => {
+  try {
+ 
   } catch (err) {
     console.log(err);
     throw err
