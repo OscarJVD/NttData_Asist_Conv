@@ -5,20 +5,20 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const cons = require('consolidate');
-const dfff = require('dialogFW-fulfillment');
-const dialogFW = require('@google-cloud/dialogFW')
+const dfff = require('dialogflow-fulfillment');
+const dialogFW = require('@google-cloud/dialogflow')
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 const connectDB = require('./utils/connectDB')
 const Answer = require('./models/answerModel')
-const { Interaction } = require('./db/models/index')
+const { db } = require("./utils/db.js");
 connectDB()
 
 // Sin https si es sin SSL
 const liveReloadServer = livereload.createServer({
   https: {
-    cert: fs.readFileSync('localhost.crt'),
-    key: fs.readFileSync('localhost.key')
+    cert: fs.readFileSync('./ssl/localhost.crt'),
+    key: fs.readFileSync('./ssl/localhost.key')
   }
 });
 
@@ -92,8 +92,8 @@ expressApp.use(express.static(path.join(__dirname, 'public')));
 expressApp.use(express.static(path.join(__dirname, 'utils')));
 
 https.createServer({
-  cert: fs.readFileSync('localhost.crt'),
-  key: fs.readFileSync('localhost.key')
+  cert: fs.readFileSync('./ssl/localhost.crt'),
+  key: fs.readFileSync('./ssl/localhost.key')
 }, expressApp).listen(50000, function () {
   console.log('Running up on https://my.local.host:50000/');
 });
@@ -108,6 +108,8 @@ expressApp.get('/oscar', function (req, res) {
 
 expressApp.post('/storeAnswers', async (req, res) => {
   try {
+    const database = await db()
+
     console.log('req.body', req.body);
     let { ask, answer } = req.body
 
@@ -120,10 +122,16 @@ expressApp.post('/storeAnswers', async (req, res) => {
     const newAnswer = new Answer({ ask, answer })
     await newAnswer.save()
 
-    const newInteraction = await Interaction.create({
-      ask, answer
-    }, { fields: ['ask', 'answer'] });
-    console.log('newInteraction', newInteraction);
+    // MYSQL STORING
+    database.query(`INSERT INTO interactions (ask, answer) 
+      VALUES (?,?)`, [ask, answer]
+      // , (error,
+      //   results) => {
+      //   if (error) return res.json({ error: error }
+      //     );
+
+      // }
+    );
 
   } catch (err) {
     console.log(err);
