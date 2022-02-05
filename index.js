@@ -91,12 +91,6 @@ expressApp.set("views", path.resolve(__dirname, "views"));
 expressApp.use(express.static(path.join(__dirname, 'public')));
 expressApp.use(express.static(path.join(__dirname, 'utils')));
 
-https.createServer({
-  cert: fs.readFileSync('./ssl/localhost.crt'),
-  key: fs.readFileSync('./ssl/localhost.key')
-}, expressApp).listen(50000, function () {
-  console.log('Running up on https://my.local.host:50000/');
-});
 
 expressApp.get('/', function (req, res) {
   res.render('index.html');
@@ -179,3 +173,16 @@ expressApp.post('/dfff', async (req, res) => {
 //     throw err
 //   }
 // });
+
+if (process.env.PRODUCTION != "true") {
+  https.createServer({
+    cert: fs.readFileSync('./ssl/localhost.crt'),
+    key: fs.readFileSync('./ssl/localhost.key')
+  }, expressApp).listen(50000, function () {
+    console.log('Running up on https://my.local.host:50000/');
+  });
+}else{
+  expressApp.listen(8080, () => {
+    console.log(`Example app listening on port ${8080}`)
+  })
+}
