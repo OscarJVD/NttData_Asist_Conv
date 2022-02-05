@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "61fc0aba7d8bcbe3743b4f32"
+  },
+  "answer": "sí me está reconociendo Hola",
+  "ask": "Hola, encantada, mi nombre es eva la asistente virtual de la feria",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2022-02-03T17:02:50.933Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-03T17:02:50.933Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61fc303d0f46da901bcfd825"
+  },
+  "answer": "que me alegra",
+  "ask": "Es una de mis favoritas, su autor Jhoan fue un pintor, escultor, grabador y ceramista español",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2022-02-03T19:42:53.867Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-03T19:42:53.867Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61fc304a0f46da901bcfd827"
+  },
+  "answer": "de la odisea",
+  "ask": "Dime, de las 7 obras que visté, ¿Cuál te gusto mas?",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2022-02-03T19:43:06.711Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-03T19:43:06.711Z"
+  },
+  "__v": 0
+}]

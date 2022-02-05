@@ -5,13 +5,13 @@ const answerSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    unique: true
+    unique: false
   },
   ask: {
     type: String,
     required: true,
     trim: true,
-    unique: true,
+    unique: false,
     default: "que te ha gustado de la feria"
   },
   isActive: {

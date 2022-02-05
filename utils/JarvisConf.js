@@ -6,14 +6,14 @@ let Jarvis = new Artyom();
 function startOneCommandArtyom() {
   artyom.fatality(); // Detener cualquier instancia previa
 
-  setTimeout(function() { // Esperar 250ms para inicializar
+  setTimeout(function () { // Esperar 250ms para inicializar
     artyom.initialize({
       lang: "en-GB", // Más lenguajes son soportados, lee la documentación
       continuous: false, // Reconoce 1 solo comando y basta de escuchar
       listen: true, // Iniciar !
       debug: true, // Muestra un informe en la consola
       speed: 1 // Habla normalmente
-    }).then(function() {
+    }).then(function () {
       console.log("Ready to work !");
     });
   }, 250);
@@ -23,7 +23,7 @@ function startArtyom(language, mode, recognizeType = true) {
   if (!language)
     language = Jarvis.getLanguage();
 
-  let _startArtyom = function() {
+  let _startArtyom = function () {
     Jarvis.initialize({
       lang: language, // Start artyom with provided language
       continuous: recognizeType ? true : false, // Continuous mode enabled
@@ -99,13 +99,13 @@ if (!Jarvis.recognizingSupported()) {
   alert("navegador no soportado. Se necesita Google Chrome versión 25 y posteriores")
 }
 
-Jarvis.when("SPEECH_SYNTHESIS_START", function() {
+Jarvis.when("SPEECH_SYNTHESIS_START", function () {
   if (Jarvis.isRecognizing() || Jarvis.isSpeaking()) {
     Jarvis.dontObey();
   }
 });
 
-Jarvis.when("SPEECH_SYNTHESIS_END", function() {
+Jarvis.when("SPEECH_SYNTHESIS_END", function () {
   setTimeout(() => {
     if (!Jarvis.isRecognizing() || !Jarvis.isSpeaking()) {
       Jarvis.obey();
@@ -123,9 +123,6 @@ const commands = {
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'],
 }
-
-const definitiveCommands = postData('synonyms', commands)
-console.log(definitiveCommands);
 
 const arrsCommands = Object.values(commands)
 const arrAttachedCommands = [].concat(...arrsCommands);
@@ -169,42 +166,14 @@ function identifySection(arrSecti, commandIndex) {
 
 let flag = false
 
-Jarvis.on(arrAttachedCommands).then(function(i) {
+Jarvis.on(arrAttachedCommands).then(function (i) {
 
   const defCommand = identifySection(arrSec, i)
 
   console.log('defCommand', defCommand)
   switch (defCommand) {
     case 0:
-
-      if (getRandomArbitrary(1, 2) == 1) {
-        playVideo('saludoTrack');
-      } else {
-        /**
-         * Say something random of what is in the array when this function is triggered.
-         */
-        let randomSay = [
-          "Buenos días",
-          "Ey, que bueno verte de nuevo",
-          "Hola, ¿cómo vas?",
-          "Que onda, ¿cómo estás?"
-        ]
-
-        let randomSayIndex = getRandomArbitrary(0, 3)
-
-        Jarvis.say(randomSay[randomSayIndex], {
-          onStart() {
-            Jarvis.dontObey();
-          },
-          onEnd() {
-            setTimeout(() => {
-              Jarvis.obey();
-              playVideo('preguntaTrack');
-            }, 1200);
-          },
-        });
-      }
-
+      playVideo('saludoTrack');
       break;
     case 1:
       playVideo('respuestaTrack');
@@ -273,17 +242,17 @@ Jarvis.on(arrAttachedCommands).then(function(i) {
 });
 
 // // Catch errors
-Jarvis.when("ERROR", function(data) {
+Jarvis.when("ERROR", function (data) {
   console.error(data);
 });
 
 document.querySelectorAll('video').forEach(elem => {
   if (elem.id != 'reposoTrack') {
-    elem.addEventListener('play', function() {
+    elem.addEventListener('play', function () {
       Jarvis.dontObey();
     });
 
-    elem.addEventListener('ended', function() {
+    elem.addEventListener('ended', function () {
       setTimeout(() => {
         Jarvis.obey();
       }, 1000);
@@ -291,6 +260,54 @@ document.querySelectorAll('video').forEach(elem => {
   }
 });
 
-document.getElementById('btnActiveRecognizer').addEventListener('click', function() {
+document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
   startArtyom("es-ES", 'quick', false);
+});
+
+Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
+  console.log('TEXTO RECONOCIDO  ', recognized, `isFinal ${isFinal}`);
+
+  arrAttachedCommands.forEach(async (cmd, cmdIndex) => {
+    if ( // Si coincide con algún comando o si lo que se dice tiene alguna coincidencia entre comandos
+      (
+        recognized.toLowerCase() == cmd.toLowerCase()
+        || recognized.toLowerCase().includes(cmd.toLowerCase())
+        || cmd.toLowerCase().includes(recognized.toLowerCase())
+      )
+      // && isFinal
+    ) {
+      let ask;
+
+      const defCommand = identifySection(arrSec, cmdIndex)
+
+      switch (defCommand) {
+        case 0:
+          ask = "Hola, encantada, mi nombre es eva la asistente virtual de la feria"
+          break;
+        case 1:
+          ask = "Dime, de las 7 obras que visté, ¿Cuál te gusto mas?"
+          break;
+        case 2:
+          ask = "Es una de mis favoritas, su autor Jhoan fue un pintor, escultor, grabador y ceramista español" // opinion sobre eso
+          break;
+        case 3:
+          ask = "Reposo"
+          break;
+        case 4:
+          ask = "Activación frases lentas"
+          break;
+        case 5:
+          ask = "Activación frases normales"
+          break;
+        case 6:
+          ask = "Activación frases rápidas"
+          break;
+        case 7:
+          ask = "silencio"
+          break;
+      }
+
+      await postData('storeAnswers', { ask, answer: recognized })
+    }
+  })
 });
