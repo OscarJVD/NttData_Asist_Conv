@@ -7,7 +7,8 @@
     "staticdev": "npm run open && node -e * index.js --host my.local.host",
     "dev": "npm run open && nodemon -e * index.js --host my.local.host",
     "open": "start  https://my.local.host:50000/",
-    "start": "nodemon index.js",
+    "startnodemon": "nodemon index.js",
+    "start": "node index.js",
     "buildwithnexe": "nexe index.js --host my.local.host --build"
   },
   "nodemonConfig": {
