@@ -1,6 +1,5 @@
 //archivo index.js
-if (process.env.PRODUCTION != 'false' || process.env.PRODUCTION != false)
-  require('dotenv').config()
+  // require('dotenv').config()
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
