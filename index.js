@@ -173,7 +173,7 @@ expressApp.post('/storeAnswers', async (req, res) => {
 //   }
 // });
 
-if (process.env.PRODUCTION != "true") {
+if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
   https.createServer({
     cert: fs.readFileSync('./ssl/localhost.crt'),
     key: fs.readFileSync('./ssl/localhost.key')
