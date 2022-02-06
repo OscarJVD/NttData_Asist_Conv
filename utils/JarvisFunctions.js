@@ -1,4 +1,4 @@
-const BASE_URL = "https://my.local.host:50000"
+const BASE_URL = process.env.BASE_URL
 
 const postData = async (url, dataPost) => {
   const res = await fetch(`${BASE_URL}/${url}`, {
