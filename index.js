@@ -181,7 +181,7 @@ if (process.env.PRODUCTION != "true") {
     console.log('Running up on https://my.local.host:50000/');
   });
 } else {
-  expressApp.listen(8080, () => {
-    console.log(`Example app listening on port ${8080}`)
+  expressApp.listen(process.env.PORT || 5000, () => {
+    console.log(`Example app listening on port ${process.env.PORT || 5000}`)
   })
 }
