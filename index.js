@@ -112,7 +112,8 @@ expressApp.post('/storeAnswers', async (req, res) => {
     console.log('req.body', req.body);
     let { ask, answer } = req.body
 
-    if (answer.toString().length <= 3) return;
+    if (answer.toString().length <= 3)
+      return res.status(400).json({ error: "La respuesta debe contener al menos una palabra de mas de 3 caracteres" });
 
     answer = answer.trim()
     ask = ask.trim()
