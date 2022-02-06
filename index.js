@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const cons = require('consolidate');
-const dfff = require('dialogflow-fulfillment');
 const dialogFW = require('@google-cloud/dialogflow')
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
@@ -134,28 +133,28 @@ expressApp.post('/storeAnswers', async (req, res) => {
 });
 
 // Dialogflow route
-expressApp.post('/dfff', async (req, res) => {
+// expressApp.post('/dfff', async (req, res) => {
 
-  try {
-    const myAgent = new dfff.WebhookClient({
-      request: req,
-      response: res
-    })
+//   try {
+//     const myAgent = new dfff.WebhookClient({
+//       request: req,
+//       response: res
+//     })
 
-    function demo(agent) {
-      agent.add('sending response to webhook server')
-    }
+//     function demo(agent) {
+//       agent.add('sending response to webhook server')
+//     }
 
-    let intentMap = new Map()
+//     let intentMap = new Map()
 
-    intentMap.set('webhookDemo', demo)
+//     intentMap.set('webhookDemo', demo)
 
-    myAgent.handleRequest(intentMap)
-  } catch (err) {
-    console.log(err);
-    throw err
-  }
-});
+//     myAgent.handleRequest(intentMap)
+//   } catch (err) {
+//     console.log(err);
+//     throw err
+//   }
+// });
 
 // expressApp.post('/dialogFW', async (req, res) => {
 
