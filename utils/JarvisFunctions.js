@@ -1,4 +1,4 @@
-const BASE_URL = process.env.BASE_URL || "https://jarvisconactivador.herokuapp.com"
+const BASE_URL = "https://jarvisconactivador.herokuapp.com"
 
 const postData = async (url, dataPost) => {
   const res = await fetch(`${BASE_URL}/${url}`, {
