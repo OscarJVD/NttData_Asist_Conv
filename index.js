@@ -1,5 +1,6 @@
 //archivo index.js
-require('dotenv').config()
+if (process.env.PRODUCTION != 'false' || process.env.PRODUCTION != false)
+  require('dotenv').config()
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -180,7 +181,7 @@ if (process.env.PRODUCTION != "true") {
   }, expressApp).listen(50000, function () {
     console.log('Running up on https://my.local.host:50000/');
   });
-}else{
+} else {
   expressApp.listen(8080, () => {
     console.log(`Example app listening on port ${8080}`)
   })
