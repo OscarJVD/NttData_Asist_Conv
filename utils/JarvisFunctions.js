@@ -1,4 +1,4 @@
-const BASE_URL = "https://jarvisconactivador.herokuapp.com"
+const BASE_URL = window.location.origin || "https://jarvisconactivador.herokuapp.com"
 
 const postData = async (url, dataPost) => {
   const res = await fetch(`${BASE_URL}/${url}`, {
@@ -18,5 +18,6 @@ function getRandomArbitrary(min, max) {
 }
 
 function capitalizarPrimeraLetra(str) {
+  str = str.trim()
   return str.charAt(0).toUpperCase() + str.slice(1);
 }

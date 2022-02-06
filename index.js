@@ -11,7 +11,9 @@ const connectLiveReload = require("connect-livereload");
 const connectDB = require('./utils/connectDB')
 const Answer = require('./models/answerModel')
 const { db } = require("./utils/db.js");
-connectDB()
+
+if (process.env.PRODUCTION == true || process.env.PRODUCTION == "true")
+  connectDB()
 
 if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
 
@@ -119,8 +121,10 @@ expressApp.post('/storeAnswers', async (req, res) => {
     ask = ask.trim()
     console.log('ask, answer', ask, answer);
 
-    const newAnswer = new Answer({ ask, answer })
-    await newAnswer.save()
+    if (process.env.PRODUCTION == true || process.env.PRODUCTION == "true") {
+      const newAnswer = new Answer({ ask, answer })
+      await newAnswer.save()
+    }
 
     // MYSQL STORING
     database.query(`INSERT INTO interactions (ask, answer) 

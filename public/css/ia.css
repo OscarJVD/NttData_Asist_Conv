@@ -3,38 +3,60 @@ body {
   padding: 0;
   height: 100vh;
   overflow: hidden;
+  background-color: rgb(4, 4, 134);
+}
+
+.zIndexCien{
+  z-index: 100;
+}
+
+.zIndexNueveMilCien{
+  z-index: 9100;
+}
+
+.buttonsBox {
+  height: 25% !important;
+  width: 100%;
+  position: absolute;
+  bottom: 0 !important;
+  background: black !important;
+}
+
+video {
+  height: 75% !important;
 }
 
 .videoMsg {
   position: absolute;
   z-index: 10;
-  top: 72%;
+  top: 48%;
+  height: 45px;
 }
 
 .btnVideoCenter {
   position: relative;
-  z-index: 9999;
-  top: 72%;
+  z-index: 9000;
+  top: 52%;
   text-align: center;
 }
 
 .spanVideoMsg {
   color: white;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 #btnActiveRecognizer {
-  width: 98px;
+  width: 68px;
   /* height: 100px; */
-  height: 99px;
+  height: 75px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   position: absolute;
-  z-index: 9999;
+  z-index: 9000;
   /* right: 27rem; */
   /* top: 2.9rem; */
-  top: 2.94rem;
+  top: 24%;
 }
 
 #circleSpectrum {
@@ -45,7 +67,7 @@ body {
 .audioViewer {
   position: absolute;
   z-index: 20;
-  top: 38%;
+  top: 14%;
 }
 
 .border-fw-black {
@@ -58,4 +80,12 @@ body {
 
 .text-lime {
   color: rgb(70, 238, 70);
+}
+
+.bg-opaco {
+  background-color: #353535ec;
+  color: #ddd;
+  /* WHITE OR #ddd */
+  opacity: 1;
+  box-shadow: 0 0 9px 0 #000;
 }

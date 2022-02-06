@@ -14,7 +14,7 @@
 
 <body id="cuerpo">
 
-  <video muted autoplay loop preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="reposoTrack">
+  <video muted autoplay loop preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="reposoTrack">
     <source src="/media/video/reposo/reposo.mp4" type="video/mp4">
     <source src="/media/video/reposo/reposo.wav" type="video/wav">
     <source src="/media/video/reposo/reposo.webm" type="video/webm">
@@ -22,36 +22,55 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <video style="display:none;" src="/media/video/saludo/saludo.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoTrack">
+  <video style="display:none;" src="/media/video/saludo/saludo.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <video style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
+  <video style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
   <canvas id="waves" class="audioViewer" style="overflow: hidden;"></canvas>
 
-  <div class="container-fluid videoMsg d-none p-3 justify-content-center d-flex align-items-center text-center" style="background-color: white;" id="recognizedTxtCaption">
-    <span class="spanVideoMsg text-center text-dark" id="spanRecognizedTxtCaption">Contesta y al final menciona la palabra 'ahora'</span>
+  <div class="container-fluid videoMsg d-none p-3 justify-content-center d-flex align-items-center text-center bg-opaco" id="recognizedTxtCaption">
+    <span class="spanVideoMsg text-center" id="spanRecognizedTxtCaption">
+      Contesta y al final menciona la palabra 'ahora'
+    </span>
   </div>
 
-  <video style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
+  <video style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <video style="display:none;" src="/media/video/cierre/cierre.mp4" preload="auto" width="100%" height="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="cierreTrack">
+  <video style="display:none;" src="/media/video/cierre/cierre.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="cierreTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
   <div class="container-fluid btnVideoCenter justify-content-center text-center align-items-center d-flex">
     <!-- src="/media/gifts/arte.gif"  -->
-    <img src="/media/gifts/negro_coloreado.gif" id="circleSpectrum" alt="" width="250px" height="192px">
+    <img src="/media/gifts/negro_coloreado.gif" id="circleSpectrum" alt="" width="175px" height="145px">
     <!-- border border-white -->
     <button id="btnActiveRecognizer" class="btn  shadow border border-white" style="cursor: pointer;">
-      <i class="fas fa-microphone text-white fa-3x p-2 border-fw-black" id="microphoneIcon"></i>
+      <i class="fas fa-microphone text-white fa-2x p-1 border-fw-black" id="microphoneIcon"></i>
       <!-- <i id="microphoneIcon" class="fas fa-microphone-slash text-white fa-3x p-2"></i> -->
     </button>
+  </div>
+
+  <div class="buttonsBox">
+    <div class="container h-100 align-items-center" style="display: grid;">
+      <div class="row">
+        <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
+          <button class="btn btn-light zIndexNueveMilCien h-100 w-50 mx-1" type="button">Historia</button>
+          <button class="btn btn-light zIndexNueveMilCien h-100 w-50 mx-1" type="button">Timeline</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
+          <button class="btn btn-light zIndexNueveMilCien h-100 w-50 mx-1" type="button">Obras</button>
+          <button onclick="() => {location.href = 'https://www.solumobil.com/tools/solutext/charcounter'}" class="btn btn-light zIndexNueveMilCien h-100 w-50 mx-1" type="button">Pinturas</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
