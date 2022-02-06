@@ -1,5 +1,5 @@
 //archivo index.js
-  // require('dotenv').config()
+// require('dotenv').config()
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -13,20 +13,22 @@ const Answer = require('./models/answerModel')
 const { db } = require("./utils/db.js");
 connectDB()
 
-// Sin https si es sin SSL
-const liveReloadServer = livereload.createServer({
-  https: {
-    cert: fs.readFileSync('./ssl/localhost.crt'),
-    key: fs.readFileSync('./ssl/localhost.key')
-  }
-});
+if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
 
-liveReloadServer.server.once("connection", () => {
-  setTimeout(() => {
-    liveReloadServer.refresh("/");
-  }, 100);
-});
+  // Sin https si es sin SSL
+  const liveReloadServer = livereload.createServer({
+    https: {
+      cert: fs.readFileSync('./ssl/localhost.crt'),
+      key: fs.readFileSync('./ssl/localhost.key')
+    }
+  });
 
+  liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+      liveReloadServer.refresh("/");
+    }, 100);
+  });
+}
 // DialogFlow Credentials
 // const dialogFlowAPIEnv = JSON.parse(fs.readFileSync('./dialogFlowAPIEnv.json'));
 
@@ -83,7 +85,11 @@ const expressApp = express();
 
 expressApp.use(express.json()); // Used to parse JSON bodies
 expressApp.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies using query-string library
-expressApp.use(connectLiveReload());
+
+if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
+  expressApp.use(connectLiveReload());
+}
+
 expressApp.engine('html', cons.swig);
 expressApp.set("trust proxy", true);
 expressApp.set("views", path.resolve(__dirname, "views"));
