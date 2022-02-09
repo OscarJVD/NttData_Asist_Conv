@@ -29,9 +29,9 @@ function startArtyom(language, mode, recognizeType = true) {
       continuous: recognizeType ? true : false, // Continuous mode enabled
       listen: true, // Start recognizing
       debug: true, // Show everything in the console
-      speed: 5, // talk normally
+      speed: 1, // talk normally
       volume: 1,
-      soundex: true, // Use the soundex algorithm to understand different words
+      soundex: false, // Use the soundex algorithm to understand different words
       mode: mode, // Opciones: quick, normal, slow
       // name: "jarvis"
       // obeyKeyword: "start again",
