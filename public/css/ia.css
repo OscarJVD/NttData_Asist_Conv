@@ -6,11 +6,16 @@ body {
   background-color: rgb(4, 4, 134);
 }
 
-.zIndexCien{
+.btn-ia {
+  background-color: #A4B6DA;
+  color: white;
+}
+
+.zIndexCien {
   z-index: 100;
 }
 
-.zIndexNueveMilCien{
+.zIndexNueveMilCien {
   z-index: 9100;
 }
 
