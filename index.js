@@ -124,18 +124,18 @@ expressApp.post('/storeAnswers', async (req, res) => {
     if (process.env.PRODUCTION == true || process.env.PRODUCTION == "true") {
       const newAnswer = new Answer({ ask, answer })
       await newAnswer.save()
+
+      // MYSQL STORING
+      database.query(`INSERT INTO interactions (ask, answer) 
+    VALUES (?,?)`, [ask, answer]
+        // , (error,
+        //   results) => {
+        //   if (error) return res.json({ error: error }
+        //     );
+
+        // }
+      );
     }
-
-    // MYSQL STORING
-    database.query(`INSERT INTO interactions (ask, answer) 
-      VALUES (?,?)`, [ask, answer]
-      // , (error,
-      //   results) => {
-      //   if (error) return res.json({ error: error }
-      //     );
-
-      // }
-    );
 
   } catch (err) {
     console.log(err);

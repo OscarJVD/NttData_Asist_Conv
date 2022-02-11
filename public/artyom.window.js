@@ -668,6 +668,7 @@ var Artyom = (function () {
      * @returns {undefined}
      */
     _this.ArtyomWebkitSpeechRecognition.onend = function () {
+      _this.ArtyomWebkitSpeechRecognition.stop();
       document.getElementById('microphoneIcon').classList.remove('text-lime')
       document.getElementById('microphoneIcon').classList.add('text-white')
       document.getElementById('microphoneIcon').classList.remove('border-fw-white')
