@@ -49,7 +49,7 @@ video {
 .videoMsg {
   position: absolute;
   z-index: 10;
-  top: 48%;
+  top: 52%;
   height: 45px;
 }
 
@@ -62,7 +62,7 @@ video {
 
 .spanVideoMsg {
   color: white;
-  font-size: 14px;
+  font-size: 22px;
 }
 
 #btnActiveRecognizer {
@@ -103,9 +103,12 @@ video {
 }
 
 .bg-opaco {
-  background-color: #353535ec;
-  color: #ddd;
+  /* background-color: #353535ec; */
+  background-color: #ffffff3d;
+  color: white;
+  /* color: #ddd; */
   /* WHITE OR #ddd */
   opacity: 1;
-  box-shadow: 0 0 9px 0 #000;
+  border-radius: 7px;
+  /* box-shadow: 0 0 9px 0 #000; */
 }
