@@ -7,7 +7,7 @@ body {
 }
 
 .bg-dark-blue {
-  background-color: #0060CC;
+  background-color: #5694f8;
 }
 
 .text-link {
@@ -19,8 +19,27 @@ body {
   color: white;
 }
 
+.bg-dark-blue:hover {
+  background-color: #2274f8 !important;
+  /* color: white; */
+}
+
+.bg-dark-blue:active {
+  background-color: #0060fa !important;
+  /* color: white; */
+}
+
 .btn-rounded {
   border-radius: 47px;
+}
+
+.btn-light-blue{
+  outline: 3px solid white;
+  /* -webkit-box-shadow: 2px 2px 19px 6px #0968E4;
+  box-shadow: 2px 2px 19px 6px #0968E4; */
+}
+
+.btn-neon-blue{
   outline: 3px solid #074391;
   -webkit-box-shadow: 2px 2px 19px 6px #0968E4;
   box-shadow: 2px 2px 19px 6px #0968E4;

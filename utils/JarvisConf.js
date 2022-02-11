@@ -114,14 +114,14 @@ Jarvis.when("SPEECH_SYNTHESIS_END", function () {
 });
 
 const commands = {
-  saludos: ['Hola', 'hola','Holi','Buenos dias','Buenas tardes','Buenas noches','Hello','Hi','Good Morning','Good afternoon','Good night'],
-  respuestasPreguntaArteFavorito: ['Mona Lisa','Romero y Juelita','Joan Miró', 'Odisea'],
-  respuestasOpinionRobot: ['Excelente','Muy bien','Excelente respuesta','Que inteligente eres','Gracias','Buena Respuesta'],
+  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
+  respuestasPreguntaArteFavorito: ['Mona Lisa', 'Romero y Juelita', 'Joan Miró', 'Odisea'],
+  respuestasOpinionRobot: ['Excelente', 'Muy bien', 'Excelente respuesta', 'Que inteligente eres', 'Gracias', 'Buena Respuesta'],
   modoReposo: ['reposo'],
-  modoFrasesLentas: ['lento', 'cortas', 'lento'],
-  modoFrasesNormales: ['normal', 'normales', 'normal'],
+  modoFrasesLentas: ['lento', 'cortas', 'lento'], // En pruebas(versión beta)
+  modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
-  silenciar: ['silencio', 'callate'],
+  silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
 }
 
 const arrsCommands = Object.values(commands)
