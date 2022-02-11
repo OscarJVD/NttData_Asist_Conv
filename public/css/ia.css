@@ -6,9 +6,24 @@ body {
   background-color: rgb(4, 4, 134);
 }
 
+.bg-dark-blue {
+  background-color: #0060CC;
+}
+
+.text-link {
+  color: #027EB5 !important;
+}
+
 .btn-ia {
   background-color: #A4B6DA;
   color: white;
+}
+
+.btn-rounded {
+  border-radius: 47px;
+  outline: 3px solid #074391;
+  -webkit-box-shadow: 2px 2px 19px 6px #0968E4;
+  box-shadow: 2px 2px 19px 6px #0968E4;
 }
 
 .zIndexCien {
@@ -51,7 +66,7 @@ video {
 }
 
 #btnActiveRecognizer {
-  width: 69px;
+  width: 73px;
   /* height: 100px; */
   height: 73px;
   -moz-border-radius: 50%;

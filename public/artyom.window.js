@@ -195,7 +195,7 @@ var Artyom = (function () {
 
           if (recognizedTxtCaption && spanRecognizedTxtCaption && arrForbidden.every(value => !message.includes(value))) {
             let recognizedTxt = message.replace('Quick mode :', '').replace('>>', '');
-            
+
             // LocalStorage and BD Storing
             // END LocalStorage and BD Storing
 
@@ -446,6 +446,31 @@ var Artyom = (function () {
           }
           if (_this.soundex(voz) == _this.soundex(opcion)) {
             _this.debug(">> Matched Soundex command '" + opcion + "' AGAINST '" + voz + "' with index " + c, "info");
+
+            // OWN CODE 2
+            // OWN CODE
+            let recognizedTxtCaption = document.getElementById('recognizedTxtCaption');
+            let spanRecognizedTxtCaption = document.getElementById('spanRecognizedTxtCaption');
+            const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
+
+            if (recognizedTxtCaption && spanRecognizedTxtCaption && arrForbidden.every(value => !opcion.includes(value))) {
+              let recognizedTxt = opcion.replace('Quick mode :', '').replace('>>', '');
+
+              // LocalStorage and BD Storing
+              // END LocalStorage and BD Storing
+
+              spanRecognizedTxtCaption.textContent = capitalizarPrimeraLetra(recognizedTxt);
+              recognizedTxtCaption.classList.remove('d-none');
+            }
+
+            if (!recognizedTxtCaption.classList.contains("d-none")) {
+              setTimeout(() => {
+                if (recognizedTxtCaption)
+                  recognizedTxtCaption.classList.add('d-none');
+              }, 10000);
+            }
+            // END OWN CODE 2
+
             encontrado = parseInt(c.toString());
             _this.triggerEvent(_this.ArtyomGlobalEvents.COMMAND_MATCHED);
             var response = {
