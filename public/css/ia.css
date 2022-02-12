@@ -54,7 +54,7 @@ body {
 }
 
 .buttonsBox {
-  height: 25% !important;
+  height: 30% !important;
   width: 100%;
   position: absolute;
   bottom: 0 !important;
@@ -62,7 +62,7 @@ body {
 }
 
 video {
-  height: 75% !important;
+  height: 70% !important;
 }
 
 .videoMsg {
@@ -75,7 +75,7 @@ video {
 .btnVideoCenter {
   position: relative;
   z-index: 9000;
-  top: 55%;
+  top: 45%;
   text-align: center;
 }
 
@@ -85,9 +85,9 @@ video {
 }
 
 #btnActiveRecognizer {
-  width: 73px;
+  width: 110px;
   /* height: 100px; */
-  height: 73px;
+  height: 111px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -95,7 +95,7 @@ video {
   z-index: 9000;
   /* right: 27rem; */
   /* top: 2.9rem; */
-  top: 24%;
+  top: 23.7%;
 }
 
 #circleSpectrum {
