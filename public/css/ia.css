@@ -6,6 +6,11 @@ body {
   background-color: rgb(4, 4, 134);
 }
 
+.btns-ia{
+  padding: 1rem 1.5rem;
+    font-size: 1.75rem;
+}
+
 .bg-dark-blue {
   background-color: #5694f8;
 }
@@ -75,7 +80,7 @@ video {
 .btnVideoCenter {
   position: relative;
   z-index: 9000;
-  top: 45%;
+  top: 50%;
   text-align: center;
 }
 
@@ -85,9 +90,9 @@ video {
 }
 
 #btnActiveRecognizer {
-  width: 110px;
+  width: 150px;
   /* height: 100px; */
-  height: 111px;
+  height: 151px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
