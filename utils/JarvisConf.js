@@ -46,12 +46,14 @@ function startArtyom(language, mode, recognizeType = true) {
   setTimeout(_startArtyom, 250);
 }
 
-let respuestaMode = 'quick';
+let respuestaMode = 'quick', reset = false;
 
 document.getElementById('saludoTrack').addEventListener('ended', () => {
-  setTimeout(() => {
-    playVideo('preguntaTrack')
-  }, 1200);
+  if(!reset){
+    setTimeout(() => {
+      playVideo('preguntaTrack')
+    }, 1200);
+  }
 });
 
 document.getElementById('respuestaTrack').addEventListener('ended', () => {
@@ -245,6 +247,18 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
 Jarvis.when("ERROR", function (data) {
   console.error(data);
 });
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  reset = true;
+  document.querySelectorAll('.videoIA').forEach(elem => {
+    // elem.pause();
+    elem.currentTime = 1000;
+    // elem.load();
+  });
+  playVideo('reposoTrack')
+  document.getElementById('talkBtn').style.position = "fixed"
+  reset = false;
+})
 
 document.querySelectorAll('video').forEach(elem => {
   if (elem.id != 'reposoTrack') {

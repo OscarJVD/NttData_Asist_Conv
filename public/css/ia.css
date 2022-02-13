@@ -90,14 +90,20 @@ video {
   -o-border-radius: 50%;
   width: 50px;
   height: 50px;
-  opacity: 0.4;
+  opacity: 0.55;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .btnResetIA:hover {
-  opacity: 1
+  opacity: 1;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 
 .btnVideoCenter {
