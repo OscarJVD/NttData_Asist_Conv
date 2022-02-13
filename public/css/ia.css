@@ -73,8 +73,8 @@ video {
 .videoMsg {
   position: absolute;
   z-index: 10;
-  top: 52%;
-  height: 45px;
+  top: 48.5%;
+  height: 63px;
 }
 
 .btnVideoCenter {
@@ -86,7 +86,7 @@ video {
 
 .spanVideoMsg {
   color: white;
-  font-size: 22px;
+  font-size: 32px;
 }
 
 #btnActiveRecognizer {
@@ -111,7 +111,7 @@ video {
 .audioViewer {
   position: absolute;
   z-index: 20;
-  top: 16.4%;
+  top: 13.2%;
 }
 
 .border-fw-black {
