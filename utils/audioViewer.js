@@ -114,8 +114,9 @@ function gotStream(stream) {
   var PI2 = Math.PI * 2;
   var HALFPI = Math.PI / 2;
 
+  // Altura de onda
   SineWaveGenerator.prototype.ease = function (percent, amplitude) {
-    return amplitude * (Math.sin(percent * PI2 - HALFPI) + 1) * 0.5;
+    return amplitude * (Math.sin(percent * PI2 - HALFPI) + 1) * 4.5;
   }
 
 
@@ -190,27 +191,27 @@ function gotStream(stream) {
     waves: [
       {
         timeModifier: 1,
-        lineWidth: 4,
+        lineWidth: 8,
         amplifyer: 600,
         wavelength: 200,
         segmentLength: 20
       },
       {
         timeModifier: 1,
-        lineWidth: 4,
-        amplifyer: 700,
+        lineWidth: 8,
+        amplifyer: 800,
         wavelength: 100
       },
       {
         timeModifier: 1,
-        lineWidth: 4,
+        lineWidth: 8,
         amplifyer: 500,
         wavelength: 50,
         segmentLength: 10
       },
       {
         timeModifier: 1,
-        lineWidth: 4.5,
+        lineWidth: 8.5,
         amplifyer: 650,
         wavelength: 100,
         segmentLength: 10
