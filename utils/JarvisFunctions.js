@@ -50,7 +50,10 @@ function configVideos(arrVideoElementsIds =
     "preguntaTrack",
     "respuestaTrack",
     "cierreTrack",
-    "galeriasTrack"
+    "galeriasTrack",
+    "galeriasChicoTrack",
+    "tellmoreTrack",
+    "tellmoreChicoTrack"
   ]) {
 
   arrVideoElementsIds.forEach(video => {
@@ -60,6 +63,7 @@ function configVideos(arrVideoElementsIds =
 
     if (video != 'reposoTrack') {
       document.getElementById(video).addEventListener('ended', () => {
+        document.getElementById('talkBtnBox').classList.remove('d-none')
         document.getElementById(video).style.display = 'none';
         document.getElementById('reposoTrack').style.display = 'inherit';
         document.getElementById('reposoTrack').play();
@@ -67,14 +71,25 @@ function configVideos(arrVideoElementsIds =
 
       document.getElementById(video).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
+        document.querySelectorAll('button').forEach(button => {
+          button.disabled = true
+        })
       });
     }
 
-    
+    document.getElementById(video).addEventListener('ended', () => {
+      document.getElementById('talkBtnBox').classList.remove('d-none')
+      document.querySelectorAll('button').forEach(button => {
+        button.disabled = false
+      })
+    })
   });
 }
 
 async function playVideo(videoId) {
+  // Hide talk button
+  document.getElementById('talkBtnBox').classList.add('d-none')
+
   document.getElementById(videoId).style.display = 'inherit';
   await document.getElementById(videoId).play();
 }
@@ -97,4 +112,38 @@ function identifySection(arrSecti, commandIndex) {
   console.log(defValue, 'defValue')
 
   return defValue
+}
+
+function greeting() {
+
+  playVideo('saludoTrack');
+
+  setTimeout(() => {
+    document.getElementById('btnGallery').classList.add('blueHover')
+    setTimeout(() => {
+      document.getElementById('btnGallery').classList.remove('blueHover')
+      setTimeout(() => {
+        document.getElementById('btnPlaces').classList.add('blueHover')
+        setTimeout(() => {
+          document.getElementById('btnPlaces').classList.remove('blueHover')
+          setTimeout(() => {
+            document.getElementById('btnHistory').classList.add('blueHover')
+            setTimeout(() => {
+              document.getElementById('btnHistory').classList.remove('blueHover')
+              setTimeout(() => {
+                document.getElementById('btnNew').classList.add('blueHover')
+                setTimeout(() => {
+                  document.getElementById('btnNew').classList.remove('blueHover')
+                }, 1400)
+              }, 900)
+            }, 1400)
+          }, 1100)
+        }, 1400);
+      }, 1500)
+    }, 1800);
+  }, 14650);
+
+  document.getElementById("buttonsPartOne").classList.remove('d-none')
+  document.getElementById("buttonsPartBox").classList.remove('d-none')
+  document.getElementById("YesOrNoBox").classList.add('d-none')
 }

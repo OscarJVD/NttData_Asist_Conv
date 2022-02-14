@@ -15,6 +15,16 @@ document.getElementById('respuestaTrack').addEventListener('ended', () => {
 
 document.getElementById('galeriasTrack').addEventListener('ended', () => {
   document.getElementById('btnGallery').classList.remove('blueHover')
+
+  setTimeout(() => {
+    playVideo('tellmoreTrack')
+  }, 1500);
+});
+
+document.getElementById('tellmoreTrack').addEventListener('ended', () => {
+  document.getElementById("buttonsPartOne").classList.add('d-none')
+  document.getElementById("buttonsPartBox").classList.add('d-none')
+  document.getElementById("YesOrNoBox").classList.remove('d-none')
 });
 
 configVideos();
@@ -74,31 +84,7 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
   console.log('defCommand', defCommand)
   switch (defCommand) {
     case 0:
-      playVideo('saludoTrack');
-      setTimeout(() => {
-        document.getElementById('btnGallery').classList.add('blueHover')
-        setTimeout(() => {
-          document.getElementById('btnGallery').classList.remove('blueHover')
-          setTimeout(() => {
-            document.getElementById('btnPlaces').classList.add('blueHover')
-            setTimeout(() => {
-              document.getElementById('btnPlaces').classList.remove('blueHover')
-              setTimeout(() => {
-                document.getElementById('btnHistory').classList.add('blueHover')
-                setTimeout(() => {
-                  document.getElementById('btnHistory').classList.remove('blueHover')
-                  setTimeout(() => {
-                    document.getElementById('btnNew').classList.add('blueHover')
-                    setTimeout(() => {
-                      document.getElementById('btnNew').classList.remove('blueHover')
-                    }, 1400)
-                  }, 900)
-                }, 1400)
-              }, 1100)
-            }, 1400);
-          }, 1500)
-        }, 1400);
-      }, 14650);
+      greeting();
       break;
     case 1:
       playVideo('respuestaTrack');
@@ -183,6 +169,10 @@ document.getElementById('btnReset').addEventListener('click', () => {
   playVideo('reposoTrack')
   document.getElementById('talkBtnBox').style.position = "fixed"
   reset = false;
+
+  document.getElementById("buttonsPartOne").classList.remove('d-none')
+  document.getElementById("buttonsPartBox").classList.remove('d-none')
+  document.getElementById("YesOrNoBox").classList.add('d-none')
 })
 
 document.querySelectorAll('video').forEach(elem => {

@@ -9,6 +9,14 @@ body {
 .blueHover{
   background-color: #2274f8 !important;
   outline: 3px solid white;
+  opacity: 1 !important;
+}
+
+.videoIA{
+  position: fixed;
+   overflow: hidden;
+    padding: 0;
+   margin: 0; 
 }
 
 .btns-ia {
