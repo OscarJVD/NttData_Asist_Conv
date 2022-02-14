@@ -55,7 +55,7 @@ const commands = {
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ['galerias', 'galerías', 'secciones', 'galerías y secciones'], // En pruebas(versión beta)
+  galeriasysecciones: ['galerías y secciones'], // En pruebas(versión beta)
 }
 
 const arrsCommands = Object.values(commands)
