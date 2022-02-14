@@ -6,6 +6,11 @@ body {
   background-color: rgb(4, 4, 134);
 }
 
+.blueHover{
+  background-color: #2274f8 !important;
+  outline: 3px solid white;
+}
+
 .btns-ia {
   padding: 1rem 1.5rem;
   font-size: 1.75rem;

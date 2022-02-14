@@ -22,11 +22,57 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <video class="videoIA" style="display:none;" src="/media/video/saludo/saludo.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoTrack">
+  <video class="videoIA" style="display:none;" src="/media/video/v2/1.SALUDO_LISTADO.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
+  <video class="videoIA" style="display:none;" src="/media/video/v2/1.SALUDO_LISTADO_CHICO.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="saludoChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+<!-- 
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video> -->
+
+  <!-- end -->
+
   <video class="videoIA" style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/cierre/cierre.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="cierreTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
@@ -38,18 +84,10 @@
     </span>
   </div>
 
-  <video class="videoIA" style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
-  <video class="videoIA" style="display:none;" src="/media/video/cierre/cierre.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="cierreTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
-  <div class="container-fluid btnVideoCenter justify-content-center text-center align-items-center d-flex" id="talkBtn">
+  <div class="container-fluid btnVideoCenter justify-content-center text-center align-items-center d-flex" id="talkBtnBox">
 
     <img src="/media/gifts/negro_coloreado.gif" id="circleSpectrum" alt="" width="385px">
-    
+
     <button id="btnActiveRecognizer" class="btn  shadow border border-white" style="cursor: pointer;">
       <div class="loader-03 d-none" id="btnTalkLoader"></div>
       <i class="fas fa-microphone text-white fa-4x p-1 border-fw-black" id="microphoneIcon"></i>
@@ -60,21 +98,22 @@
     <i class="fas fa-solid fa-arrow-rotate-right"></i>
   </button>
 
+  <!-- BUTTONS LIST -->
   <div class="buttonsBox">
     <div class="container-fluid h-100 align-items-center" style="display: grid;">
       <div class="row">
         <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
-          <button class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Galerías y secciones <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729642/icons/kisspng-computer-icons-photo-gallery-5b21af37aa13d6.9788079415289341996967_oofqzm.png" width="50" class="p-0 m-0" />
+          <button id="btnGallery" onclick="this.classList.add('blueHover');playVideo('galeriasTrack');" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Galerías y secciones <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729642/icons/kisspng-computer-icons-photo-gallery-5b21af37aa13d6.9788079415289341996967_oofqzm.png" width="50" class="p-0 m-0" />
           </button>
-          <button class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Espacios y arquitectura <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729643/icons/transparent-handout-icon-print-icon-road-map-icon-5fd3c435816667.12508880160771384553_dcfg3t.png" width="50" class="p-0 m-0" />
+          <button id="btnPlaces" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Espacios y arquitectura <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729643/icons/transparent-handout-icon-print-icon-road-map-icon-5fd3c435816667.12508880160771384553_dcfg3t.png" width="50" class="p-0 m-0" />
           </button>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
-          <button class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Historia de Arco <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-computer-icons-art-story-5ac43b2e903792.5535584715228096465907_qqktbi.png" width="50" class="p-0 m-0" />
+          <button id="btnHistory" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Historia de Arco <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-computer-icons-art-story-5ac43b2e903792.5535584715228096465907_qqktbi.png" width="50" class="p-0 m-0" />
           </button>
-          <button onclick="location.href = 'https://www.solumobil.com/tools/solutext/charcounter'" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Novedades 2022 <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-watercolor-painting-drawing-camera-photography-hand-painted-cameras-creative-5a9f7a8e929199.4775883515204010386004_1_qp7ohv.png" width="50" class="p-0 m-0" />
+          <button id="btnNew" onclick="location.href = 'https://www.solumobil.com/tools/solutext/charcounter'" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Novedades 2022 <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-watercolor-painting-drawing-camera-photography-hand-painted-cameras-creative-5a9f7a8e929199.4775883515204010386004_1_qp7ohv.png" width="50" class="p-0 m-0" />
           </button>
         </div>
       </div>
@@ -82,6 +121,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/GlobalFunctions.js"></script>
   <script src="/JarvisFunctions.js"></script>
   <script src="/artyom.window.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>

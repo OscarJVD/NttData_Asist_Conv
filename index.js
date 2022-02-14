@@ -32,55 +32,55 @@ if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
   });
 }
 // DialogFlow Credentials
-// const dialogFlowAPIEnv = JSON.parse(fs.readFileSync('./dialogFlowAPIEnv.json'));
+const dialogFlowAPIEnv = JSON.parse(fs.readFileSync('./dialogFlowAPIEnv.json'));
 
 // // Your google dialogFW project-id
-// const dialogFlowProjectID = dialogFlowAPIEnv.project_id;
+const dialogFlowProjectID = dialogFlowAPIEnv.project_id;
 
 // // Configuration for the client
-// const dialogFlowConfiguration = {
-//   credentials: {
-//     private_key: dialogFlowAPIEnv['private_key'],
-//     client_email: dialogFlowAPIEnv['client_email']
-//   }
-// }
+const dialogFlowConfiguration = {
+  credentials: {
+    private_key: dialogFlowAPIEnv['private_key'],
+    client_email: dialogFlowAPIEnv['client_email']
+  }
+}
 
 // Create a new session
-// const sessionClient = new dialogFW.SessionsClient(dialogFlowConfiguration);
+const sessionClient = new dialogFW.SessionsClient(dialogFlowConfiguration);
 // 
 // Detect intent method
-// const detectIntent = async (languageCode, queryText, sessionId) => {
+const detectIntent = async (languageCode, queryText, sessionId) => {
 
-//   try {
-//     let sessionPath = sessionClient.projectAgentSessionPath(dialogFlowProjectID, sessionId);
+  try {
+    let sessionPath = sessionClient.projectAgentSessionPath(dialogFlowProjectID, sessionId);
 
-//     // The text query request.
-//     let request = {
-//       session: sessionPath,
-//       queryInput: {
-//         text: {
-//           // The query to send to the dialogFW agent
-//           text: queryText,
-//           // The language used by the client (en-US)
-//           languageCode: languageCode,
-//         },
-//       },
-//     };
+    // The text query request.
+    let request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          // The query to send to the dialogFW agent
+          text: queryText,
+          // The language used by the client (en-US)
+          languageCode: languageCode,
+        },
+      },
+    };
 
-//     // Send request and log result
-//     const responses = await sessionClient.detectIntent(request);
-//     console.log(responses);
-//     const result = responses[0].queryResult;
-//     console.log(result);
+    // Send request and log result
+    const responses = await sessionClient.detectIntent(request);
+    console.log(responses);
+    const result = responses[0].queryResult;
+    console.log(result);
 
-//     return {
-//       response: result.fulfillmentText
-//     };
-//   } catch (err) {
-//     console.log(err);
-//     throw err;
-//   }
-// }
+    return {
+      response: result.fulfillmentText
+    };
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
 
 // view engine setup
 const expressApp = express();
@@ -113,13 +113,13 @@ expressApp.post('/storeAnswers', async (req, res) => {
 
     console.log('req.body', req.body);
     let { ask, answer } = req.body
+    console.log('ask, answer', ask, answer);
 
     if (answer.toString().length <= 3)
       return res.status(400).json({ error: "La respuesta debe contener al menos una palabra de mas de 3 caracteres" });
 
     answer = answer.trim()
     ask = ask.trim()
-    console.log('ask, answer', ask, answer);
 
     if (process.env.PRODUCTION == true || process.env.PRODUCTION == "true") {
       const newAnswer = new Answer({ ask, answer })
@@ -167,22 +167,23 @@ expressApp.post('/storeAnswers', async (req, res) => {
 //   }
 // });
 
-// expressApp.post('/dialogFW', async (req, res) => {
+expressApp.post('/dialogFW', async (req, res) => {
 
-//   try {
-//     console.log('----- REQ -----', req);
-//     let languageCode = req.body.languageCode;
-//     let queryText = req.body.queryText;
-//     let sessionId = req.body.sessionId;
+  try {
+    console.log('----- REQ -----', req.body);
+    let languageCode = req.body.languageCode;
+    let queryText = req.body.queryText;
+    let sessionId = req.body.sessionId;
 
-//     let responseData = await detectIntent(languageCode, queryText, sessionId)
+    let responseData = await detectIntent(languageCode, queryText, sessionId)
 
-//     res.send(responseData.response);
-//   } catch (err) {
-//     console.log(err);
-//     throw err
-//   }
-// });
+    console.log('responseData', responseData)
+    res.send(responseData.response);
+  } catch (err) {
+    console.log(err);
+    throw err
+  }
+});
 
 if (process.env.PRODUCTION != "true" && process.env.PRODUCTION != true) {
   https.createServer({

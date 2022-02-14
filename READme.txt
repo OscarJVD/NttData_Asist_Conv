@@ -21,3 +21,9 @@ abrir bloc de notas cómo administrador -> dar clic en archivo -> abrir -> Ir a 
 - Copiar archivo con CTRL + C y CTRL +V localhost de Personal/localhost a certificate to trusted root certificates y cerrar sin guardar
 - iisreset /restart **en Powershell.**
 
+DialogFlow TEST
+{
+    "languageCode": "es-CO",
+    "queryText": "hola",
+    "sessionId": "12312sgsdfg"
+}

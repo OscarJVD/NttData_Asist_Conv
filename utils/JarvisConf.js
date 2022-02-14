@@ -1,60 +1,5 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom();
-
-// START ARTYOM
-// Esta funcion inicia artyom en el reconocimiento discontinuo (para conexiones http)
-function startOneCommandArtyom() {
-  artyom.fatality(); // Detener cualquier instancia previa
-
-  setTimeout(function () { // Esperar 250ms para inicializar
-    artyom.initialize({
-      lang: "en-GB", // Más lenguajes son soportados, lee la documentación
-      continuous: false, // Reconoce 1 solo comando y basta de escuchar
-      listen: true, // Iniciar !
-      debug: true, // Muestra un informe en la consola
-      speed: 1 // Habla normalmente
-    }).then(function () {
-      console.log("Ready to work !");
-    });
-  }, 250);
-}
-
-function startArtyom(language, mode, recognizeType = true) {
-  if (!language)
-    language = Jarvis.getLanguage();
-
-  let _startArtyom = function () {
-    Jarvis.initialize({
-      lang: language, // Start artyom with provided language
-      continuous: recognizeType ? true : false, // Continuous mode enabled
-      listen: true, // Start recognizing
-      debug: true, // Show everything in the console
-      speed: 5, // talk normally
-      volume: 1,
-      soundex: true, // Use the soundex algorithm to understand different words
-      mode: mode, // Opciones: quick, normal, slow
-      // name: "jarvis"
-      // obeyKeyword: "start again",
-      // executionKeyword: "now" // say "now" at the end of a command to execute it immediately
-    });
-  }
-
-  console.log("Artyom is listening to your commands");
-
-  // stop artyom if stills active
-  Jarvis.fatality();
-  setTimeout(_startArtyom, 250);
-}
-
-let respuestaMode = 'quick', reset = false;
-
-document.getElementById('saludoTrack').addEventListener('ended', () => {
-  if(!reset){
-    setTimeout(() => {
-      playVideo('preguntaTrack')
-    }, 1200);
-  }
-});
+let Jarvis = new Artyom(), respuestaMode = 'quick', reset = false;
 
 document.getElementById('respuestaTrack').addEventListener('ended', () => {
 
@@ -68,38 +13,14 @@ document.getElementById('respuestaTrack').addEventListener('ended', () => {
   // }, 250)
 });
 
-function configVideos(arrVideoElementsIds = ["reposoTrack", "saludoTrack", "preguntaTrack", "respuestaTrack", "cierreTrack"]) {
-
-
-  arrVideoElementsIds.forEach(video => {
-    let videoElement = document.getElementById(video);
-    videoElement.style.width = screen.width;
-    videoElement.style.height = screen.height;
-
-    if (video != 'reposoTrack') {
-      document.getElementById(video).addEventListener('ended', () => {
-        document.getElementById(video).style.display = 'none';
-        document.getElementById('reposoTrack').style.display = 'inherit';
-        document.getElementById('reposoTrack').play();
-      });
-
-      document.getElementById(video).addEventListener('play', () => {
-        document.getElementById('reposoTrack').style.display = 'none';
-      });
-    }
-  });
-}
-
-async function playVideo(videoId) {
-  document.getElementById(videoId).style.display = 'inherit';
-  await document.getElementById(videoId).play();
-}
+document.getElementById('galeriasTrack').addEventListener('ended', () => {
+  document.getElementById('btnGallery').classList.remove('blueHover')
+});
 
 configVideos();
 
-if (!Jarvis.recognizingSupported()) {
+if (!Jarvis.recognizingSupported())
   alert("navegador no soportado. Se necesita Google Chrome versión 25 y posteriores")
-}
 
 Jarvis.when("SPEECH_SYNTHESIS_START", function () {
   if (Jarvis.isRecognizing() || Jarvis.isSpeaking()) {
@@ -124,17 +45,17 @@ const commands = {
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
+  galeriasysecciones: ['galerias', 'galerías', 'secciones', 'galerías y secciones'], // En pruebas(versión beta)
 }
 
 const arrsCommands = Object.values(commands)
 const arrAttachedCommands = [].concat(...arrsCommands);
 const arrAttachedCommandsLength = arrAttachedCommands.length
-const commandsLengths = []
+const commandsLengths = [], arrSec = []
 arrsCommands.forEach(elem => commandsLengths.push(elem.length))
 
 const commandsLengthsLength = commandsLengths.length
-const arrSec = []
-let acumulador = [];
+let acumulador = [], flag = false
 
 for (let i = 0; i < commandsLengthsLength; i++) {
   if (i == 0) {
@@ -146,28 +67,6 @@ for (let i = 0; i < commandsLengthsLength; i++) {
   }
 }
 
-function identifySection(arrSecti, commandIndex) {
-  let lastIndex = 0,
-    defValue = 0;
-
-  arrSecti.forEach((elem, index) => {
-
-    if (commandIndex >= lastIndex && commandIndex < elem) {
-      lastIndex = elem;
-      defValue = index;
-      return;
-    }
-
-    lastIndex = elem;
-  })
-
-  console.log(defValue, 'defValue')
-
-  return defValue
-}
-
-let flag = false
-
 Jarvis.on(arrAttachedCommands).then(function (i) {
 
   const defCommand = identifySection(arrSec, i)
@@ -176,6 +75,30 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
   switch (defCommand) {
     case 0:
       playVideo('saludoTrack');
+      setTimeout(() => {
+        document.getElementById('btnGallery').classList.add('blueHover')
+        setTimeout(() => {
+          document.getElementById('btnGallery').classList.remove('blueHover')
+          setTimeout(() => {
+            document.getElementById('btnPlaces').classList.add('blueHover')
+            setTimeout(() => {
+              document.getElementById('btnPlaces').classList.remove('blueHover')
+              setTimeout(() => {
+                document.getElementById('btnHistory').classList.add('blueHover')
+                setTimeout(() => {
+                  document.getElementById('btnHistory').classList.remove('blueHover')
+                  setTimeout(() => {
+                    document.getElementById('btnNew').classList.add('blueHover')
+                    setTimeout(() => {
+                      document.getElementById('btnNew').classList.remove('blueHover')
+                    }, 1400)
+                  }, 900)
+                }, 1400)
+              }, 1100)
+            }, 1400);
+          }, 1500)
+        }, 1400);
+      }, 14650);
       break;
     case 1:
       playVideo('respuestaTrack');
@@ -240,10 +163,12 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       Jarvis.shutUp();
 
       break;
+    case 8:
+      playVideo('galeriasTrack');
+      break;
   }
 });
 
-// // Catch errors
 Jarvis.when("ERROR", function (data) {
   console.error(data);
 });
@@ -256,13 +181,8 @@ document.getElementById('btnReset').addEventListener('click', () => {
     // elem.load();
   });
   playVideo('reposoTrack')
-  document.getElementById('talkBtn').style.position = "fixed"
+  document.getElementById('talkBtnBox').style.position = "fixed"
   reset = false;
-})
-
-document.getElementById('talkBtn').addEventListener('click', () => {
-  document.getElementById('btnTalkLoader').classList.remove('d-none')
-  document.getElementById('microphoneIcon').classList.add('d-none')
 })
 
 document.querySelectorAll('video').forEach(elem => {
@@ -280,6 +200,8 @@ document.querySelectorAll('video').forEach(elem => {
 });
 
 document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
+  document.getElementById('btnTalkLoader').classList.remove('d-none')
+  document.getElementById('microphoneIcon').classList.add('d-none')
   startArtyom("es-ES", 'quick', false);
 });
 
@@ -323,6 +245,9 @@ Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
           break;
         case 7:
           ask = "silencio"
+          break;
+        case 8:
+          ask = "¿Galerías y secciones, espacios y arquitectura, historia de arco o novedades 2022?"
           break;
       }
 
