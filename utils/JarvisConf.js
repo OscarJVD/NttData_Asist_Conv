@@ -260,6 +260,11 @@ document.getElementById('btnReset').addEventListener('click', () => {
   reset = false;
 })
 
+document.getElementById('talkBtn').addEventListener('click', () => {
+  document.getElementById('btnTalkLoader').classList.remove('d-none')
+  document.getElementById('microphoneIcon').classList.add('d-none')
+})
+
 document.querySelectorAll('video').forEach(elem => {
   if (elem.id != 'reposoTrack') {
     elem.addEventListener('play', function () {

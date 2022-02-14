@@ -618,11 +618,12 @@ var Artyom = (function () {
     }
     this.ArtyomWebkitSpeechRecognition.lang = this.ArtyomProperties.lang;
     this.ArtyomWebkitSpeechRecognition.onstart = function () {
+      document.getElementById('btnTalkLoader').classList.add('d-none')
+      document.getElementById('microphoneIcon').classList.remove('d-none')
       document.getElementById('microphoneIcon').classList.remove('text-white')
       document.getElementById('microphoneIcon').classList.add('text-lime')
       document.getElementById('microphoneIcon').classList.remove('border-fw-black')
       document.getElementById('microphoneIcon').classList.add('border-fw-white')
-npm
       _this.debug("Event reached : " + _this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.triggerEvent(_this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.ArtyomProperties.recognizing = true;
@@ -668,6 +669,8 @@ npm
      * @returns {undefined}
      */
     _this.ArtyomWebkitSpeechRecognition.onend = function () {
+      document.getElementById('btnTalkLoader').classList.add('d-none')
+      document.getElementById('microphoneIcon').classList.remove('d-none')
       document.getElementById('microphoneIcon').classList.remove('text-lime')
       document.getElementById('microphoneIcon').classList.add('text-white')
       document.getElementById('microphoneIcon').classList.remove('border-fw-white')

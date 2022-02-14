@@ -165,3 +165,89 @@ video {
   border-radius: 7px;
   /* box-shadow: 0 0 9px 0 #000; */
 }
+
+
+/* LOADERS */
+[class*=loader-] {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.loader-03 {
+  color: white;
+  border: 0.8em solid currentcolor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: 1s loader-03 linear infinite;
+  animation: 1s loader-03 linear infinite;
+  position: relative;
+}
+
+@-webkit-keyframes loader-03 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-03 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-08 {
+  position: relative;
+  color: white;
+}
+
+.loader-08:before, .loader-08:after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  background-color: currentcolor;
+  opacity: 0.6;
+  position: absolute;
+  color: white;
+  top: 0;
+  left: 0;
+  -webkit-animation: loader-08 2s infinite ease-in-out;
+  animation: loader-08 2s infinite ease-in-out;
+}
+
+.loader-08:after {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+@-webkit-keyframes loader-08 {
+  0%, 100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loader-08 {
+  0%, 100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
