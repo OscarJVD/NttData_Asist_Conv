@@ -73,19 +73,19 @@ function configVideos(arrVideoElementsIds =
 
       document.getElementById(video).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
-        document.querySelectorAll('button').forEach(button => {
-          if (button.id != 'btnReset')
-            button.disabled = true
-        })
+        // document.querySelectorAll('button').forEach(button => {
+        //   if (button.id != 'btnReset')
+        //     button.disabled = true
+        // })
       });
     }
 
     document.getElementById(video).addEventListener('ended', () => {
       document.getElementById('talkBtnBox').classList.remove('d-none')
-      document.querySelectorAll('button').forEach(button => {
-        if (button.id != 'btnReset')
-          button.disabled = false
-      })
+      // document.querySelectorAll('button').forEach(button => {
+      //   if (button.id != 'btnReset')
+      //     button.disabled = false
+      // })
     })
   });
 }

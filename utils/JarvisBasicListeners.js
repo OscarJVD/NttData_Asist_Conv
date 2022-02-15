@@ -1,5 +1,3 @@
-let resetFlag = false;
-
 Jarvis.when("ERROR", function (data) {
   console.error(data);
 });
@@ -37,23 +35,14 @@ document.getElementById('respuestaTrack').addEventListener('ended', () => {
 });
 
 document.getElementById('galeriasTrack').addEventListener('ended', () => {
-  console.log('HOLA ERROR');
   document.getElementById('btnGallery').classList.remove('blueHover')
-
-  console.log('resetFlag', resetFlag);
-
-  if (!resetFlag)
-    timeouts.push(setTimeout(() => { playVideo('tellmoreTrack') }, 1500))
-  // setTimeout(() => { playVideo('tellmoreTrack') }, 1500)
+  timeouts.push(setTimeout(() => { playVideo('tellmoreTrack') }, 1500))
 });
 
 document.getElementById('tellmoreTrack').addEventListener('ended', () => {
-  if (!resetFlag) {
-    document.getElementById("buttonsPartOne").classList.add('d-none')
-    document.getElementById("buttonsPartBox").classList.add('d-none')
-    document.getElementById("YesOrNoBox").classList.remove('d-none')
-  }
-
+  document.getElementById("buttonsPartOne").classList.add('d-none')
+  document.getElementById("buttonsPartBox").classList.add('d-none')
+  document.getElementById("YesOrNoBox").classList.remove('d-none')
   if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
     document.getElementById('btnVideoCenter').classList.add('d-none')
 });
@@ -73,35 +62,74 @@ document.querySelectorAll('video').forEach(elem => {
 });
 // END TRACK LISTENERS
 
-document.getElementById('btnReset').addEventListener('click', () => {
-  resetFlag = true;
 
+document.querySelectorAll('button').forEach(button => {
+  let btnRestart = document.getElementById('btnReset')
+  if (button.id != 'btnReset' && button.id != 'btnActiveRecognizer') {
+    button.addEventListener('click', () => {
+      btnRestart.removeAttribute('disabled')
+    })
+  }
+})
+
+document.getElementById('btnReset').addEventListener('click', () => {
+
+  console.log('RESETEADO');
   // Reiniciamos - Terminamos todos los videos
-  document.querySelectorAll('.videoIA').forEach(elem => {
-    // elem.pause();
-    elem.currentTime = 1000;
-    // elem.load();
+  // document.querySelectorAll('.videoIA').forEach(elem => {
+  //   // elem.pause();
+  //   elem.currentTime = 10000;
+  //   // elem.load();
+  // });
+
+  // Remover elemento y volverlo a agregar -> otra opción
+  // let videoConfig = []
+  let videoElements = document.querySelectorAll('.videoIA');
+  // videoElements.forEach(video => {
+  //   videoConfig.push({ src: video.src, id: video.id })
+  // });
+
+  videoElements.forEach(video => {
+    let videoSrc = video.src
+
+    if (video.id != 'reposoTrack') {
+      video.pause();
+      video.removeAttribute('src'); // empty source
+      // video.load();
+    }
+
+    video.pause();
+    video.setAttribute('src', videoSrc)
+    video.load();
   });
+
+  // videoElements.forEach(video => {
+  //   // let videoHtml = document.createElement('video') 
+  //   if (video.id != 'reposoTrack')
+  //     document.getElementById('cuerpo').prepend(video)
+  // });
 
   let cont = 0;
   let id = setInterval(function () {
-    cont++;
     clearTimeOuts(timeouts)
+    cont++;
     if (cont == 10) clearInterval(id);
-  }, 500);
-  
+  }, 100);
+
   playVideo('reposoTrack')
   document.getElementById('talkBtnBox').style.position = "fixed"
-  document.getElementById("buttonsPartOne").classList.remove('d-none')
-  document.getElementById("buttonsPartBox").classList.remove('d-none')
-  document.querySelectorAll('video').forEach(video => video.style.height = '71%');
-  document.getElementById('buttonsBox').classList.remove('d-none');
-  document.getElementById("YesOrNoBox").classList.add('d-none')
-  document.getElementById('talkBtnBox').classList.remove('d-none')
-  resetFlag = false;
-  // setInterval(() => {
-  //   resetFlag = false;
-  // }, 600);
+
+  setTimeout(() => {
+    document.getElementById("buttonsPartOne").classList.remove('d-none')
+    document.getElementById("buttonsPartBox").classList.remove('d-none')
+    document.getElementById('buttonsBox').classList.remove('d-none');
+    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    document.getElementById('buttonsBox').classList.remove('d-none');
+    document.getElementById("YesOrNoBox").classList.add('d-none')
+    document.getElementById('talkBtnBox').classList.remove('d-none')
+  }, 650);
+
+  Jarvis.ArtyomWebkitSpeechRecognition.stop()
 })
 
 document.getElementById('btnNo').addEventListener('click', function () {
