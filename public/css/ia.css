@@ -80,7 +80,7 @@ body {
 }
 
 video {
-  height: 71% !important;
+  height: 71%;
 }
 
 .videoMsg {
@@ -92,7 +92,7 @@ video {
 
 .btnResetIA {
   position: absolute;
-  z-index: 9000;
+  z-index: 10000;
   top: 5% !important;
   right: 5% !important;
   text-align: right;

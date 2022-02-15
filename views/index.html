@@ -45,16 +45,16 @@
   <video class="videoIA" style="display:none;" src="/media/video/v2/3.PREGUNTA_PARA_SI_O_NO_chico.mp4" preload="auto" width="100%" id="tellmoreChicoTrack">
     Tu navegador no soporta HTML5 video.
   </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/4.PREGUNTA_ENCUESTA_TEMPORIZADOR.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="openquestionTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/4.PREGUNTA_ENCUESTA_TEMPORIZADOR_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="openquestionChicoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
   <!-- 
-
-  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
-  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
   <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
     Tu navegador no soporta HTML5 video.
   </video>
@@ -95,12 +95,12 @@
     </button>
   </div>
 
-  <button class="btnResetIA btn btn-dark btn-lg" id="btnReset">
+  <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="versión beta" class="btnResetIA btn btn-dark btn-lg" id="btnReset">
     <i class="fas fa-solid fa-arrow-rotate-right"></i>
   </button>
 
   <!-- BUTTONS LIST -->
-  <div class="buttonsBox">
+  <div class="buttonsBox" id="buttonsBox">
     <div class="container-fluid h-100 align-items-center" style="display: grid;">
       <div class="row">
 
@@ -110,7 +110,7 @@
             <button onclick="greeting()" id="btnYes" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Si
             </button>
           </div>
-  
+
           <div class="col-md-6 d-flex text-center justify-content-evenly align-items-center h-100">
             <button id="btnNo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">No
             </button>
@@ -142,6 +142,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/GlobalFunctions.js"></script>
   <script src="/JarvisFunctions.js"></script>
@@ -149,6 +150,14 @@
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/audioViewer.js"></script>
   <script src="/JarvisConf.js"></script>
+  <script src="/JarvisBasicListeners.js"></script>
+  <script src="/JarvisValidations.js"></script>
+  <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
 
 </body>
 

@@ -1,50 +1,7 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', reset = false;
-
-document.getElementById('respuestaTrack').addEventListener('ended', () => {
-
-  if (document.getElementById("videoMsgRespuesta"))
-    document.getElementById("videoMsgRespuesta").classList.add("d-none");
-
-  // Jarvis.fatality(); // stop artyom if stills active
-
-  // setTimeout(() => {
-  //   startArtyom('es-ES', respuestaMode);
-  // }, 250)
-});
-
-document.getElementById('galeriasTrack').addEventListener('ended', () => {
-  document.getElementById('btnGallery').classList.remove('blueHover')
-
-  setTimeout(() => {
-    playVideo('tellmoreTrack')
-  }, 1500);
-});
-
-document.getElementById('tellmoreTrack').addEventListener('ended', () => {
-  document.getElementById("buttonsPartOne").classList.add('d-none')
-  document.getElementById("buttonsPartBox").classList.add('d-none')
-  document.getElementById("YesOrNoBox").classList.remove('d-none')
-});
+let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [];
 
 configVideos();
-
-if (!Jarvis.recognizingSupported())
-  alert("navegador no soportado. Se necesita Google Chrome versión 25 y posteriores")
-
-Jarvis.when("SPEECH_SYNTHESIS_START", function () {
-  if (Jarvis.isRecognizing() || Jarvis.isSpeaking()) {
-    Jarvis.dontObey();
-  }
-});
-
-Jarvis.when("SPEECH_SYNTHESIS_END", function () {
-  setTimeout(() => {
-    if (!Jarvis.isRecognizing() || !Jarvis.isSpeaking()) {
-      Jarvis.obey();
-    }
-  }, 1000);
-});
 
 const commands = {
   saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
@@ -55,7 +12,8 @@ const commands = {
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ['galerías y secciones'], // En pruebas(versión beta)
+  galeriasysecciones: ['galerías y secciones'],
+  opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
 }
 
 const arrsCommands = Object.values(commands)
@@ -63,7 +21,6 @@ const arrAttachedCommands = [].concat(...arrsCommands);
 const arrAttachedCommandsLength = arrAttachedCommands.length
 const commandsLengths = [], arrSec = []
 arrsCommands.forEach(elem => commandsLengths.push(elem.length))
-
 const commandsLengthsLength = commandsLengths.length
 let acumulador = [], flag = false
 
@@ -152,47 +109,10 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
     case 8:
       playVideo('galeriasTrack');
       break;
+    case 9:
+      playVideo('openquestionTrack');
+      break;
   }
-});
-
-Jarvis.when("ERROR", function (data) {
-  console.error(data);
-});
-
-document.getElementById('btnReset').addEventListener('click', () => {
-  reset = true;
-  document.querySelectorAll('.videoIA').forEach(elem => {
-    // elem.pause();
-    elem.currentTime = 1000;
-    // elem.load();
-  });
-  playVideo('reposoTrack')
-  document.getElementById('talkBtnBox').style.position = "fixed"
-  reset = false;
-
-  document.getElementById("buttonsPartOne").classList.remove('d-none')
-  document.getElementById("buttonsPartBox").classList.remove('d-none')
-  document.getElementById("YesOrNoBox").classList.add('d-none')
-})
-
-document.querySelectorAll('video').forEach(elem => {
-  if (elem.id != 'reposoTrack') {
-    elem.addEventListener('play', function () {
-      Jarvis.dontObey();
-    });
-
-    elem.addEventListener('ended', function () {
-      setTimeout(() => {
-        Jarvis.obey();
-      }, 1000);
-    });
-  }
-});
-
-document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
-  document.getElementById('btnTalkLoader').classList.remove('d-none')
-  document.getElementById('microphoneIcon').classList.add('d-none')
-  startArtyom("es-ES", 'quick', false);
 });
 
 Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
@@ -238,6 +158,9 @@ Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
           break;
         case 8:
           ask = "¿Galerías y secciones, espacios y arquitectura, historia de arco o novedades 2022?"
+          break;
+        case 9:
+          ask = "¿Qué esperas de la feria?"
           break;
       }
 
