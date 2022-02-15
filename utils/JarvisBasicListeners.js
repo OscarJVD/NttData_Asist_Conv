@@ -65,49 +65,30 @@ document.querySelectorAll('video').forEach(elem => {
 
 document.querySelectorAll('button').forEach(button => {
   let btnRestart = document.getElementById('btnReset')
-  if (button.id != 'btnReset' && button.id != 'btnActiveRecognizer') {
+  if (button.id != 'btnReset'
+  //  && button.id != 'btnActiveRecognizer'
+   ) {
     button.addEventListener('click', () => {
       btnRestart.removeAttribute('disabled')
     })
   }
 })
 
-document.getElementById('btnReset').addEventListener('click', () => {
+document.getElementById('btnReset').addEventListener('click', async () => {
 
-  console.log('RESETEADO');
-  // Reiniciamos - Terminamos todos los videos
-  // document.querySelectorAll('.videoIA').forEach(elem => {
-  //   // elem.pause();
-  //   elem.currentTime = 10000;
-  //   // elem.load();
-  // });
-
-  // Remover elemento y volverlo a agregar -> otra opción
-  // let videoConfig = []
   let videoElements = document.querySelectorAll('.videoIA');
-  // videoElements.forEach(video => {
-  //   videoConfig.push({ src: video.src, id: video.id })
-  // });
 
   videoElements.forEach(video => {
-    let videoSrc = video.src
-
     if (video.id != 'reposoTrack') {
+      let videoSrc = video.src
       video.pause();
       video.removeAttribute('src'); // empty source
       // video.load();
+      video.pause();
+      video.setAttribute('src', videoSrc)
+      video.load();
     }
-
-    video.pause();
-    video.setAttribute('src', videoSrc)
-    video.load();
   });
-
-  // videoElements.forEach(video => {
-  //   // let videoHtml = document.createElement('video') 
-  //   if (video.id != 'reposoTrack')
-  //     document.getElementById('cuerpo').prepend(video)
-  // });
 
   let cont = 0;
   let id = setInterval(function () {
@@ -116,19 +97,15 @@ document.getElementById('btnReset').addEventListener('click', () => {
     if (cont == 10) clearInterval(id);
   }, 100);
 
-  playVideo('reposoTrack')
   document.getElementById('talkBtnBox').style.position = "fixed"
-
-  setTimeout(() => {
-    document.getElementById("buttonsPartOne").classList.remove('d-none')
-    document.getElementById("buttonsPartBox").classList.remove('d-none')
-    document.getElementById('buttonsBox').classList.remove('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
-    document.getElementById('buttonsBox').classList.remove('d-none');
-    document.getElementById("YesOrNoBox").classList.add('d-none')
-    document.getElementById('talkBtnBox').classList.remove('d-none')
-  }, 650);
-
+  document.getElementById("buttonsPartOne").classList.remove('d-none')
+  document.getElementById("buttonsPartBox").classList.remove('d-none')
+  document.getElementById('buttonsBox').classList.remove('d-none');
+  document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+  document.getElementById('buttonsBox').classList.remove('d-none');
+  document.getElementById("YesOrNoBox").classList.add('d-none')
+  document.getElementById('talkBtnBox').classList.remove('d-none')
+  await playVideo('reposoTrack')
   Jarvis.ArtyomWebkitSpeechRecognition.stop()
 })
 

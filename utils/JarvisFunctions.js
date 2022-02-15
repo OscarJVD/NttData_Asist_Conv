@@ -43,22 +43,10 @@ function startArtyom(language, mode, recognizeType = true) {
   setTimeout(_startArtyom, 250);
 }
 
-function configVideos(arrVideoElementsIds =
-  [
-    "reposoTrack",
-    "saludoTrack",
-    "preguntaTrack",
-    "respuestaTrack",
-    "cierreTrack",
-    "galeriasTrack",
-    "galeriasChicoTrack",
-    "tellmoreTrack",
-    "tellmoreChicoTrack",
-    "openquestionTrack",
-    "openquestionChicoTrack",
-  ]) {
-
+function configVideos() {
+  let arrVideoElementsIds = getVideos()
   arrVideoElementsIds.forEach(video => {
+    video = video.id
     let videoElement = document.getElementById(video);
     videoElement.style.width = screen.width;
     videoElement.style.height = screen.height;
@@ -90,9 +78,22 @@ function configVideos(arrVideoElementsIds =
   });
 }
 
+function getVideos() {
+  return document.querySelectorAll('.videoIA')
+}
+
 async function playVideo(videoId) {
+  console.log('vdeioid', videoId);
+
   // Hide talk button
-  document.getElementById('talkBtnBox').classList.add('d-none')
+  if(videoId != 'reposoTrack') 
+    document.getElementById('talkBtnBox').classList.add('d-none')
+  
+  let videoElements = document.querySelectorAll('.videoIA');
+  videoElements.forEach(video => {
+    if (video.id != videoId)
+      document.getElementById(video.id).style.display = 'none';
+  })
 
   document.getElementById(videoId).style.display = 'inherit';
   await document.getElementById(videoId).play();
