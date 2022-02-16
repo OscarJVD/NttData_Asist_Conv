@@ -45,37 +45,51 @@ function startArtyom(language, mode, recognizeType = true) {
 
 function configVideos() {
   let arrVideoElementsIds = getVideos()
+
   arrVideoElementsIds.forEach(video => {
-    video = video.id
-    let videoElement = document.getElementById(video);
+    let videoElement = document.getElementById(video.id);
     videoElement.style.width = screen.width;
     videoElement.style.height = screen.height;
 
-    if (video != 'reposoTrack') {
-      document.getElementById(video).addEventListener('ended', () => {
-        document.getElementById('talkBtnBox').classList.remove('d-none')
-        document.getElementById(video).style.display = 'none';
-        document.getElementById('reposoTrack').style.display = 'inherit';
-        document.getElementById('reposoTrack').play();
-      });
+    if (video.id != 'reposoTrack') {
 
-      document.getElementById(video).addEventListener('play', () => {
+      document.getElementById(video.id).addEventListener('timeupdate', () => {
+        let timeUpdFlag = true;
+        if ((validateEndVideo(video.id)) && timeUpdFlag) {
+          timeouts.push(setTimeout(() => {
+            document.getElementById('talkBtnBox').classList.remove('d-none')
+            document.getElementById(video.id).style.display = 'none';
+            document.getElementById('reposoTrack').style.display = 'inherit';
+            document.getElementById('reposoTrack').play();
+          }, 400))
+          timeUpdFlag = false;
+        }
+      })
+
+      document.getElementById(video.id).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
-        // document.querySelectorAll('button').forEach(button => {
-        //   if (button.id != 'btnReset')
-        //     button.disabled = true
-        // })
+        mainBtnsDisabled(true)
       });
     }
 
-    document.getElementById(video).addEventListener('ended', () => {
-      document.getElementById('talkBtnBox').classList.remove('d-none')
-      // document.querySelectorAll('button').forEach(button => {
-      //   if (button.id != 'btnReset')
-      //     button.disabled = false
-      // })
+    document.getElementById(video.id).addEventListener('timeupdate', () => {
+      let timeUpdFlag = true;
+      if ((validateEndVideo(video.id)) && timeUpdFlag) {
+        timeouts.push(setTimeout(() => {
+          document.getElementById('talkBtnBox').classList.remove('d-none')
+          mainBtnsDisabled(false)
+        }, 400))
+        timeUpdFlag = false;
+      }
     })
   });
+}
+
+function mainBtnsDisabled(isDisabled) {
+  document.querySelectorAll('button').forEach(button => {
+    if (button.id != 'btnReset')
+      button.disabled = isDisabled
+  })
 }
 
 function getVideos() {
@@ -86,9 +100,10 @@ async function playVideo(videoId) {
   console.log('vdeioid', videoId);
 
   // Hide talk button
-  if(videoId != 'reposoTrack') 
+  if (videoId != 'reposoTrack')
     document.getElementById('talkBtnBox').classList.add('d-none')
-  
+
+
   let videoElements = document.querySelectorAll('.videoIA');
   videoElements.forEach(video => {
     if (video.id != videoId)
@@ -96,7 +111,44 @@ async function playVideo(videoId) {
   })
 
   document.getElementById(videoId).style.display = 'inherit';
-  await document.getElementById(videoId).play();
+  // document.getElementById(videoId).pause();
+  // document.getElementById(videoId).load();
+  let video = document.getElementById(videoId);
+  // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
+  // && video.readyState > video.HAVE_CURRENT_DATA;
+
+  // if (!isPlaying) {
+  // video.load()
+  // video.currentTime = 0;
+  await video.play();
+  // let cont = 0;
+  // let id = setInterval(async function () {
+  //   cont++;
+  //   await video.play();
+  //   if (cont == 20) clearInterval(id);
+  // }, 100);
+  // }
+  // return document.getElementById(videoId).play();
+  // await document.getElementById(videoId).play();
+}
+
+function pauseVideo(video) {
+  // Initializing values
+  let isPlaying = true;
+
+  // On video playing toggle values
+  video.onplaying = function () {
+    isPlaying = true;
+  };
+
+  // On video pause toggle values
+  video.onpause = function () {
+    isPlaying = false;
+  };
+
+  // Pause video function
+  if (!video.paused && isPlaying)
+    video.pause();
 }
 
 function identifySection(arrSecti, commandIndex) {
@@ -121,7 +173,9 @@ function identifySection(arrSecti, commandIndex) {
 
 function greeting() {
 
-  playVideo('saludoTrack');
+  setTimeout(() => {
+    playVideo('saludoTrack');
+  }, 700);
 
   timeouts.push(
     setTimeout(() => {
@@ -177,9 +231,12 @@ function greeting() {
 }
 
 function clearTimeOuts(arrTimeouts) {
-  console.log(arrTimeouts);
-  for (var i = 0; i < arrTimeouts.length; i++) {
-    console.log(arrTimeouts[i]);
-    clearTimeout(arrTimeouts[i]);
-  }
+  for (var i = 0; i < arrTimeouts.length; i++)
+    clearTimeout(arrTimeouts[i])
+}
+
+function validateEndVideo(videoId) {
+  return document.getElementById(videoId).currentTime.toString().split('.')[0] == document.getElementById(videoId).duration.toString().split('.')[0]
+    ? true
+    : false;
 }

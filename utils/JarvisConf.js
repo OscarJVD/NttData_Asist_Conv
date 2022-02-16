@@ -91,21 +91,7 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       if (respuestaMode) respuestaMode = 'quick'
       break;
     case 7:
-      console.log('PAUSADO')
-      // if (!flag) {
-      //   document.querySelectorAll('video').forEach(elem => {
-
-      //     console.log(elem)
-      //     // elem.setAttribute('muted', 'true')
-      //     // elem.defaultMuted = true;
-      //     elem.pause();
-      //     // elem.currentTime = 0;
-      //   });
-
-      //   flag = true;
-      // }
       Jarvis.shutUp();
-
       break;
     case 8:
       playVideo('galeriasTrack');
