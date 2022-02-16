@@ -175,7 +175,7 @@ function greeting() {
 
   setTimeout(() => {
     playVideo('saludoTrack');
-  }, 700);
+  }, 800);
 
   timeouts.push(
     setTimeout(() => {
