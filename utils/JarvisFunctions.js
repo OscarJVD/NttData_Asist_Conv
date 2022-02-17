@@ -212,72 +212,42 @@ function timer(elementId, timeLeft = 11) {
   setTimeout(countdown, 1000);
 }
 
+// let arrPercents = []
 function getPercentage(videoId) {
-  let percentageCompleted = 0;
-  let totalLength = 0;
-  // let videoStarted, videoTwentyFive, videoFifty, videoSeventyFive, videoComplete = false;
-  let myPlayer = document.getElementById(videoId)
-  totalLength = myPlayer.duration % 60;
-  percentageCompleted = (myPlayer.currentTime / totalLength) * 100;
-  // console.log(totalLength);
-  console.log(videoId + ' percentage', (percentageCompleted + '%'));
+  // let percentageCompleted = 0, totalLength = 0, 
+  let myPlayer = document.getElementById(videoId);
+  // totalLength = myPlayer.duration % 60;
+  // percentageCompleted = (myPlayer.currentTime / totalLength) * 100;
 
-  let lastPart = 94
-  if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack') lastPart = 94
+  // // console.log(videoId + ' percentage', (percentageCompleted + '%'));
+  // console.log(arrPercents.length, myPlayer.duration)
 
-  if (percentageCompleted >= lastPart && percentageCompleted < 100) return 'preend';
+  // // let arrPercentsLength = arrPercents.length
+  // // if (arrPercents) {
+  // //   if (percentageCompleted >= arrPercents[arrPercentsLength - 2].percent && percentageCompleted < 100) {
+  // //     arrPercents = []; // nueva instancia
+  // //     return 'preend';
+  // //   }
+  // // }
+
+  // arrPercents.push({ percent: percentageCompleted, video: videoId })
+  // // console.log(arrPercents)
+  // // console.log('arrPercents', arrPercents.length)
+
+  // let lastPart = 94
+  // if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack') lastPart = 94
+
+  // // return percentageCompleted
+  // if (percentageCompleted >= lastPart && percentageCompleted < 100) return 'preend';
+  // else
+  //   return false;
+  
+  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2) && myPlayer.currentTime < 100) return 'preend';
   else return false;
+}
 
-  // is 0
-  // if ((!videoStarted) && (percentageCompleted > 0)) {
-  //   console.log('VIDEO_STARTED');
-  //   videoStarted = true;
-
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     'event': 'playStart'
-  //   });
-  // }
-  // // is 25
-  // if ((!videoTwentyFive) && (percentageCompleted > 25)) {
-  //   console.log('VIDEO_25');
-  //   videoTwentyFive = true;
-
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     'event': 'playTwentyFive'
-  //   });
-  // }
-  // // is 50
-  // if ((!videoFifty) && (percentageCompleted > 50)) {
-  //   console.log('VIDEO_50');
-  //   videoFifty = true;
-
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     'event': 'playFifty'
-  //   });
-  // }
-  // // is 75
-  // if ((!videoSeventyFive) && (percentageCompleted > 75)) {
-  //   console.log('VIDEO_75');
-  //   videoSeventyFive = true;
-
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     'event': 'playSeventyFive'
-  //   });
-  // }
-  // // is 100
-  // if ((!videoComplete) && (percentageCompleted > 99)) {
-  //   console.log('VIDEO_100');
-  //   videoComplete = true;
-
-  //   window.dataLayer = window.dataLayer || [];
-  //   window.dataLayer.push({
-  //     'event': 'playComplete'
-  //   });
-  // }
+function getPercentOfNumber(number, percent){
+  return (percent * number) / 100
 }
 
 function videoEnd(videoId) {

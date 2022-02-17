@@ -68,6 +68,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     timeouts.push(setTimeout(() => {
       playVideo('tellmoreTrack')
     }, 1500))
+    
     videoEnd('tellmoreTrack')
   }
 };
