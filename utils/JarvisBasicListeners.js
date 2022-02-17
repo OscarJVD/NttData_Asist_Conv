@@ -80,6 +80,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     }, 1500))
 
     videoEnd('tellmoreTrack')
+    
   }
 };
 

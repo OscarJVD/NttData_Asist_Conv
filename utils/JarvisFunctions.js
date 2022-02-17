@@ -87,13 +87,23 @@ async function playVideo(videoId) {
 
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
+  
+  // if (!video.paused) {
+  //   video.pause()
+  //   video.currentTime = 0
+  //   video.load()
+  // }
 
-  video.pause()
-  video.currentTime = 0
-  video.load()
+  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended 
+    && video.readyState > video.HAVE_CURRENT_DATA;
+
+if (!isPlaying) {
+  // video.play();
   // if (video.id != 'galeriasTrack')
   //   video.currentTime = 0
   await video.play();
+  // video.play();
+}
 }
 
 function pauseVideo(video) {
