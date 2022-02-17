@@ -24,6 +24,7 @@ document.getElementById('openquestionTrack').addEventListener('timeupdate', () =
     timeouts.push(setTimeout(() => {
       document.getElementById('buttonsBox').classList.add('d-none');
       document.querySelectorAll('video').forEach(video => video.style.height = '100%');
+      document.getElementById('btnActiveRecognizer').setAttribute("")
     }, 400))
     timeUpdFlag = false;
   }
