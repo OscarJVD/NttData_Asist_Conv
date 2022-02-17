@@ -101,27 +101,27 @@ if (!isPlaying) {
   // video.play();
   // if (video.id != 'galeriasTrack')
   //   video.currentTime = 0
-  await video.play();
-  // video.play();
+  // await video.play();
+  video.play();
 }
 }
 
 function pauseVideo(video) {
   // Initializing values
-  let isPlaying = true;
+  let isPlayingVid = true;
 
   // On video playing toggle values
   video.onplaying = function () {
-    isPlaying = true;
+    isPlayingVid = true;
   };
 
   // On video pause toggle values
   video.onpause = function () {
-    isPlaying = false;
+    isPlayingVid = false;
   };
 
   // Pause video function
-  if (!video.paused && isPlaying)
+  if (!video.paused && isPlayingVid)
     video.pause();
 }
 
@@ -231,7 +231,7 @@ function timer(elementId, timeLeft = 11) {
 function getPercentage(videoId) {
   let myPlayer = document.getElementById(videoId);
 
-  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2.5) && myPlayer.currentTime < 100)
+  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2) && myPlayer.currentTime < 100)
     return 'preend';
   else return false;
 }
@@ -250,7 +250,7 @@ function videoEnd(videoId) {
 
 function pauseRestartLoadVideo(video) {
   if (!video.paused) {
-    video.pause()
+    pauseVideo(video)
     video.currentTime = 0
     video.load()
   }

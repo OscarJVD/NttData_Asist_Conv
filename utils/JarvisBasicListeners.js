@@ -35,6 +35,7 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
   // console.log(getPercentage('tellmoreTrack'));
   if (getPercentage('tellmoreTrack') == 'preend') {
     // Contenido
+
     pauseRestartLoadVideo(document.getElementById('tellmoreTrack'))
     document.getElementById("buttonsPartOne").classList.add('d-none')
     document.getElementById("buttonsPartBox").classList.add('d-none')
@@ -58,6 +59,8 @@ document.getElementById('byeTrack').ontimeupdate = function () {
     pauseRestartLoadVideo(document.getElementById('byeTrack'))
     
     playVideo("reposoChicoTrack")
+    document.getElementById('microphoneIcon').classList.remove('d-none')
+    document.getElementById('timerFreeSay').classList.add('d-none')
     videoEnd('byeTrack')
     isGirlAvatarFlag = false;
     // setTimeout(() => {
@@ -70,6 +73,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
   // console.log(getPercentage('galeriasTrack'));
   if (getPercentage('galeriasTrack') == 'preend') {
     // Contenido
+    console.log('DINOSAURIO');
 
     pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
 
@@ -132,7 +136,8 @@ document.getElementById('btnReset').addEventListener('click', async () => {
       if (!video.paused) {
         videoEnd(video.id)
         // video.currentTime = 1000
-        video.pause()
+        // video.pause()
+        pauseVideo(video)
         video.currentTime = 0
         video.load()
       }
