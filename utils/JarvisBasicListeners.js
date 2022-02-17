@@ -25,7 +25,7 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
     document.getElementById('buttonsBox').classList.add('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
-    videoEnd()
+    videoEnd('openquestionTrack')
   }
 };
 
@@ -40,15 +40,23 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
     document.getElementById("YesOrNoBox").classList.remove('d-none')
     if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
       document.getElementById('btnVideoCenter').classList.add('d-none')
-    videoEnd()
+    videoEnd('tellmoreTrack')
   }
 };
 
 document.getElementById('saludoTrack').ontimeupdate = function () {
   console.log(getPercentage('saludoTrack'));
-  if (getPercentage('saludoTrack') == 'preend') 
-    videoEnd()
-  
+  if (getPercentage('saludoTrack') == 'preend')
+    videoEnd('saludoTrack')
+
+};
+
+document.getElementById('byeTrack').ontimeupdate = function () {
+  console.log(getPercentage('byeTrack'));
+  if (getPercentage('byeTrack') == 'preend') playVideo("reposoChicoTrack")
+  setTimeout(() => {
+    alert("¡Pronto!")
+  }, 2000);
 };
 
 document.getElementById('galeriasTrack').ontimeupdate = function () {
@@ -60,7 +68,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     timeouts.push(setTimeout(() => {
       playVideo('tellmoreTrack')
     }, 1500))
-    videoEnd()
+    videoEnd('tellmoreTrack')
   }
 };
 
@@ -105,13 +113,15 @@ document.querySelectorAll('button').forEach(button => {
 
 document.getElementById('btnReset').addEventListener('click', async () => {
 
-  videoEnd()
+
   let videoElements = getVideos();
 
   videoElements.forEach(video => {
     if (video.id != 'reposoTrack') {
-      if (!video.paused)
+      if (!video.paused){
+        videoEnd(video.id)
         video.currentTime = 1000
+      }
     }
   });
 
@@ -145,21 +155,27 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('btnTalkLoader').classList.remove('d-none')
   document.getElementById('microphoneIcon').classList.add('d-none')
 
+  startArtyom("es-ES", 'quick', false); // incializar sin comandos
+
   if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
+    // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
+    // setTimeout(() => {
+    //   Jarvis.ArtyomWebkitSpeechRecognition.stop()
+    // }, 300);
+    document.getElementById('btnActiveRecognizer').disabled = true
     document.getElementById('btnTalkLoader').classList.add('d-none')
     document.getElementById('microphoneIcon').classList.add('d-none')
     document.getElementById('timerFreeSay').classList.remove('d-none')
-    timeLeft = timeLeft;
+    timeLeft = 11;
 
     function countdown() {
       timeLeft--;
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
       if (timeLeft > 0) setTimeout(countdown, 1000);
-      else if (timeLeft <= 0) alert("finalizó")
+      else if (timeLeft <= 0) playVideo("byeTrack")
     };
 
     setTimeout(countdown, 1000);
   }
 
-  startArtyom("es-ES", 'quick', false);
 });

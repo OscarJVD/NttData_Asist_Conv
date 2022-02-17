@@ -7,14 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/bootstrap/css/bootstrapv5.1.3.min.css">
   <link rel="stylesheet" href="/css/ia.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
   <title>IA</title>
 </head>
 
 <body id="cuerpo">
 
-  <video class="videoIA" src="/media/video/reposo/reposo.mp4" muted autoplay loop preload="auto" width="100%" id="reposoTrack">
+  <video class="videoIA" src="/media/video/v2/reposo.mp4" muted autoplay loop preload="auto" width="100%" id="reposoTrack">
+    Tu navegador no soporta HTML5 video.
+  </video>
+
+  <video class="videoIA" style="display:none;" src="/media/video/v2/reposoChico.mp4" muted loop preload="auto" width="100%" id="reposoChicoTrack">
     Tu navegador no soporta HTML5 video.
   </video>
 
@@ -50,14 +54,15 @@
     Tu navegador no soporta HTML5 video.
   </video>
 
-  <!-- 
-  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasTrack">
+  <video class="videoIA" style="display:none;" src="/media/video/v2/5.DESPEDIDA.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="byeTrack">
     Tu navegador no soporta HTML5 video.
   </video>
+  <!-- 
 
-  <video class="videoIA" style="display:none;" src="/media/video/v2/2.GALERIAS_SECCIONES_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
+  <video class="videoIA" style="display:none;" src="/media/video/v2/5.DESPEDIDA_chico.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="galeriasChicoTrack">
     Tu navegador no soporta HTML5 video.
-  </video> -->
+  </video> 
+-->
 
   <!-- end -->
 
@@ -76,7 +81,7 @@
     <button id="btnActiveRecognizer" class="btn  shadow border border-white" style="cursor: pointer;">
       <div class="loader-03 d-none" id="btnTalkLoader"></div>
       <i class="fas fa-microphone text-white fa-4x p-1 border-fw-black" id="microphoneIcon"></i>
-      <span class="d-none text-lg" id="timerFreeSay"></span>
+      <span class="d-none text-white" style="font-size: 4.5rem;" id="timerFreeSay"></span>
     </button>
   </div>
 
@@ -127,6 +132,15 @@
     </div>
   </div>
 
+  <!-- <div id="toastTimer" class="toast align-items-center text-white bg-primary border-0" data-bs-delay="10000" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Tienes 10 segundos para responder
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/GlobalFunctions.js"></script>
@@ -138,11 +152,29 @@
   <script src="/JarvisBasicListeners.js"></script>
   <script src="/JarvisValidations.js"></script>
   <script>
-
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    // // Toast
+    // let toast = new Toast({
+    //   animation: true,
+    //   autohide: true,
+    //   delay: 5000,
+    // })
+
+
+    // var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    // var toastList = toastElList.map(function (toastEl) {
+    //   // Creates an array of toasts (it only initializes them)
+    //   return new bootstrap.Toast(toastEl, {
+    //                 animation: true,
+    //                 autohide: true,
+    //                 delay: 5000,
+    //             })
+    // });
+    // var successToast = toastList[0];
   </script>
 
 </body>

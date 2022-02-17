@@ -53,20 +53,6 @@ function configVideos() {
 
     if (video.id != 'reposoTrack') {
 
-      document.getElementById(video.id).ontimeupdate = function () {
-        // console.log(getPercentage(video.id), video.id);
-
-        if (getPercentage(video.id) == 'preend') {
-
-          console.log('ENTROO1');
-          // Contenido
-          document.getElementById('talkBtnBox').classList.remove('d-none')
-          document.getElementById(video.id).style.display = 'none';
-          document.getElementById('reposoTrack').style.display = 'inherit';
-          document.getElementById('reposoTrack').play();
-        }
-      };
-
       document.getElementById(video.id).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
         mainBtnsDisabled(true)
@@ -236,8 +222,8 @@ function getPercentage(videoId) {
   // console.log(totalLength);
   console.log(videoId + ' percentage', (percentageCompleted + '%'));
 
-  let lastPart = 98
-  if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack ') lastPart = 95
+  let lastPart = 94
+  if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack') lastPart = 94
 
   if (percentageCompleted >= lastPart && percentageCompleted < 100) return 'preend';
   else return false;
@@ -294,7 +280,10 @@ function getPercentage(videoId) {
   // }
 }
 
-function videoEnd(){
+function videoEnd(videoId) {
   document.getElementById('talkBtnBox').classList.remove('d-none')
   mainBtnsDisabled(false)
+  document.getElementById(videoId).style.display = 'none';
+  document.getElementById('reposoTrack').style.display = 'inherit';
+  document.getElementById('reposoTrack').play();
 }
