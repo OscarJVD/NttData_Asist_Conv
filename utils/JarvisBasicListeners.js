@@ -54,8 +54,7 @@ document.getElementById('saludoTrack').ontimeupdate = function () {
 
 document.getElementById('byeTrack').ontimeupdate = function () {
   console.log(getPercentage('byeTrack'));
-  if (getPercentage('byeTrack') == 'preend') 
-  {
+  if (getPercentage('byeTrack') == 'preend') {
     playVideo("reposoChicoTrack")
     setTimeout(() => {
       alert("¡Pronto!")
@@ -154,7 +153,7 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 document.getElementById('btnNo').addEventListener('click', function () {
   // Reinicializar Jarvis sin comandos
 
-  
+
   playVideo("openquestionTrack")
 })
 
@@ -162,12 +161,14 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('btnTalkLoader').classList.remove('d-none')
   document.getElementById('microphoneIcon').classList.add('d-none')
 
-  if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
+  let btnTalk = document.getElementById('btnActiveRecognizer')
+
+  if (btnTalk.getAttribute('data-freesay') == 'true') {
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
     // setTimeout(() => {
     //   Jarvis.ArtyomWebkitSpeechRecognition.stop()
     // }, 300);
-    document.getElementById('btnActiveRecognizer').disabled = true
+    // btnTalk.disabled = true
     document.getElementById('btnTalkLoader').classList.add('d-none')
     document.getElementById('microphoneIcon').classList.add('d-none')
     document.getElementById('timerFreeSay').classList.remove('d-none')
@@ -176,15 +177,17 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     function countdown() {
       timeLeft--;
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
-      if (timeLeft > 0) setTimeout(countdown, 1000);
+      if (timeLeft > 0) timeouts.push(setTimeout(countdown, 1000))
       else if (timeLeft <= 0) {
         playVideo("byeTrack")
+        btnTalk.removeAttribute('data-freesay')
+        delete btnTalk.dataset.freesay;
         freeSayFlag = false
-      } 
+      }
     };
 
-    setTimeout(countdown, 1000);
-  }else{
+    timeouts.push(setTimeout(countdown, 1000))
+  } else {
     startArtyom("es-ES", 'quick', false); // incializar sin comandos
 
   }
