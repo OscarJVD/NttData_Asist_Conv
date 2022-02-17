@@ -24,7 +24,7 @@ document.getElementById('openquestionTrack').addEventListener('timeupdate', () =
     timeouts.push(setTimeout(() => {
       document.getElementById('buttonsBox').classList.add('d-none');
       document.querySelectorAll('video').forEach(video => video.style.height = '100%');
-      document.getElementById('btnActiveRecognizer').setAttribute("")
+      // document.getElementById('btnActiveRecognizer').setAttribute("")
     }, 400))
     timeUpdFlag = false;
   }
@@ -169,9 +169,6 @@ document.getElementById('btnReset').addEventListener('click', async () => {
   document.getElementById("YesOrNoBox").classList.add('d-none')
   document.getElementById('talkBtnBox').classList.remove('d-none')
   document.querySelectorAll('button').forEach(button => button.classList.remove('blueHover'))
-
-  // setTimeout(() => {
-  // }, 800);
   playVideo('reposoTrack')
   Jarvis.obey();
 })
@@ -183,9 +180,6 @@ document.getElementById('btnNo').addEventListener('click', function () {
 })
 
 document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
-  // setInterval(() => {
-  //   console.log(Jarvis.isObeying());
-  // }, 1000);
   document.getElementById('btnTalkLoader').classList.remove('d-none')
   document.getElementById('microphoneIcon').classList.add('d-none')
   startArtyom("es-ES", 'quick', false);
