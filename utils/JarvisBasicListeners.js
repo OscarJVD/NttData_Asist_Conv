@@ -47,7 +47,7 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
 };
 
 document.getElementById('saludoTrack').ontimeupdate = function () {
-  if (getPercentage('saludoTrack') == 'preend'){
+  if (getPercentage('saludoTrack') == 'preend') {
     pauseRestartLoadVideo(document.getElementById('saludoTrack'))
     videoEnd('saludoTrack')
   }
@@ -57,7 +57,7 @@ document.getElementById('byeTrack').ontimeupdate = function () {
   console.log(getPercentage('byeTrack'));
   if (getPercentage('byeTrack') == 'preend') {
     pauseRestartLoadVideo(document.getElementById('byeTrack'))
-    
+
     playVideo("reposoChicoTrack")
     document.getElementById('microphoneIcon').classList.remove('d-none')
     document.getElementById('timerFreeSay').classList.add('d-none')
@@ -84,7 +84,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     }, 1500))
 
     videoEnd('tellmoreTrack')
-    
+
   }
 };
 
@@ -136,10 +136,19 @@ document.getElementById('btnReset').addEventListener('click', async () => {
       if (!video.paused) {
         videoEnd(video.id)
         // video.currentTime = 1000
-        // video.pause()
-        // pauseVideo(video)
-        // video.currentTime = 0
-        video.load()
+        video.pause()
+        // if (!Jarvis.isRecognizing())
+        //   pauseVideo(video)
+        video.currentTime = 0
+        // video.addEventListener("canplay", function onCanPlay() {
+        //   video.removeEventListener("canplay", onCanPlay);
+        //   video.play();
+        // });
+        if (video.readyState !== 4)
+          video.load()
+
+        // video.muted = true
+        // video.style.display = 'none'
       }
     }
   });

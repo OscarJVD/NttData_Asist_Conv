@@ -87,23 +87,27 @@ async function playVideo(videoId) {
 
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
-  
+
   // if (!video.paused) {
   //   video.pause()
   //   video.currentTime = 0
   //   video.load()
   // }
 
-  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended 
+  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
     && video.readyState > video.HAVE_CURRENT_DATA;
 
-if (!isPlaying) {
-  // video.play();
-  // if (video.id != 'galeriasTrack')
-  //   video.currentTime = 0
-  // await video.play();
-  video.play();
-}
+  if (!isPlaying) {
+    // video.play();
+    // if (video.id != 'galeriasTrack')
+    //   video.currentTime = 0
+    // video.muted= false;
+    // await video.play();
+    setTimeout(function () {
+      video.play();
+    }, 0);
+    // video.play();
+  }
 }
 
 function pauseVideo(video) {
@@ -250,8 +254,11 @@ function videoEnd(videoId) {
 
 function pauseRestartLoadVideo(video) {
   if (!video.paused) {
+    // if (!Jarvis.isRecognizing())
     // pauseVideo(video)
-    // video.currentTime = 0
-    video.load()
+    video.pause()
+    video.currentTime = 0
+    if (video.readyState !== 4)
+      video.load()
   }
 }
