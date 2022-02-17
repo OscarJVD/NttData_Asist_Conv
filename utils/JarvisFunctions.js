@@ -53,35 +53,25 @@ function configVideos() {
 
     if (video.id != 'reposoTrack') {
 
-      document.getElementById(video.id).addEventListener('timeupdate', () => {
-        let timeUpdFlag = true;
-        if ((validateEndVideo(video.id)) && timeUpdFlag) {
-          timeouts.push(setTimeout(() => {
-            document.getElementById('talkBtnBox').classList.remove('d-none')
-            document.getElementById(video.id).style.display = 'none';
-            document.getElementById('reposoTrack').style.display = 'inherit';
-            document.getElementById('reposoTrack').play();
-          }, 400))
-          timeUpdFlag = false;
+      document.getElementById(video.id).ontimeupdate = function () {
+        // console.log(getPercentage(video.id), video.id);
+
+        if (getPercentage(video.id) == 'preend') {
+
+          console.log('ENTROO1');
+          // Contenido
+          document.getElementById('talkBtnBox').classList.remove('d-none')
+          document.getElementById(video.id).style.display = 'none';
+          document.getElementById('reposoTrack').style.display = 'inherit';
+          document.getElementById('reposoTrack').play();
         }
-      })
+      };
 
       document.getElementById(video.id).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
         mainBtnsDisabled(true)
       });
     }
-
-    document.getElementById(video.id).addEventListener('timeupdate', () => {
-      let timeUpdFlag = true;
-      if ((validateEndVideo(video.id)) && timeUpdFlag) {
-        timeouts.push(setTimeout(() => {
-          document.getElementById('talkBtnBox').classList.remove('d-none')
-          mainBtnsDisabled(false)
-        }, 400))
-        timeUpdFlag = false;
-      }
-    })
   });
 }
 
@@ -97,12 +87,11 @@ function getVideos() {
 }
 
 async function playVideo(videoId) {
-  console.log('vdeioid', videoId);
+  console.log('videoId', videoId);
 
   // Hide talk button
   if (videoId != 'reposoTrack')
     document.getElementById('talkBtnBox').classList.add('d-none')
-
 
   let videoElements = document.querySelectorAll('.videoIA');
   videoElements.forEach(video => {
@@ -110,26 +99,9 @@ async function playVideo(videoId) {
       document.getElementById(video.id).style.display = 'none';
   })
 
-  document.getElementById(videoId).style.display = 'inherit';
-  // document.getElementById(videoId).pause();
-  // document.getElementById(videoId).load();
   let video = document.getElementById(videoId);
-  // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
-  // && video.readyState > video.HAVE_CURRENT_DATA;
-
-  // if (!isPlaying) {
-  // video.load()
-  // video.currentTime = 0;
+  video.style.display = 'inherit';
   await video.play();
-  // let cont = 0;
-  // let id = setInterval(async function () {
-  //   cont++;
-  //   await video.play();
-  //   if (cont == 20) clearInterval(id);
-  // }, 100);
-  // }
-  // return document.getElementById(videoId).play();
-  // await document.getElementById(videoId).play();
 }
 
 function pauseVideo(video) {
@@ -173,9 +145,11 @@ function identifySection(arrSecti, commandIndex) {
 
 function greeting() {
 
-  setTimeout(() => {
-    playVideo('saludoTrack');
-  }, 800);
+  playVideo('saludoTrack');
+
+  document.getElementById("buttonsPartOne").classList.remove('d-none')
+  document.getElementById("buttonsPartBox").classList.remove('d-none')
+  document.getElementById("YesOrNoBox").classList.add('d-none')
 
   timeouts.push(
     setTimeout(() => {
@@ -224,10 +198,6 @@ function greeting() {
       )
     }, 14650)
   )
-
-  document.getElementById("buttonsPartOne").classList.remove('d-none')
-  document.getElementById("buttonsPartBox").classList.remove('d-none')
-  document.getElementById("YesOrNoBox").classList.add('d-none')
 }
 
 function clearTimeOuts(arrTimeouts) {
@@ -236,7 +206,95 @@ function clearTimeOuts(arrTimeouts) {
 }
 
 function validateEndVideo(videoId) {
+
   return document.getElementById(videoId).currentTime.toString().split('.')[0] == document.getElementById(videoId).duration.toString().split('.')[0]
+    // return document.getElementById(videoId).currentTime.toString().split('.')[0] == document.getElementById(videoId).duration.toString().split('.')[0]
     ? true
     : false;
+}
+
+function timer(elementId, timeLeft = 11) {
+  timeLeft = timeLeft;
+
+  function countdown() {
+    timeLeft--;
+    document.getElementById(elementId).textContent = timeLeft.toString();
+    if (timeLeft > 0) setTimeout(countdown, 1000);
+    // else if (timeLeft <= 0) alert("finalizó")
+  };
+
+  setTimeout(countdown, 1000);
+}
+
+function getPercentage(videoId) {
+  let percentageCompleted = 0;
+  let totalLength = 0;
+  // let videoStarted, videoTwentyFive, videoFifty, videoSeventyFive, videoComplete = false;
+  let myPlayer = document.getElementById(videoId)
+  totalLength = myPlayer.duration % 60;
+  percentageCompleted = (myPlayer.currentTime / totalLength) * 100;
+  // console.log(totalLength);
+  console.log(videoId + ' percentage', (percentageCompleted + '%'));
+
+  let lastPart = 98
+  if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack ') lastPart = 95
+
+  if (percentageCompleted >= lastPart && percentageCompleted < 100) return 'preend';
+  else return false;
+
+  // is 0
+  // if ((!videoStarted) && (percentageCompleted > 0)) {
+  //   console.log('VIDEO_STARTED');
+  //   videoStarted = true;
+
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({
+  //     'event': 'playStart'
+  //   });
+  // }
+  // // is 25
+  // if ((!videoTwentyFive) && (percentageCompleted > 25)) {
+  //   console.log('VIDEO_25');
+  //   videoTwentyFive = true;
+
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({
+  //     'event': 'playTwentyFive'
+  //   });
+  // }
+  // // is 50
+  // if ((!videoFifty) && (percentageCompleted > 50)) {
+  //   console.log('VIDEO_50');
+  //   videoFifty = true;
+
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({
+  //     'event': 'playFifty'
+  //   });
+  // }
+  // // is 75
+  // if ((!videoSeventyFive) && (percentageCompleted > 75)) {
+  //   console.log('VIDEO_75');
+  //   videoSeventyFive = true;
+
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({
+  //     'event': 'playSeventyFive'
+  //   });
+  // }
+  // // is 100
+  // if ((!videoComplete) && (percentageCompleted > 99)) {
+  //   console.log('VIDEO_100');
+  //   videoComplete = true;
+
+  //   window.dataLayer = window.dataLayer || [];
+  //   window.dataLayer.push({
+  //     'event': 'playComplete'
+  //   });
+  // }
+}
+
+function videoEnd(){
+  document.getElementById('talkBtnBox').classList.remove('d-none')
+  mainBtnsDisabled(false)
 }

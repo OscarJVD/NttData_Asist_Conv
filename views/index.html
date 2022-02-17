@@ -61,18 +61,6 @@
 
   <!-- end -->
 
-  <video class="videoIA" style="display:none;" src="/media/video/pregunta/pregunta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="preguntaTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
-  <video class="videoIA" style="display:none;" src="/media/video/respuesta/respuesta.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="respuestaTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
-  <video class="videoIA" style="display:none;" src="/media/video/cierre/cierre.mp4" preload="auto" width="100%" style="position: fixed; overflow: hidden;  padding: 0; margin: 0; " id="cierreTrack">
-    Tu navegador no soporta HTML5 video.
-  </video>
-
   <canvas id="waves" class="audioViewer" style="overflow: hidden;"></canvas>
 
   <div class="container-fluid videoMsg d-none p-3 justify-content-center d-flex align-items-center text-center bg-opaco" id="recognizedTxtCaption">
@@ -88,6 +76,7 @@
     <button id="btnActiveRecognizer" class="btn  shadow border border-white" style="cursor: pointer;">
       <div class="loader-03 d-none" id="btnTalkLoader"></div>
       <i class="fas fa-microphone text-white fa-4x p-1 border-fw-black" id="microphoneIcon"></i>
+      <span class="d-none text-lg" id="timerFreeSay"></span>
     </button>
   </div>
 

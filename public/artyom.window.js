@@ -624,6 +624,11 @@ var Artyom = (function () {
       document.getElementById('microphoneIcon').classList.add('text-lime')
       document.getElementById('microphoneIcon').classList.remove('border-fw-black')
       document.getElementById('microphoneIcon').classList.add('border-fw-white')
+
+       if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
+        document.getElementById('microphoneIcon').classList.add('d-none')
+      }
+
       _this.debug("Event reached : " + _this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.triggerEvent(_this.ArtyomGlobalEvents.COMMAND_RECOGNITION_START);
       _this.ArtyomProperties.recognizing = true;
@@ -675,6 +680,10 @@ var Artyom = (function () {
       document.getElementById('microphoneIcon').classList.add('text-white')
       document.getElementById('microphoneIcon').classList.remove('border-fw-white')
       document.getElementById('microphoneIcon').classList.add('border-fw-black')
+
+      if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
+        document.getElementById('microphoneIcon').classList.add('d-none')
+      }
       _this.ArtyomWebkitSpeechRecognition.stop();
 
       if (_this.ArtyomFlags.restartRecognition === true) {
