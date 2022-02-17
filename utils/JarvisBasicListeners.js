@@ -137,8 +137,8 @@ document.getElementById('btnReset').addEventListener('click', async () => {
         videoEnd(video.id)
         // video.currentTime = 1000
         // video.pause()
-        pauseVideo(video)
-        video.currentTime = 0
+        // pauseVideo(video)
+        // video.currentTime = 0
         video.load()
       }
     }

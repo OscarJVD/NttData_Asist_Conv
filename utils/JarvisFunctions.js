@@ -250,8 +250,8 @@ function videoEnd(videoId) {
 
 function pauseRestartLoadVideo(video) {
   if (!video.paused) {
-    pauseVideo(video)
-    video.currentTime = 0
+    // pauseVideo(video)
+    // video.currentTime = 0
     video.load()
   }
 }
