@@ -5,8 +5,6 @@ configVideos();
 
 const commands = {
   saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
-  respuestasPreguntaArteFavorito: ['Mona Lisa', 'Romero y Juelita', 'Joan Miró', 'Odisea'],
-  respuestasOpinionRobot: ['Excelente', 'Muy bien', 'Excelente respuesta', 'Que inteligente eres', 'Gracias', 'Buena Respuesta'],
   modoReposo: ['reposo'],
   modoFrasesLentas: ['lento', 'cortas', 'lento'], // En pruebas(versión beta)
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
@@ -43,12 +41,6 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
   switch (defCommand) {
     case 0:
       greeting();
-      break;
-    case 1:
-      playVideo('respuestaTrack');
-      break;
-    case 2:
-      playVideo('cierreTrack');
       break;
     case 3:
       playVideo('reposoTrack');
@@ -121,12 +113,6 @@ Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
       switch (defCommand) {
         case 0:
           ask = "Hola, encantada, mi nombre es eva la asistente virtual de la feria"
-          break;
-        case 1:
-          ask = "Dime, de las 7 obras que visté, ¿Cuál te gusto mas?"
-          break;
-        case 2:
-          ask = "Es una de mis favoritas, su autor Jhoan fue un pintor, escultor, grabador y ceramista español" // opinion sobre eso
           break;
         case 3:
           ask = "Reposo"
