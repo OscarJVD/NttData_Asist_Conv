@@ -85,6 +85,7 @@ async function playVideo(videoId) {
       document.getElementById(video.id).style.display = 'none';
   })
 
+  document.getElementById('reposoTrack').pause()
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 

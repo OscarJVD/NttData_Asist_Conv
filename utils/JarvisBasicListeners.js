@@ -133,23 +133,23 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 
   videoElements.forEach(video => {
     if (video.id != 'reposoTrack') {
-      if (!video.paused) {
-        videoEnd(video.id)
-        // video.currentTime = 1000
-        video.pause()
-        // if (!Jarvis.isRecognizing())
-        //   pauseVideo(video)
-        video.currentTime = 0
-        // video.addEventListener("canplay", function onCanPlay() {
-        //   video.removeEventListener("canplay", onCanPlay);
-        //   video.play();
-        // });
-        if (video.readyState !== 4)
-          video.load()
+      // if (!video.paused && video) {
+      // video.currentTime = 1000
+      // video.pause()
+      // if (!Jarvis.isRecognizing())
+      pauseVideo(video)
+      video.currentTime = 0
+      // video.addEventListener("canplay", function onCanPlay() {
+      //   video.removeEventListener("canplay", onCanPlay);
+      //   video.play();
+      // });
+      if (video.readyState !== 4)
+        video.load()
 
-        // video.muted = true
-        // video.style.display = 'none'
-      }
+      videoEnd(video.id)
+      // video.muted = true
+      // video.style.display = 'none'
+      // }
     }
   });
 
