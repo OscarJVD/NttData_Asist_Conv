@@ -1,5 +1,5 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [];
+let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
 
 configVideos();
 
@@ -94,9 +94,10 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
   }
 });
 
-Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
+Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
   console.log('TEXTO RECONOCIDO  ', recognized, `isFinal ${isFinal}`);
 
+  let ask;
   arrAttachedCommands.forEach(async (cmd, cmdIndex) => {
     if ( // Si coincide con algún comando o si lo que se dice tiene alguna coincidencia entre comandos
       (
@@ -106,7 +107,6 @@ Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
       )
       // && isFinal
     ) {
-      let ask;
 
       const defCommand = identifySection(arrSec, cmdIndex)
 
@@ -140,4 +140,10 @@ Jarvis.redirectRecognizedTextOutput((recognized, isFinal) => {
       await postData('storeAnswers', { ask, answer: recognized })
     }
   })
+
+  //  reconocimiento libre de 10 segundos
+  if(freeSayFlag && isFinal){
+    ask = '¿Cómo te imaginas la feria en 10 años?'
+    await postData('storeAnswers', { ask, answer: recognized })
+  }
 });

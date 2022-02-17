@@ -212,41 +212,15 @@ function timer(elementId, timeLeft = 11) {
   setTimeout(countdown, 1000);
 }
 
-// let arrPercents = []
 function getPercentage(videoId) {
-  // let percentageCompleted = 0, totalLength = 0, 
   let myPlayer = document.getElementById(videoId);
-  // totalLength = myPlayer.duration % 60;
-  // percentageCompleted = (myPlayer.currentTime / totalLength) * 100;
 
-  // // console.log(videoId + ' percentage', (percentageCompleted + '%'));
-  // console.log(arrPercents.length, myPlayer.duration)
-
-  // // let arrPercentsLength = arrPercents.length
-  // // if (arrPercents) {
-  // //   if (percentageCompleted >= arrPercents[arrPercentsLength - 2].percent && percentageCompleted < 100) {
-  // //     arrPercents = []; // nueva instancia
-  // //     return 'preend';
-  // //   }
-  // // }
-
-  // arrPercents.push({ percent: percentageCompleted, video: videoId })
-  // // console.log(arrPercents)
-  // // console.log('arrPercents', arrPercents.length)
-
-  // let lastPart = 94
-  // if (videoId == 'tellmoreTrack' || videoId == 'openquestionTrack') lastPart = 94
-
-  // // return percentageCompleted
-  // if (percentageCompleted >= lastPart && percentageCompleted < 100) return 'preend';
-  // else
-  //   return false;
-  
-  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2) && myPlayer.currentTime < 100) return 'preend';
+  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2) && myPlayer.currentTime < 100)
+    return 'preend';
   else return false;
 }
 
-function getPercentOfNumber(number, percent){
+function getPercentOfNumber(number, percent) {
   return (percent * number) / 100
 }
 

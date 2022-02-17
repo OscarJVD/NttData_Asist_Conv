@@ -26,6 +26,7 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
     document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
     videoEnd('openquestionTrack')
+    freeSayFlag = true
   }
 };
 
@@ -53,10 +54,13 @@ document.getElementById('saludoTrack').ontimeupdate = function () {
 
 document.getElementById('byeTrack').ontimeupdate = function () {
   console.log(getPercentage('byeTrack'));
-  if (getPercentage('byeTrack') == 'preend') playVideo("reposoChicoTrack")
-  setTimeout(() => {
-    alert("¡Pronto!")
-  }, 2000);
+  if (getPercentage('byeTrack') == 'preend') 
+  {
+    playVideo("reposoChicoTrack")
+    setTimeout(() => {
+      alert("¡Pronto!")
+    }, 2000);
+  }
 };
 
 document.getElementById('galeriasTrack').ontimeupdate = function () {
@@ -68,7 +72,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     timeouts.push(setTimeout(() => {
       playVideo('tellmoreTrack')
     }, 1500))
-    
+
     videoEnd('tellmoreTrack')
   }
 };
@@ -114,12 +118,11 @@ document.querySelectorAll('button').forEach(button => {
 
 document.getElementById('btnReset').addEventListener('click', async () => {
 
-
   let videoElements = getVideos();
 
   videoElements.forEach(video => {
     if (video.id != 'reposoTrack') {
-      if (!video.paused){
+      if (!video.paused) {
         videoEnd(video.id)
         video.currentTime = 1000
       }
@@ -144,19 +147,20 @@ document.getElementById('btnReset').addEventListener('click', async () => {
   document.querySelectorAll('button').forEach(button => button.classList.remove('blueHover'))
   playVideo('reposoTrack')
   Jarvis.obey();
+  document.getElementById('timerFreeSay').classList.add('d-none')
+  document.getElementById('microphoneIcon').classList.remove('d-none')
 })
 
 document.getElementById('btnNo').addEventListener('click', function () {
-  setTimeout(() => {
-    playVideo("openquestionTrack")
-  }, 800);
+  // Reinicializar Jarvis sin comandos
+
+  
+  playVideo("openquestionTrack")
 })
 
 document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
   document.getElementById('btnTalkLoader').classList.remove('d-none')
   document.getElementById('microphoneIcon').classList.add('d-none')
-
-  startArtyom("es-ES", 'quick', false); // incializar sin comandos
 
   if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
@@ -173,10 +177,15 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       timeLeft--;
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
       if (timeLeft > 0) setTimeout(countdown, 1000);
-      else if (timeLeft <= 0) playVideo("byeTrack")
+      else if (timeLeft <= 0) {
+        playVideo("byeTrack")
+        freeSayFlag = false
+      } 
     };
 
     setTimeout(countdown, 1000);
-  }
+  }else{
+    startArtyom("es-ES", 'quick', false); // incializar sin comandos
 
+  }
 });
