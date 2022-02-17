@@ -21,6 +21,7 @@ Jarvis.when("SPEECH_SYNTHESIS_END", function () {
 document.getElementById('openquestionTrack').ontimeupdate = function () {
   // console.log(getPercentage('openquestionTrack') == 'preend');
   if (getPercentage('openquestionTrack') == 'preend') {
+    pauseRestartLoadVideo(document.getElementById('openquestionTrack'))
     // Contenido
     document.getElementById('buttonsBox').classList.add('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '100%');
@@ -33,9 +34,8 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
 document.getElementById('tellmoreTrack').ontimeupdate = function () {
   // console.log(getPercentage('tellmoreTrack'));
   if (getPercentage('tellmoreTrack') == 'preend') {
-
-    console.log('HOLAAAAA');
     // Contenido
+    pauseRestartLoadVideo(document.getElementById('tellmoreTrack'))
     document.getElementById("buttonsPartOne").classList.add('d-none')
     document.getElementById("buttonsPartBox").classList.add('d-none')
     document.getElementById("YesOrNoBox").classList.remove('d-none')
@@ -46,19 +46,23 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
 };
 
 document.getElementById('saludoTrack').ontimeupdate = function () {
-  console.log(getPercentage('saludoTrack'));
-  if (getPercentage('saludoTrack') == 'preend')
+  if (getPercentage('saludoTrack') == 'preend'){
+    pauseRestartLoadVideo(document.getElementById('saludoTrack'))
     videoEnd('saludoTrack')
-
+  }
 };
 
 document.getElementById('byeTrack').ontimeupdate = function () {
   console.log(getPercentage('byeTrack'));
   if (getPercentage('byeTrack') == 'preend') {
+    pauseRestartLoadVideo(document.getElementById('byeTrack'))
+    
     playVideo("reposoChicoTrack")
-    setTimeout(() => {
-      alert("¡Pronto!")
-    }, 2000);
+    videoEnd('byeTrack')
+    isGirlAvatarFlag = false;
+    // setTimeout(() => {
+    //   alert("¡Pronto!")
+    // }, 2000);
   }
 };
 
@@ -66,6 +70,9 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
   // console.log(getPercentage('galeriasTrack'));
   if (getPercentage('galeriasTrack') == 'preend') {
     // Contenido
+
+    pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
+
     document.getElementById('btnGallery').classList.remove('blueHover')
 
     timeouts.push(setTimeout(() => {
@@ -123,7 +130,10 @@ document.getElementById('btnReset').addEventListener('click', async () => {
     if (video.id != 'reposoTrack') {
       if (!video.paused) {
         videoEnd(video.id)
-        video.currentTime = 1000
+        // video.currentTime = 1000
+        video.pause()
+        video.currentTime = 0
+        video.load()
       }
     }
   });
@@ -152,8 +162,6 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 
 document.getElementById('btnNo').addEventListener('click', function () {
   // Reinicializar Jarvis sin comandos
-
-
   playVideo("openquestionTrack")
 })
 
@@ -162,6 +170,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('microphoneIcon').classList.add('d-none')
 
   let btnTalk = document.getElementById('btnActiveRecognizer')
+  startArtyom("es-ES", 'quick', false); // incializar sin comandos
 
   if (btnTalk.getAttribute('data-freesay') == 'true') {
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
@@ -187,8 +196,5 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     };
 
     timeouts.push(setTimeout(countdown, 1000))
-  } else {
-    startArtyom("es-ES", 'quick', false); // incializar sin comandos
-
   }
 });

@@ -87,6 +87,12 @@ async function playVideo(videoId) {
 
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
+
+  video.pause()
+  video.currentTime = 0
+  video.load()
+  // if (video.id != 'galeriasTrack')
+  //   video.currentTime = 0
   await video.play();
 }
 
@@ -215,7 +221,7 @@ function timer(elementId, timeLeft = 11) {
 function getPercentage(videoId) {
   let myPlayer = document.getElementById(videoId);
 
-  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2) && myPlayer.currentTime < 100)
+  if (myPlayer.currentTime >= myPlayer.duration - getPercentOfNumber(myPlayer.duration, 2.5) && myPlayer.currentTime < 100)
     return 'preend';
   else return false;
 }
@@ -230,4 +236,12 @@ function videoEnd(videoId) {
   document.getElementById(videoId).style.display = 'none';
   document.getElementById('reposoTrack').style.display = 'inherit';
   document.getElementById('reposoTrack').play();
+}
+
+function pauseRestartLoadVideo(video) {
+  if (!video.paused) {
+    video.pause()
+    video.currentTime = 0
+    video.load()
+  }
 }

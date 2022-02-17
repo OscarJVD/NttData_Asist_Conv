@@ -1,5 +1,5 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
+let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false, isGirlAvatarFlag = true;
 
 configVideos();
 
