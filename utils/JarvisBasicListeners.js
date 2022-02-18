@@ -23,8 +23,8 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
   if (getPercentage('openquestionTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('openquestionTrack'))
     // Contenido
-    document.getElementById('buttonsBox').classList.add('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '100%');
+    // document.getElementById('buttonsBox').classList.add('d-none');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
     videoEnd('openquestionTrack')
     freeSayFlag = true
@@ -36,8 +36,8 @@ document.getElementById('openquestionChicoTrack').ontimeupdate = function () {
   if (getPercentage('openquestionChicoTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('openquestionChicoTrack'))
     // Contenido
-    document.getElementById('buttonsBox').classList.add('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '100%');
+    // document.getElementById('buttonsBox').classList.add('d-none');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
     videoEnd('openquestionChicoTrack')
     freeSayFlag = true
