@@ -50,7 +50,7 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
 document.getElementById('saludoTrack').ontimeupdate = function () {
 
   let video = null
-  if (isGirlAvatarFlag) {
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     video = document.getElementById('saludoTrack')
   } else {
     video = document.getElementById('saludoChicoTrack')
@@ -91,7 +91,8 @@ document.getElementById('byeTrack').ontimeupdate = function () {
   if (getPercentage('byeTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('byeTrack'))
 
-    if (isGirlAvatarFlag)
+    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', !Boolean(localStorage.getItem('isGirlAvatarFlag')));
+    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
     else
       playVideo('reposoTrack');
@@ -99,7 +100,6 @@ document.getElementById('byeTrack').ontimeupdate = function () {
     document.getElementById('microphoneIcon').classList.remove('d-none')
     document.getElementById('timerFreeSay').classList.add('d-none')
     videoEnd('byeTrack')
-    isGirlAvatarFlag = !isGirlAvatarFlag;
     document.getElementById("YesOrNoBox").classList.add('d-none')
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
@@ -124,15 +124,31 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     document.getElementById('btnGallery').classList.remove('blueHover')
 
     timeouts.push(setTimeout(() => {
-      if (isGirlAvatarFlag)
-        playVideo('tellmoreTrack')
-      else
-        playVideo('tellmoreChicoTrack')
+      playVideo('tellmoreTrack')
     }, 1500))
 
     videoEnd('tellmoreTrack')
     mainBtnsDisabled(true)
 
+  }
+};
+
+document.getElementById('galeriasChicoTrack').ontimeupdate = function () {
+  // console.log(getPercentage('galeriasChicoTrack'));
+  if (getPercentage('galeriasChicoTrack') == 'preend') {
+    // Contenido
+    console.log('DINOSAURIO');
+
+    // pauseRestartLoadVideo(document.getElementById('galeriasChicoTrack'))
+
+    document.getElementById('btnGallery').classList.remove('blueHover')
+
+    timeouts.push(setTimeout(() => {
+      playVideo('tellmoreChicoTrack')
+    }, 1500))
+
+    videoEnd('tellmoreChicoTrack')
+    mainBtnsDisabled(true)
   }
 };
 
@@ -232,7 +248,7 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 
 document.getElementById('btnNo').addEventListener('click', function () {
   // Reinicializar Jarvis sin comandos
-  if (isGirlAvatarFlag)
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true')
     playVideo('openquestionTrack');
   else
     playVideo('openquestionChicoTrack');
@@ -285,7 +301,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false
-        if (isGirlAvatarFlag)
+        if (localStorage.getItem('isGirlAvatarFlag') == 'true')
           playVideo('byeTrack')
         else
           playVideo('byeChicoTrack')
@@ -314,7 +330,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 
 document.getElementById('btnGallery').addEventListener('click', function () {
 
-  if (isGirlAvatarFlag)
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true')
     playVideo('galeriasTrack')
   else
     playVideo('galeriasChicoTrack')

@@ -1,5 +1,7 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false, isGirlAvatarFlag = true;
+let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
+
+if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
 configVideos();
 
@@ -43,7 +45,7 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       greeting();
       break;
     case 1:
-      if (isGirlAvatarFlag)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true')
         playVideo('saludoTrack');
       else
         playVideo('saludoChicoTrack');
@@ -89,13 +91,13 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       Jarvis.shutUp();
       break;
     case 6:
-      if (isGirlAvatarFlag)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true')
         playVideo('galeriasTrack');
       else
         playVideo('galeriasChicoTrack');
       break;
     case 7:
-      if (isGirlAvatarFlag)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true')
         playVideo('openquestionTrack');
       else
         playVideo('openquestionChicoTrack');
