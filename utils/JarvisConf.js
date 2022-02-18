@@ -151,8 +151,8 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
   })
 
   //  reconocimiento libre de 10 segundos
-  if (freeSayFlag && isFinal) {
-    ask = '¿Cómo te imaginas la feria en 10 años?'
-    await postData('storeAnswers', { ask, answer: recognized })
-  }
+  // if (freeSayFlag && isFinal) {
+  //   ask = '¿Cómo te imaginas la feria en 10 años?'
+  //   await postData('storeAnswers', { ask, answer: recognized })
+  // }
 });

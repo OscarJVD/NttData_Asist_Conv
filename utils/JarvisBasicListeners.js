@@ -104,6 +104,7 @@ document.getElementById('byeTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
+    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     // Jarvis.ArtyomWebkitSpeechRecognition.stop()
 
     // setTimeout(() => {
@@ -242,30 +243,30 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('microphoneIcon').classList.add('d-none')
 
   let btnTalk = document.getElementById('btnActiveRecognizer')
-  startArtyom("es-ES", 'quick', false);
+  // startArtyom("es-ES", 'quick', false);
 
   if (btnTalk.getAttribute('data-freesay') == 'true') {
-    // let finalRecognizedTxt = null
-    // Jarvis.ArtyomWebkitSpeechRecognition.stop()
-    // let dictationSettings = {
-    //   continuous: true, // Don't stop never because i have https connection
-    //   interimResults: false,
-    //   lang: 'es-ES',
-    //   onResult: function (text, isFinal) {
-    //     // Show the Recognized text in the console
-    //     console.log("Recognized text: ", text, isFinal);
-    //     finalRecognizedTxt = text
-    //   },
-    //   onStart: function () {
-    //     console.log("Dictation started by the user");
-    //   },
-    //   onEnd: function () {
-    //     console.log("Dictation stopped by the user");
-    //   }
-    // };
+    let finalRecognizedTxt = null
+    Jarvis.ArtyomWebkitSpeechRecognition.stop()
+    let dictationSettings = {
+      continuous: true, // Don't stop never because i have https connection
+      interimResults: false,
+      lang: 'es-ES',
+      onResult: function (text, isFinal) {
+        // Show the Recognized text in the console
+        console.log("Recognized text: ", text, isFinal);
+        finalRecognizedTxt = text
+      },
+      onStart: function () {
+        console.log("Dictation started by the user");
+      },
+      onEnd: function () {
+        console.log("Dictation stopped by the user");
+      }
+    };
 
-    // let UserDictation = Jarvis.newDictation(dictationSettings);
-    // UserDictation.start();
+    let UserDictation = Jarvis.newDictation(dictationSettings);
+    UserDictation.start();
     // Jarvis.emptyCommands();
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
     // setTimeout(() => {
@@ -276,7 +277,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     document.getElementById('timerFreeSay').classList.remove('d-none')
     timeLeft = 11;
 
-    function countdown() {
+    async function countdown() {
       timeLeft--;
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
       if (timeLeft > 0) timeouts.push(setTimeout(countdown, 1000))
@@ -284,22 +285,19 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false
-        document.querySelectorAll('video').forEach(video => video.style.height = '71%');
         if (isGirlAvatarFlag)
           playVideo('byeTrack')
         else
           playVideo('byeChicoTrack')
 
-        // UserDictation.stop();
+        UserDictation.stop();
 
         setTimeout(() => {
           Jarvis.ArtyomWebkitSpeechRecognition.stop()
         }, 800);
 
-
-        // finalRecognizedTxt
-        // ask = '¿Cómo te imaginas la feria en 10 años?'
-        // await postData('storeAnswers', { ask, answer: recognized })
+        ask = '¿Cómo te imaginas la feria en 10 años?'
+        await postData('storeAnswers', { ask, answer: finalRecognizedTxt })
         // let commands = Jarvis.getAvailableCommands();
         // console.log(commands); // Ouputs : []
 
@@ -309,9 +307,9 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 
     timeouts.push(setTimeout(countdown, 1000))
   }
-  // else {
-  //   startArtyom("es-ES", 'quick', false);
-  // }
+  else {
+    startArtyom("es-ES", 'quick', false);
+  }
 });
 
 document.getElementById('btnGallery').addEventListener('click', function () {
