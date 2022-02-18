@@ -234,7 +234,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         // console.log(commands); // Ouputs : []
         // Jarvis.ArtyomWebkitSpeechRecognition.stop()
 
-        document.getElementById('btnActiveRecognizer').disabled = false
+        // document.getElementById('btnActiveRecognizer').disabled = false
       }
     };
 

@@ -1180,7 +1180,8 @@ var Artyom = (function () {
     var dictado = new window.webkitSpeechRecognition();
     dictado.continuous = true;
     dictado.interimResults = true;
-    dictado.lang = _this.ArtyomProperties.lang;
+    // alert(_this.ArtyomProperties.lang)
+    dictado.lang = 'es-ES';
     dictado.onresult = function (event) {
       var temporal = "";
       var interim = "";

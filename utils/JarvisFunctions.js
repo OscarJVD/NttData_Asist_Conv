@@ -51,10 +51,11 @@ function configVideos() {
     videoElement.style.width = screen.width;
     videoElement.style.height = screen.height;
 
-    if (video.id != 'reposoTrack') {
+    if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
 
       document.getElementById(video.id).addEventListener('play', () => {
         document.getElementById('reposoTrack').style.display = 'none';
+        document.getElementById('reposoChicoTrack').style.display = 'none';
         mainBtnsDisabled(true)
       });
     }
@@ -62,6 +63,7 @@ function configVideos() {
 }
 
 function mainBtnsDisabled(isDisabled) {
+  // console.log('aaaaaaa')
   document.querySelectorAll('button').forEach(button => {
     if (button.id != 'btnReset')
       button.disabled = isDisabled
