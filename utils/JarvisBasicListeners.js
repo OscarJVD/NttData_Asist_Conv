@@ -30,6 +30,7 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
     // pauseRestartLoadVideo(document.getElementById('openquestionTrack'))
     // Contenido
     document.getElementById('buttonsBox').classList.add('d-none');
+    document.getElementById('talkBtnBox').style.top = '73.5%'
     // document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
     videoEnd('openquestionTrack')
@@ -43,6 +44,8 @@ document.getElementById('openquestionChicoTrack').ontimeupdate = function () {
     // pauseRestartLoadVideo(document.getElementById('openquestionChicoTrack'))
     // Contenido
     document.getElementById('buttonsBox').classList.add('d-none');
+    document.getElementById('talkBtnBox').style.top = '73.5%'
+
     // document.querySelectorAll('video').forEach(video => video.style.height = '100%');
     document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
     videoEnd('openquestionChicoTrack')
@@ -162,13 +165,14 @@ document.getElementById('byeTrack').ontimeupdate = function () {
       playVideo('reposoTrack');
 
     document.getElementById('microphoneIcon').classList.remove('d-none')
-    document.getElementById('timerFreeSay').classList.add('d-none')
+    document.getElementById('timerBoxFreeSay').classList.add('d-none')
     videoEnd('byeTrack')
     document.getElementById("YesOrNoBox").classList.add('d-none')
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    document.getElementById('talkBtnBox').style.top = '50%'
     // Jarvis.ArtyomWebkitSpeechRecognition.stop()
 
     // setTimeout(() => {
@@ -188,13 +192,14 @@ document.getElementById('byeChicoTrack').ontimeupdate = function () {
       playVideo('reposoTrack');
 
     document.getElementById('microphoneIcon').classList.remove('d-none')
-    document.getElementById('timerFreeSay').classList.add('d-none')
+    document.getElementById('timerBoxFreeSay').classList.add('d-none')
     videoEnd('byeChicoTrack')
     document.getElementById("YesOrNoBox").classList.add('d-none')
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    document.getElementById('talkBtnBox').style.top = '50%'
   }
 };
 
@@ -277,53 +282,7 @@ document.querySelectorAll('button').forEach(button => {
 })
 
 document.getElementById('btnReset').addEventListener('click', async () => {
-
   return location.reload();
-
-  let videoElements = getVideos();
-
-  videoElements.forEach(video => {
-    if (video.id != 'reposoTrack') {
-      // if (!video.paused && video) {
-      // video.currentTime = 1000
-      // video.pause()
-      // if (!Jarvis.isRecognizing())
-      // pauseVideo(video)
-      // video.currentTime = 0
-      // // video.addEventListener("canplay", function onCanPlay() {
-      // //   video.removeEventListener("canplay", onCanPlay);
-      // //   video.play();
-      // // });
-      // if (video.readyState !== 4)
-      //   video.load()
-
-      // videoEnd(video.id)
-      // // video.muted = true
-      // video.style.display = 'none'
-      // }
-    }
-  });
-
-  let cont = 0;
-  let id = setInterval(function () {
-    clearTimeOuts(timeouts)
-    cont++;
-    if (cont == 10) clearInterval(id);
-  }, 100);
-
-  Jarvis.ArtyomWebkitSpeechRecognition.stop()
-  document.getElementById('talkBtnBox').style.position = "fixed"
-  document.getElementById("buttonsPartOne").classList.remove('d-none')
-  document.getElementById("buttonsPartBox").classList.remove('d-none')
-  document.getElementById('buttonsBox').classList.remove('d-none');
-  document.querySelectorAll('video').forEach(video => video.style.height = '71%');
-  document.getElementById("YesOrNoBox").classList.add('d-none')
-  document.getElementById('talkBtnBox').classList.remove('d-none')
-  document.querySelectorAll('button').forEach(button => button.classList.remove('blueHover'))
-  playVideo('reposoTrack')
-  Jarvis.obey();
-  document.getElementById('timerFreeSay').classList.add('d-none')
-  document.getElementById('microphoneIcon').classList.remove('d-none')
 })
 
 document.getElementById('btnNo').addEventListener('click', function () {
@@ -374,15 +333,20 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     // }, 300);
     // btnTalk.disabled = true
     document.getElementById('btnTalkLoader').classList.add('d-none')
+    document.getElementById('talkBtnBox').classList.add('d-none')
     document.getElementById('microphoneIcon').classList.add('d-none')
-    document.getElementById('timerFreeSay').classList.remove('d-none')
-    timeLeft = 11;
+    document.getElementById('YesOrNoBox').classList.add('d-none')
+    document.getElementById('timerBoxFreeSay').classList.remove('d-none')
+    document.getElementById('buttonsBox').classList.remove('d-none')
+    timeLeft = 11; // 11
 
     async function countdown() {
       timeLeft--;
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
       if (timeLeft > 0) timeouts.push(setTimeout(countdown, 1000))
       else if (timeLeft <= 0) {
+        document.getElementById('buttonsBox').classList.add('d-none')
+        document.getElementById('YesOrNoBox').classList.remove('d-none')
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false

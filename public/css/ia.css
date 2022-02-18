@@ -3,7 +3,8 @@ body {
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background-color: rgb(4, 4, 134);
+  /* background-color: rgb(4, 4, 134); */
+  background-color: black;
 }
 
 .blueHover{
@@ -124,6 +125,11 @@ video {
   z-index: 9000;
   top: 50%;
   text-align: center;
+  transition: ease-in-out;
+  -webkit-transition: ease-in-out;
+  -moz-transition: ease-in-out;
+  -ms-transition: ease-in-out;
+  -o-transition: ease-in-out;
 }
 
 .spanVideoMsg {

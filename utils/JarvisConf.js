@@ -24,8 +24,8 @@ const commands = {
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
   galeriasysecciones: ['galerías y secciones'],
   opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
-  siMeGustariaOirMas: ['Sí, me gustaría', 'Si'],
-  noMeGustariaOirMas: ['No gracias', 'No']
+  siMeGustariaOirMas: ['Sí, me gustaría'],
+  noMeGustariaOirMas: ['No gracias', 'No, en otro momento']
 }
 
 const arrsCommands = Object.values(commands)
