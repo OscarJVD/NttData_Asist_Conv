@@ -104,6 +104,8 @@ document.getElementById('byeTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
+    // Jarvis.ArtyomWebkitSpeechRecognition.stop()
+    
     // setTimeout(() => {
     //   alert("¡Pronto!")
     // }, 2000);
@@ -237,25 +239,27 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   startArtyom("es-ES", 'quick', false);
 
   if (btnTalk.getAttribute('data-freesay') == 'true') {
-    Jarvis.ArtyomWebkitSpeechRecognition.stop()
-    let dictationSettings = {
-      continuous: true, // Don't stop never because i have https connection
-      lang: 'es-ES',
-      onResult: function (text) {
-        // Show the Recognized text in the console
-        console.log("Recognized text: ", text);
-      },
-      onStart: function () {
-        console.log("Dictation started by the user");
-      },
-      onEnd: function (text) {
-        console.log("final Recognized text: ", text);
-        console.log("Dictation stopped by the user");
-      }
-    };
+    // let finalRecognizedTxt = null
+    // Jarvis.ArtyomWebkitSpeechRecognition.stop()
+    // let dictationSettings = {
+    //   continuous: true, // Don't stop never because i have https connection
+    //   interimResults: false,
+    //   lang: 'es-ES',
+    //   onResult: function (text, isFinal) {
+    //     // Show the Recognized text in the console
+    //     console.log("Recognized text: ", text, isFinal);
+    //     finalRecognizedTxt = text
+    //   },
+    //   onStart: function () {
+    //     console.log("Dictation started by the user");
+    //   },
+    //   onEnd: function () {
+    //     console.log("Dictation stopped by the user");
+    //   }
+    // };
 
-    let UserDictation = Jarvis.newDictation(dictationSettings);
-    UserDictation.start();
+    // let UserDictation = Jarvis.newDictation(dictationSettings);
+    // UserDictation.start();
     // Jarvis.emptyCommands();
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
     // setTimeout(() => {
@@ -279,14 +283,17 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         else
           playVideo('byeChicoTrack')
 
-        UserDictation.stop();
-        startArtyom("es-ES", 'quick', false);
+        // UserDictation.stop();
 
         setTimeout(() => {
           Jarvis.ArtyomWebkitSpeechRecognition.stop()
-        }, 400);
+        }, 800);
 
         document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+
+        // finalRecognizedTxt
+        // ask = '¿Cómo te imaginas la feria en 10 años?'
+        // await postData('storeAnswers', { ask, answer: recognized })
         // let commands = Jarvis.getAvailableCommands();
         // console.log(commands); // Ouputs : []
 
@@ -296,6 +303,9 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 
     timeouts.push(setTimeout(countdown, 1000))
   }
+  // else {
+  //   startArtyom("es-ES", 'quick', false);
+  // }
 });
 
 document.getElementById('btnGallery').addEventListener('click', function () {
