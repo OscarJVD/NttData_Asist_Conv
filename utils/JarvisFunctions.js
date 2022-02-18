@@ -185,8 +185,14 @@ function videoEnd(videoId) {
   document.getElementById('talkBtnBox').classList.remove('d-none')
   mainBtnsDisabled(false)
   document.getElementById(videoId).style.display = 'none';
-  document.getElementById('reposoTrack').style.display = 'inherit';
-  document.getElementById('reposoTrack').play();
+
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+    document.getElementById('reposoTrack').style.display = 'inherit';
+    document.getElementById('reposoTrack').play();
+  } else {
+    document.getElementById('reposoChicoTrack').style.display = 'inherit';
+    document.getElementById('reposoChicoTrack').play();
+  }
 }
 
 function pauseRestartLoadVideo(video) {
