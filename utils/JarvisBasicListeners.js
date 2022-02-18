@@ -246,9 +246,15 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
           playVideo('byeTrack')
         else
           playVideo('byeChicoTrack')
+          
         UserDictation.stop();
         startArtyom("es-ES", 'quick', false);
-        Jarvis.ArtyomWebkitSpeechRecognition.stop()
+
+        setTimeout(() => {
+          Jarvis.ArtyomWebkitSpeechRecognition.stop()
+        }, 400);
+
+        document.querySelectorAll('video').forEach(video => video.style.height = '71%');
         // let commands = Jarvis.getAvailableCommands();
         // console.log(commands); // Ouputs : []
 
