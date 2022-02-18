@@ -105,7 +105,7 @@ document.getElementById('byeTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
     // Jarvis.ArtyomWebkitSpeechRecognition.stop()
-    
+
     // setTimeout(() => {
     //   alert("¡Pronto!")
     // }, 2000);
@@ -118,7 +118,6 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     // Contenido
     console.log('DINOSAURIO');
 
-    mainBtnsDisabled(true)
     // pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
 
     document.getElementById('btnGallery').classList.remove('blueHover')
@@ -131,6 +130,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     }, 1500))
 
     videoEnd('tellmoreTrack')
+    mainBtnsDisabled(true)
 
   }
 };
@@ -310,11 +310,11 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 });
 
 document.getElementById('btnGallery').addEventListener('click', function () {
-  
+
   if (isGirlAvatarFlag)
-  playVideo('galeriasTrack')
+    playVideo('galeriasTrack')
   else
-  playVideo('galeriasChicoTrack')
+    playVideo('galeriasChicoTrack')
 
   document.getElementById('btnGallery').classList.add('blueHover');
 })
