@@ -78,7 +78,7 @@ async function playVideo(videoId) {
   console.log('videoId', videoId);
 
   // Hide talk button
-  if (videoId != 'reposoTrack')
+  if (videoId != 'reposoTrack' && videoId != 'reposoChicoTrack')
     document.getElementById('talkBtnBox').classList.add('d-none')
 
   let videoElements = document.querySelectorAll('.videoIA');

@@ -31,6 +31,19 @@ document.getElementById('openquestionTrack').ontimeupdate = function () {
   }
 };
 
+document.getElementById('openquestionChicoTrack').ontimeupdate = function () {
+  // console.log(getPercentage('openquestionChicoTrack') == 'preend');
+  if (getPercentage('openquestionChicoTrack') == 'preend') {
+    // pauseRestartLoadVideo(document.getElementById('openquestionChicoTrack'))
+    // Contenido
+    document.getElementById('buttonsBox').classList.add('d-none');
+    document.querySelectorAll('video').forEach(video => video.style.height = '100%');
+    document.getElementById('btnActiveRecognizer').dataset.freesay = 'true';
+    videoEnd('openquestionChicoTrack')
+    freeSayFlag = true
+  }
+};
+
 document.getElementById('tellmoreTrack').ontimeupdate = function () {
   // console.log(getPercentage('tellmoreTrack'));
   if (getPercentage('tellmoreTrack') == 'preend') {
@@ -43,6 +56,22 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
     if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
       document.getElementById('btnVideoCenter').classList.add('d-none')
     videoEnd('tellmoreTrack')
+    document.getElementById('talkBtnBox').classList.add('d-none')
+  }
+};
+
+document.getElementById('tellmoreChicoTrack').ontimeupdate = function () {
+  // console.log(getPercentage('tellmoreChicoTrack'));
+  if (getPercentage('tellmoreChicoTrack') == 'preend') {
+    // Contenido
+
+    // pauseRestartLoadVideo(document.getElementById('tellmoreChicoTrack'))
+    document.getElementById("buttonsPartOne").classList.add('d-none')
+    document.getElementById("buttonsPartBox").classList.add('d-none')
+    document.getElementById("YesOrNoBox").classList.remove('d-none')
+    if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
+      document.getElementById('btnVideoCenter').classList.add('d-none')
+    videoEnd('tellmoreChicoTrack')
     document.getElementById('talkBtnBox').classList.add('d-none')
   }
 };
@@ -113,6 +142,27 @@ document.getElementById('byeTrack').ontimeupdate = function () {
   }
 };
 
+document.getElementById('byeChicoTrack').ontimeupdate = function () {
+  console.log(getPercentage('byeChicoTrack'));
+  if (getPercentage('byeChicoTrack') == 'preend') {
+
+    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', !Boolean(localStorage.getItem('isGirlAvatarFlag')));
+    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+      playVideo('reposoChicoTrack');
+    else
+      playVideo('reposoTrack');
+
+    document.getElementById('microphoneIcon').classList.remove('d-none')
+    document.getElementById('timerFreeSay').classList.add('d-none')
+    videoEnd('byeChicoTrack')
+    document.getElementById("YesOrNoBox").classList.add('d-none')
+    document.getElementById("buttonsPartOne").classList.remove('d-none')
+    document.getElementById("buttonsPartBox").classList.remove('d-none')
+    document.getElementById('buttonsBox').classList.remove('d-none');
+    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+  }
+};
+
 document.getElementById('galeriasTrack').ontimeupdate = function () {
   // console.log(getPercentage('galeriasTrack'));
   if (getPercentage('galeriasTrack') == 'preend') {
@@ -153,17 +203,12 @@ document.getElementById('galeriasChicoTrack').ontimeupdate = function () {
 };
 
 document.querySelectorAll('video').forEach(video => {
-  if (video.id != 'reposoTrack') {
+  if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
     video.addEventListener('play', function () {
       Jarvis.dontObey();
     });
 
     video.addEventListener('ended', function () {
-
-      // video.pause();
-      // video.currentTime = 0;
-      // video.load();
-
       setTimeout(() => {
         Jarvis.obey();
       }, 500);
