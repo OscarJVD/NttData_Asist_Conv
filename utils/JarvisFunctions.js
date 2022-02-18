@@ -53,7 +53,7 @@ function configVideos() {
 
     if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
 
-      document.getElementById(video.id).addEventListener('play', () => {
+      document.getElementById(video.id).addEventListener('timeupdate', () => {
         document.getElementById('reposoTrack').style.display = 'none';
         document.getElementById('reposoChicoTrack').style.display = 'none';
         mainBtnsDisabled(true)

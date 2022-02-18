@@ -118,6 +118,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     // Contenido
     console.log('DINOSAURIO');
 
+    mainBtnsDisabled(true)
     // pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
 
     document.getElementById('btnGallery').classList.remove('blueHover')
@@ -309,10 +310,11 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 });
 
 document.getElementById('btnGallery').addEventListener('click', function () {
-  document.getElementById('btnGallery').classList.add('blueHover');
-
+  
   if (isGirlAvatarFlag)
-    playVideo('galeriasTrack')
+  playVideo('galeriasTrack')
   else
-    playVideo('galeriasChicoTrack')
+  playVideo('galeriasChicoTrack')
+
+  document.getElementById('btnGallery').classList.add('blueHover');
 })
