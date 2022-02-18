@@ -3,6 +3,8 @@ let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag =
 
 if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     document.getElementById('reposoChicoTrack').style.display = 'none';

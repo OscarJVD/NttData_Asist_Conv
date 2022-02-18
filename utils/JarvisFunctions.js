@@ -16,6 +16,17 @@ function startOneCommandArtyom() {
   }, 250);
 }
 
+function isProduction() {
+  if(window.location.origin == 'https://my.local.host:50000'){
+    setInterval(() => {
+      console.clear();
+    }, 5000);
+    return false;
+  }
+
+  return true;
+}
+
 function startArtyom(language, mode, recognizeType = true) {
   if (!language)
     language = Jarvis.getLanguage();
@@ -25,7 +36,7 @@ function startArtyom(language, mode, recognizeType = true) {
       lang: language, // Start artyom with provided language
       continuous: recognizeType ? true : false, // Continuous mode enabled
       listen: true, // Start recognizing
-      debug: true, // Show everything in the console
+      debug: isProduction() ? false : true, // Show everything in the console
       speed: 5, // talk normally
       volume: 1,
       soundex: true, // Use the soundex algorithm to understand different words
