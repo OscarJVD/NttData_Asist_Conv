@@ -142,21 +142,26 @@ document.querySelectorAll('video').forEach(video => {
     });
 
     video.addEventListener('ended', function () {
+
+      // video.pause();
+      // video.currentTime = 0;
+      // video.load();
+
       setTimeout(() => {
         Jarvis.obey();
-      }, 1000);
+      }, 500);
     });
 
     video.addEventListener('pause', function () {
       setTimeout(() => {
         Jarvis.obey();
-      }, 1000);
+      }, 500);
     });
 
     video.addEventListener('load', function () {
       setTimeout(() => {
         Jarvis.obey();
-      }, 1000);
+      }, 500);
     });
   }
 });
@@ -279,6 +284,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false
+        document.querySelectorAll('video').forEach(video => video.style.height = '71%');
         if (isGirlAvatarFlag)
           playVideo('byeTrack')
         else
@@ -290,7 +296,6 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
           Jarvis.ArtyomWebkitSpeechRecognition.stop()
         }, 800);
 
-        document.querySelectorAll('video').forEach(video => video.style.height = '71%');
 
         // finalRecognizedTxt
         // ask = '¿Cómo te imaginas la feria en 10 años?'

@@ -90,14 +90,14 @@ async function playVideo(videoId) {
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
-  if (!video.paused) {
-    pauseVideo(video)
-    video.currentTime = 0
-    video.load()
-  }else{
-    video.currentTime = 0
-    video.load()
-  }
+  // if (!video.paused) {
+  //   pauseVideo(video)
+  //   video.currentTime = 0
+  //   video.load()
+  // }else{
+  //   video.currentTime = 0
+  //   video.load()
+  // }
 
   // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
   //   && video.readyState > video.HAVE_CURRENT_DATA;
@@ -107,13 +107,13 @@ async function playVideo(videoId) {
   //   // if (video.id != 'galeriasTrack')
   //   //   video.currentTime = 0
   //   // video.muted= false;
-  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended 
-  && video.readyState > video.HAVE_CURRENT_DATA;
+  // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended 
+  // && video.readyState > video.HAVE_CURRENT_DATA;
   
-  if (!isPlaying) {
+  // if (!isPlaying) {
+  // await video.play();
   await video.play();
-  // video.play();
-}
+// }
   //   setTimeout(function () {
   // video.play();
   // }, 0);

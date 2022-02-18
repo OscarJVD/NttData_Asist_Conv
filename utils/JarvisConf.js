@@ -121,7 +121,7 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
 
       switch (defCommand) {
         case 0:
-          ask = "Hola, encantada, mi nombre es eva la asistente virtual de la feria"
+          ask = "Saludo"
           break;
         case 1:
           ask = "Reposo"
