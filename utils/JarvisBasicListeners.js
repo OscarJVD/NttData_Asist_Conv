@@ -149,7 +149,7 @@ document.getElementById('byeTrack').ontimeupdate = function () {
   if (getPercentage('byeTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('byeTrack'))
 
-    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', !Boolean(localStorage.getItem('isGirlAvatarFlag')));
+    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
     else
@@ -175,7 +175,7 @@ document.getElementById('byeChicoTrack').ontimeupdate = function () {
   console.log(getPercentage('byeChicoTrack'));
   if (getPercentage('byeChicoTrack') == 'preend') {
 
-    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', !Boolean(localStorage.getItem('isGirlAvatarFlag')));
+    isGirlAvatarFlag = localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
     else
