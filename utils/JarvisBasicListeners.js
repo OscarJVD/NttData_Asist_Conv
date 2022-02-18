@@ -18,6 +18,12 @@ Jarvis.when("SPEECH_SYNTHESIS_END", function () {
 });
 
 // TRACK LISTENERS
+if (isProduction()) {
+  document.onkeydown = function (event) {
+    if (event.key == 'F12') return false;
+  };
+}
+
 document.getElementById('openquestionTrack').ontimeupdate = function () {
   // console.log(getPercentage('openquestionTrack') == 'preend');
   if (getPercentage('openquestionTrack') == 'preend') {
@@ -53,10 +59,10 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.add('d-none')
     document.getElementById("buttonsPartBox").classList.add('d-none')
     document.getElementById("YesOrNoBox").classList.remove('d-none')
-    if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
-      document.getElementById('btnVideoCenter').classList.add('d-none')
+    // if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
+    //   document.getElementById('btnVideoCenter').classList.add('d-none')
     videoEnd('tellmoreTrack')
-    document.getElementById('talkBtnBox').classList.add('d-none')
+    document.getElementById('talkBtnBox').classList.remove('d-none')
   }
 };
 
@@ -69,10 +75,10 @@ document.getElementById('tellmoreChicoTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.add('d-none')
     document.getElementById("buttonsPartBox").classList.add('d-none')
     document.getElementById("YesOrNoBox").classList.remove('d-none')
-    if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
-      document.getElementById('btnVideoCenter').classList.add('d-none')
+    // if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
+    //   document.getElementById('btnVideoCenter').classList.add('d-none')
     videoEnd('tellmoreChicoTrack')
-    document.getElementById('talkBtnBox').classList.add('d-none')
+    document.getElementById('talkBtnBox').classList.remove('d-none')
   }
 };
 
@@ -206,7 +212,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
       playVideo('tellmoreTrack')
     }, 1500))
 
-    videoEnd('tellmoreTrack')
+    videoEnd('galeriasTrack')
     mainBtnsDisabled(true)
 
   }
@@ -226,7 +232,7 @@ document.getElementById('galeriasChicoTrack').ontimeupdate = function () {
       playVideo('tellmoreChicoTrack')
     }, 1500))
 
-    videoEnd('tellmoreChicoTrack')
+    videoEnd('galeriasChicoTrack')
     mainBtnsDisabled(true)
   }
 };
@@ -342,16 +348,21 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       continuous: true, // Don't stop never because i have https connection
       interimResults: false,
       lang: 'es-ES',
-      onResult: function (text, isFinal) {
+      onResult: function (text) {
         // Show the Recognized text in the console
-        console.log("Recognized text: ", text, isFinal);
+        console.log("Recognized text: ", text);
+        let recognizedBox = document.getElementById('recognizedTxtCaption');
+        let recognizedTxt = document.getElementById('spanRecognizedTxtCaption');
+        recognizedTxt.textContent = capitalizarPrimeraLetra(text);
+        recognizedBox.classList.remove('d-none');
         finalRecognizedTxt = text
       },
       onStart: function () {
         console.log("Dictation started by the user");
       },
       onEnd: function () {
-        console.log("Dictation stopped by the user");
+        // console.log("Dictation stopped by the user");
+        recognizedTxtCaption.classList.add('d-none');
       }
     };
 

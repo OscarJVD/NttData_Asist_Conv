@@ -18,13 +18,13 @@ function startOneCommandArtyom() {
 
 function isProduction() {
   if(window.location.origin == 'https://my.local.host:50000'){
+    return false;
+  }else{
     setInterval(() => {
       console.clear();
     }, 5000);
-    return false;
+    return true;
   }
-
-  return true;
 }
 
 function startArtyom(language, mode, recognizeType = true) {

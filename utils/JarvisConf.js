@@ -3,8 +3,6 @@ let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag =
 
 if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     document.getElementById('reposoChicoTrack').style.display = 'none';
@@ -26,7 +24,8 @@ const commands = {
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
   galeriasysecciones: ['galerías y secciones'],
   opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
-  // dimeMas: ['Sí, me gustaría', 'No gracias']
+  siMeGustariaOirMas: ['Sí, me gustaría', 'Si'],
+  noMeGustariaOirMas: ['No gracias', 'No']
 }
 
 const arrsCommands = Object.values(commands)
@@ -114,6 +113,12 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       else
         playVideo('openquestionChicoTrack');
       break;
+    case 8:
+      document.getElementById('btnYes').click()
+      break;
+    case 9:
+      document.getElementById('btnNo').click()
+      break;
   }
 });
 
@@ -128,7 +133,6 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
         || recognized.toLowerCase().includes(cmd.toLowerCase())
         || cmd.toLowerCase().includes(recognized.toLowerCase())
       )
-      // && isFinal
     ) {
 
       const defCommand = identifySection(arrSec, cmdIndex)
@@ -158,15 +162,15 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
         case 7:
           ask = "Puntuación de 1 a 5"
           break;
+        case 8:
+          ask = "¿Quieres saber mas sobre la feria?"
+          break;
+        case 9:
+          ask = "¿Quieres saber mas sobre la feria?"
+          break;
       }
 
       await postData('storeAnswers', { ask, answer: recognized })
     }
   })
-
-  //  reconocimiento libre de 10 segundos
-  // if (freeSayFlag && isFinal) {
-  //   ask = '¿Cómo te imaginas la feria en 10 años?'
-  //   await postData('storeAnswers', { ask, answer: recognized })
-  // }
 });
