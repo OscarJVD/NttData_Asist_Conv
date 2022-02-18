@@ -13,7 +13,7 @@ const commands = {
   galeriasysecciones: ['galerías y secciones'],
   opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
   // dimeMas: ['Sí, me gustaría', 'No gracias']
-} 
+}
 
 const arrsCommands = Object.values(commands)
 const arrAttachedCommands = [].concat(...arrsCommands);
@@ -42,11 +42,14 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
     case 0:
       greeting();
       break;
-    case 3:
-      playVideo('reposoTrack');
+    case 1:
+      if (isGirlAvatarFlag)
+        playVideo('saludoTrack');
+      else
+        playVideo('saludoChicoTrack');
       Jarvis.say("Estoy sin hacer nada");
       break;
-    case 4:
+    case 2:
       Jarvis.say("Modo frases lentas activado", {
         onStart() {
           Jarvis.dontObey();
@@ -58,7 +61,7 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       startArtyom('es-ES', 'slow');
       if (respuestaMode) respuestaMode = 'slow'
       break;
-    case 5:
+    case 3:
       Jarvis.say("Modo frases normales activado", {
         onStart() {
           Jarvis.dontObey();
@@ -70,7 +73,7 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       startArtyom('es-ES', 'normal');
       if (respuestaMode) respuestaMode = 'normal'
       break;
-    case 6:
+    case 4:
       Jarvis.say("Modo frases rápidas activado", {
         onStart() {
           Jarvis.dontObey();
@@ -82,14 +85,20 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       startArtyom('es-ES', 'quick');
       if (respuestaMode) respuestaMode = 'quick'
       break;
-    case 7:
+    case 5:
       Jarvis.shutUp();
       break;
-    case 8:
-      playVideo('galeriasTrack');
+    case 6:
+      if (isGirlAvatarFlag)
+        playVideo('galeriasTrack');
+      else
+        playVideo('galeriasChicoTrack');
       break;
-    case 9:
-      playVideo('openquestionTrack');
+    case 7:
+      if (isGirlAvatarFlag)
+        playVideo('openquestionTrack');
+      else
+        playVideo('openquestionChicoTrack');
       break;
   }
 });
@@ -114,26 +123,26 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
         case 0:
           ask = "Hola, encantada, mi nombre es eva la asistente virtual de la feria"
           break;
-        case 3:
+        case 1:
           ask = "Reposo"
           break;
-        case 4:
+        case 2:
           ask = "Activación frases lentas"
           break;
-        case 5:
+        case 3:
           ask = "Activación frases normales"
           break;
-        case 6:
+        case 4:
           ask = "Activación frases rápidas"
           break;
-        case 7:
+        case 5:
           ask = "silencio"
           break;
-        case 8:
+        case 6:
           ask = "¿Galerías y secciones, espacios y arquitectura, historia de arco o novedades 2022?"
           break;
-        case 9:
-          ask = "¿Qué esperas de la feria?"
+        case 7:
+          ask = "Puntuación de 1 a 5"
           break;
       }
 
@@ -142,7 +151,7 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
   })
 
   //  reconocimiento libre de 10 segundos
-  if(freeSayFlag && isFinal){
+  if (freeSayFlag && isFinal) {
     ask = '¿Cómo te imaginas la feria en 10 años?'
     await postData('storeAnswers', { ask, answer: recognized })
   }

@@ -59,11 +59,19 @@ document.getElementById('byeTrack').ontimeupdate = function () {
   if (getPercentage('byeTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('byeTrack'))
 
-    playVideo("reposoChicoTrack")
+    if (isGirlAvatarFlag)
+      playVideo('reposoChicoTrack');
+    else
+      playVideo('reposoTrack');
+
     document.getElementById('microphoneIcon').classList.remove('d-none')
     document.getElementById('timerFreeSay').classList.add('d-none')
     videoEnd('byeTrack')
-    isGirlAvatarFlag = false;
+    isGirlAvatarFlag = !isGirlAvatarFlag;
+    document.getElementById("YesOrNoBox").classList.add('d-none')
+    document.getElementById("buttonsPartOne").classList.remove('d-none')
+    document.getElementById("buttonsPartBox").classList.remove('d-none')
+    document.getElementById('buttonsBox').classList.remove('d-none');
     // setTimeout(() => {
     //   alert("¡Pronto!")
     // }, 2000);
@@ -81,7 +89,10 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     document.getElementById('btnGallery').classList.remove('blueHover')
 
     timeouts.push(setTimeout(() => {
-      playVideo('tellmoreTrack')
+      if (isGirlAvatarFlag)
+        playVideo('tellmoreTrack')
+      else
+        playVideo('tellmoreChicoTrack')
     }, 1500))
 
     videoEnd('tellmoreTrack')
@@ -180,7 +191,10 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 
 document.getElementById('btnNo').addEventListener('click', function () {
   // Reinicializar Jarvis sin comandos
-  playVideo("openquestionTrack")
+  if (isGirlAvatarFlag)
+    playVideo('openquestionTrack');
+  else
+    playVideo('openquestionChicoTrack');
 })
 
 document.getElementById('btnActiveRecognizer').addEventListener('click', function () {
@@ -202,7 +216,8 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       onStart: function () {
         console.log("Dictation started by the user");
       },
-      onEnd: function () {
+      onEnd: function (text) {
+        console.log("final Recognized text: ", text);
         console.log("Dictation stopped by the user");
       }
     };
@@ -227,12 +242,15 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false
-        playVideo("byeTrack")
+        if (isGirlAvatarFlag)
+          playVideo('byeTrack')
+        else
+          playVideo('byeChicoTrack')
         UserDictation.stop();
-        // startArtyom("es-ES", 'quick', false);
+        startArtyom("es-ES", 'quick', false);
+        Jarvis.ArtyomWebkitSpeechRecognition.stop()
         // let commands = Jarvis.getAvailableCommands();
         // console.log(commands); // Ouputs : []
-        // Jarvis.ArtyomWebkitSpeechRecognition.stop()
 
         // document.getElementById('btnActiveRecognizer').disabled = false
       }
@@ -241,3 +259,12 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     timeouts.push(setTimeout(countdown, 1000))
   }
 });
+
+document.getElementById('btnGallery').addEventListener('click', function () {
+  document.getElementById('btnGallery').classList.add('blueHover');
+
+  if (isGirlAvatarFlag)
+    playVideo('galeriasTrack')
+  else
+    playVideo('galeriasChicoTrack')
+})

@@ -106,9 +106,9 @@ async function playVideo(videoId) {
   //   // video.muted= false;
   //   // await video.play();
   //   setTimeout(function () {
-      video.play();
-    // }, 0);
-    // video.play();
+  video.play();
+  // }, 0);
+  // video.play();
   // }
 }
 
@@ -153,7 +153,10 @@ function identifySection(arrSecti, commandIndex) {
 
 function greeting() {
 
-  playVideo('saludoTrack');
+  if (isGirlAvatarFlag)
+    playVideo('saludoTrack');
+  else
+    playVideo('saludoChicoTrack');
 
   document.getElementById("buttonsPartOne").classList.remove('d-none')
   document.getElementById("buttonsPartBox").classList.remove('d-none')
@@ -277,7 +280,7 @@ function toggleFullScreen(elem) {
     } else if (elem.msRequestFullscreen) {
       elem.msRequestFullscreen();
     }
-  } 
+  }
   // else {
   //   if (document.cancelFullScreen) {
   //     document.cancelFullScreen();
