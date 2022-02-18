@@ -48,6 +48,38 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
 };
 
 document.getElementById('saludoTrack').ontimeupdate = function () {
+
+  let video = null
+  if (isGirlAvatarFlag) {
+    video = document.getElementById('saludoTrack')
+  } else {
+    video = document.getElementById('saludoChicoTrack')
+  }
+
+  console.log(video.currentTime, 'video.currentTime');
+
+  if (!video.paused) {
+    if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
+    if (video.currentTime.toString().split('.')[0] == '17') {
+      document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '19') {
+      document.getElementById('btnPlaces').classList.remove('blueHover')
+      document.getElementById('btnHistory').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '21') {
+      document.getElementById('btnHistory').classList.remove('blueHover')
+      document.getElementById('btnNew').classList.add('blueHover')
+
+      timeouts.push(
+        setTimeout(() => {
+          document.getElementById('btnNew').classList.remove('blueHover')
+        }, 1400)
+      )
+    }
+  }
+
   if (getPercentage('saludoTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('saludoTrack'))
     videoEnd('saludoTrack')
@@ -246,7 +278,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
           playVideo('byeTrack')
         else
           playVideo('byeChicoTrack')
-          
+
         UserDictation.stop();
         startArtyom("es-ES", 'quick', false);
 

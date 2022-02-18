@@ -90,11 +90,14 @@ async function playVideo(videoId) {
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
-  // if (!video.paused) {
-  //   video.pause()
-  //   video.currentTime = 0
-  //   video.load()
-  // }
+  if (!video.paused) {
+    pauseVideo(video)
+    video.currentTime = 0
+    video.load()
+  }else{
+    video.currentTime = 0
+    video.load()
+  }
 
   // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
   //   && video.readyState > video.HAVE_CURRENT_DATA;
@@ -104,9 +107,15 @@ async function playVideo(videoId) {
   //   // if (video.id != 'galeriasTrack')
   //   //   video.currentTime = 0
   //   // video.muted= false;
-  //   // await video.play();
+  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended 
+  && video.readyState > video.HAVE_CURRENT_DATA;
+  
+  if (!isPlaying) {
+  await video.play();
+  // video.play();
+}
   //   setTimeout(function () {
-  video.play();
+  // video.play();
   // }, 0);
   // video.play();
   // }
@@ -162,53 +171,53 @@ function greeting() {
   document.getElementById("buttonsPartBox").classList.remove('d-none')
   document.getElementById("YesOrNoBox").classList.add('d-none')
 
-  timeouts.push(
-    setTimeout(() => {
-      document.getElementById('btnGallery').classList.add('blueHover')
+  // timeouts.push(
+  //   setTimeout(() => {
+  //     document.getElementById('btnGallery').classList.add('blueHover')
 
-      timeouts.push(
-        setTimeout(() => {
-          document.getElementById('btnGallery').classList.remove('blueHover')
+  //     timeouts.push(
+  //       setTimeout(() => {
+  //         document.getElementById('btnGallery').classList.remove('blueHover')
 
-          timeouts.push(
-            setTimeout(() => {
-              document.getElementById('btnPlaces').classList.add('blueHover')
+  //         timeouts.push(
+  //           setTimeout(() => {
+  //             document.getElementById('btnPlaces').classList.add('blueHover')
 
-              timeouts.push(
-                setTimeout(() => {
-                  document.getElementById('btnPlaces').classList.remove('blueHover')
+  //             timeouts.push(
+  //               setTimeout(() => {
+  //                 document.getElementById('btnPlaces').classList.remove('blueHover')
 
-                  timeouts.push(
-                    setTimeout(() => {
-                      document.getElementById('btnHistory').classList.add('blueHover')
+  //                 timeouts.push(
+  //                   setTimeout(() => {
+  //                     document.getElementById('btnHistory').classList.add('blueHover')
 
-                      timeouts.push(
-                        setTimeout(() => {
-                          document.getElementById('btnHistory').classList.remove('blueHover')
+  //                     timeouts.push(
+  //                       setTimeout(() => {
+  //                         document.getElementById('btnHistory').classList.remove('blueHover')
 
-                          timeouts.push(
-                            setTimeout(() => {
-                              document.getElementById('btnNew').classList.add('blueHover')
+  //                         timeouts.push(
+  //                           setTimeout(() => {
+  //                             document.getElementById('btnNew').classList.add('blueHover')
 
-                              timeouts.push(
-                                setTimeout(() => {
-                                  document.getElementById('btnNew').classList.remove('blueHover')
-                                }, 1400)
-                              )
-                            }, 700)
-                          )
-                        }, 1400)
-                      )
-                    }, 1100)
-                  )
-                }, 1400)
-              )
-            }, 1500)
-          )
-        }, 1800)
-      )
-    }, 14650)
-  )
+  //                             timeouts.push(
+  //                               setTimeout(() => {
+  //                                 document.getElementById('btnNew').classList.remove('blueHover')
+  //                               }, 1400)
+  //                             )
+  //                           }, 700)
+  //                         )
+  //                       }, 1400)
+  //                     )
+  //                   }, 1100)
+  //                 )
+  //               }, 1400)
+  //             )
+  //           }, 1500)
+  //         )
+  //       }, 1800)
+  //     )
+  //   }, 14650)
+  // )
 }
 
 function clearTimeOuts(arrTimeouts) {
