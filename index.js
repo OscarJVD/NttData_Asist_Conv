@@ -118,6 +118,9 @@ expressApp.post('/storeAnswers', async (req, res) => {
     if (!answer || answer.toString().length <= 3)
       return res.status(400).json({ error: "La respuesta debe contener al menos una palabra de mas de 3 caracteres" });
 
+    if (!ask)
+      return res.status(400).json({ error: "La keyword debe ser configuarada en los demas conjuntos de datos" });
+
     answer = answer.trim()
     ask = ask.trim()
 

@@ -3,6 +3,8 @@ let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag =
 
 if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
+if (isProduction()) console.log = function () { }
+
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     document.getElementById('reposoChicoTrack').style.display = 'none';
@@ -16,16 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
 configVideos();
 
 const commands = {
-  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
+  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night', "hola", "buena mañana", "buenas noches", "buenas tardes", "buenos dias", "buenos días", "como estas", "como estás", "cómo estas", "cómo estás", "holi", "oli", "que tal", "qué tal", "saludo", "saludos"],
   modoReposo: ['reposo'],
   modoFrasesLentas: ['lento', 'cortas', 'lento'], // En pruebas(versión beta)
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ['galerías y secciones'],
+  galeriasysecciones: ["galerias y secciones", "exposicion", "colección", "colecciones", "colecion", "exposición", "galeri", "galeria", "galería", "galerias", "galerías", "obra", "obras", "seccion", "sección", "secciones"],
   opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
-  siMeGustariaOirMas: ['Sí, me gustaría'],
-  noMeGustariaOirMas: ['No gracias', 'No, en otro momento']
+  siMeGustariaOirMas: ["claro", "confirmar", "dale", "ies", "lles", "me gustaria", "me gustaría", "oc", "ocai", "ok", "okay", "okei", "okey", "oks", "oquei", "oquey", "por supuesto", "si", "sí", "sisi", "vale", "venga", "yes"],
+  noMeGustariaOirMas: ['No gracias', 'No, en otro momento', "no", "ahora no", "la verdad es que no", "mejor no", "mejor que no", "ni de broma", "ni de coña", "no es necesario", "no hace falta", "no me apetece", "no quiero", "paso", "que va", "qué va", "rechazar"],
+  espaciosyarquitectura: ["area", "área", "areas", "áreas", "arquitecto", "arquitectos", "arquitectura", "arquitecturas", "construccion", "construcción", "construcciones", "decoracion", "decoración", "edificacion", "edificación", "edificio", "edificios", "entorno", "espacio", "espacios", "lugar", "pabellon", "pabellón", "sala", "salas"],
+  historia: ["historia", "inauguracion", "inauguración", "origen"],
+  novedadesDosMilVeintiDos: ["Veinti dos", "Dos mil veinti dos", "22", "2022", "año", "edicion", "edición", "novedad", "novedades", "nueva", "nuevo"],
+  puntuacion: ["1", "2", "3", "4", "5", "cinco", "cuatro", "dos", "tres", "uno"]
 }
 
 const arrsCommands = Object.values(commands)
@@ -160,7 +166,7 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
           ask = "¿Galerías y secciones, espacios y arquitectura, historia de arco o novedades 2022?"
           break;
         case 7:
-          ask = "Puntuación de 1 a 5"
+          ask = "¿Que es lo que esperas de la feria en 10 años?"
           break;
         case 8:
           ask = "¿Quieres saber mas sobre la feria?"
