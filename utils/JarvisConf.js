@@ -3,6 +3,16 @@ let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag =
 
 if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+    document.getElementById('reposoChicoTrack').style.display = 'none';
+    document.getElementById('reposoTrack').style.display = 'inherit';
+  } else {
+    document.getElementById('reposoTrack').style.display = 'none';
+    document.getElementById('reposoChicoTrack').style.display = 'inherit';
+  }
+})
+
 configVideos();
 
 const commands = {
