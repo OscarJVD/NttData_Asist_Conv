@@ -13,7 +13,7 @@ const commands = {
   galeriasysecciones: ['galerías y secciones'],
   opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
   // dimeMas: ['Sí, me gustaría', 'No gracias']
-}
+} 
 
 const arrsCommands = Object.values(commands)
 const arrAttachedCommands = [].concat(...arrsCommands);

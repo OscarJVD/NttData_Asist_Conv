@@ -157,6 +157,9 @@
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
+    document.addEventListener('click', () => {
+      toggleFullScreen(document.body)
+    })
     // // Toast
     // let toast = new Toast({
     //   animation: true,

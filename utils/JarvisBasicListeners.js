@@ -21,7 +21,7 @@ Jarvis.when("SPEECH_SYNTHESIS_END", function () {
 document.getElementById('openquestionTrack').ontimeupdate = function () {
   // console.log(getPercentage('openquestionTrack') == 'preend');
   if (getPercentage('openquestionTrack') == 'preend') {
-    pauseRestartLoadVideo(document.getElementById('openquestionTrack'))
+    // pauseRestartLoadVideo(document.getElementById('openquestionTrack'))
     // Contenido
     document.getElementById('buttonsBox').classList.add('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '100%');
@@ -36,19 +36,20 @@ document.getElementById('tellmoreTrack').ontimeupdate = function () {
   if (getPercentage('tellmoreTrack') == 'preend') {
     // Contenido
 
-    pauseRestartLoadVideo(document.getElementById('tellmoreTrack'))
+    // pauseRestartLoadVideo(document.getElementById('tellmoreTrack'))
     document.getElementById("buttonsPartOne").classList.add('d-none')
     document.getElementById("buttonsPartBox").classList.add('d-none')
     document.getElementById("YesOrNoBox").classList.remove('d-none')
     if (document.getElementById('btnVideoCenter') && !document.getElementById('btnVideoCenter').classList.contains('d-none'))
       document.getElementById('btnVideoCenter').classList.add('d-none')
     videoEnd('tellmoreTrack')
+    document.getElementById('talkBtnBox').classList.add('d-none')
   }
 };
 
 document.getElementById('saludoTrack').ontimeupdate = function () {
   if (getPercentage('saludoTrack') == 'preend') {
-    pauseRestartLoadVideo(document.getElementById('saludoTrack'))
+    // pauseRestartLoadVideo(document.getElementById('saludoTrack'))
     videoEnd('saludoTrack')
   }
 };
@@ -56,7 +57,7 @@ document.getElementById('saludoTrack').ontimeupdate = function () {
 document.getElementById('byeTrack').ontimeupdate = function () {
   console.log(getPercentage('byeTrack'));
   if (getPercentage('byeTrack') == 'preend') {
-    pauseRestartLoadVideo(document.getElementById('byeTrack'))
+    // pauseRestartLoadVideo(document.getElementById('byeTrack'))
 
     playVideo("reposoChicoTrack")
     document.getElementById('microphoneIcon').classList.remove('d-none')
@@ -75,7 +76,7 @@ document.getElementById('galeriasTrack').ontimeupdate = function () {
     // Contenido
     console.log('DINOSAURIO');
 
-    pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
+    // pauseRestartLoadVideo(document.getElementById('galeriasTrack'))
 
     document.getElementById('btnGallery').classList.remove('blueHover')
 
@@ -129,6 +130,8 @@ document.querySelectorAll('button').forEach(button => {
 
 document.getElementById('btnReset').addEventListener('click', async () => {
 
+  return location.reload();
+
   let videoElements = getVideos();
 
   videoElements.forEach(video => {
@@ -137,17 +140,17 @@ document.getElementById('btnReset').addEventListener('click', async () => {
       // video.currentTime = 1000
       // video.pause()
       // if (!Jarvis.isRecognizing())
-      pauseVideo(video)
-      video.currentTime = 0
-      // video.addEventListener("canplay", function onCanPlay() {
-      //   video.removeEventListener("canplay", onCanPlay);
-      //   video.play();
-      // });
-      if (video.readyState !== 4)
-        video.load()
+      // pauseVideo(video)
+      // video.currentTime = 0
+      // // video.addEventListener("canplay", function onCanPlay() {
+      // //   video.removeEventListener("canplay", onCanPlay);
+      // //   video.play();
+      // // });
+      // if (video.readyState !== 4)
+      //   video.load()
 
-      videoEnd(video.id)
-      // video.muted = true
+      // videoEnd(video.id)
+      // // video.muted = true
       // video.style.display = 'none'
       // }
     }
@@ -185,12 +188,30 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('microphoneIcon').classList.add('d-none')
 
   let btnTalk = document.getElementById('btnActiveRecognizer')
-  startArtyom("es-ES", 'quick', false); // incializar sin comandos
+  startArtyom("es-ES", 'quick', false);
 
   if (btnTalk.getAttribute('data-freesay') == 'true') {
+    Jarvis.ArtyomWebkitSpeechRecognition.stop()
+    let dictationSettings = {
+      continuous: true, // Don't stop never because i have https connection
+      lang: 'es-ES',
+      onResult: function (text) {
+        // Show the Recognized text in the console
+        console.log("Recognized text: ", text);
+      },
+      onStart: function () {
+        console.log("Dictation started by the user");
+      },
+      onEnd: function () {
+        console.log("Dictation stopped by the user");
+      }
+    };
+
+    let UserDictation = Jarvis.newDictation(dictationSettings);
+    UserDictation.start();
+    // Jarvis.emptyCommands();
     // toast.info({ message: 'Tienes 10 segundos para contestar la pregunta', type: 'info' });
     // setTimeout(() => {
-    //   Jarvis.ArtyomWebkitSpeechRecognition.stop()
     // }, 300);
     // btnTalk.disabled = true
     document.getElementById('btnTalkLoader').classList.add('d-none')
@@ -203,10 +224,17 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       document.getElementById('timerFreeSay').textContent = timeLeft.toString();
       if (timeLeft > 0) timeouts.push(setTimeout(countdown, 1000))
       else if (timeLeft <= 0) {
-        playVideo("byeTrack")
         btnTalk.removeAttribute('data-freesay')
         delete btnTalk.dataset.freesay;
         freeSayFlag = false
+        playVideo("byeTrack")
+        UserDictation.stop();
+        // startArtyom("es-ES", 'quick', false);
+        // let commands = Jarvis.getAvailableCommands();
+        // console.log(commands); // Ouputs : []
+        // Jarvis.ArtyomWebkitSpeechRecognition.stop()
+
+        document.getElementById('btnActiveRecognizer').disabled = false
       }
     };
 

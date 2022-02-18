@@ -85,7 +85,6 @@ async function playVideo(videoId) {
       document.getElementById(video.id).style.display = 'none';
   })
 
-  document.getElementById('reposoTrack').pause()
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
@@ -95,20 +94,20 @@ async function playVideo(videoId) {
   //   video.load()
   // }
 
-  let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
-    && video.readyState > video.HAVE_CURRENT_DATA;
+  // let isPlaying = video.currentTime > 0 && !video.paused && !video.ended
+  //   && video.readyState > video.HAVE_CURRENT_DATA;
 
-  if (!isPlaying) {
-    // video.play();
-    // if (video.id != 'galeriasTrack')
-    //   video.currentTime = 0
-    // video.muted= false;
-    // await video.play();
-    setTimeout(function () {
+  // if (!isPlaying) {
+  //   // video.play();
+  //   // if (video.id != 'galeriasTrack')
+  //   //   video.currentTime = 0
+  //   // video.muted= false;
+  //   // await video.play();
+  //   setTimeout(function () {
       video.play();
-    }, 0);
+    // }, 0);
     // video.play();
-  }
+  // }
 }
 
 function pauseVideo(video) {
@@ -126,7 +125,7 @@ function pauseVideo(video) {
   };
 
   // Pause video function
-  if (!video.paused && isPlayingVid)
+  if (!video.paused && !isPlayingVid)
     video.pause();
 }
 
@@ -191,7 +190,7 @@ function greeting() {
                                   document.getElementById('btnNew').classList.remove('blueHover')
                                 }, 1400)
                               )
-                            }, 900)
+                            }, 700)
                           )
                         }, 1400)
                       )
@@ -262,4 +261,30 @@ function pauseRestartLoadVideo(video) {
     if (video.readyState !== 4)
       video.load()
   }
+}
+
+function toggleFullScreen(elem) {
+  // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+  if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+    if (elem.requestFullScreen) {
+      elem.requestFullScreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullScreen) {
+      elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    }
+  } 
+  // else {
+  //   if (document.cancelFullScreen) {
+  //     document.cancelFullScreen();
+  //   } else if (document.mozCancelFullScreen) {
+  //     document.mozCancelFullScreen();
+  //   } else if (document.webkitCancelFullScreen) {
+  //     document.webkitCancelFullScreen();
+  //   } else if (document.msExitFullscreen) {
+  //     document.msExitFullscreen();
+  //   }
+  // }
 }
