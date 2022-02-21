@@ -449,12 +449,12 @@ var Artyom = (function () {
 
             // OWN CODE 2
             // OWN CODE
-            let recognizedTxtCaption = document.getElementById('recognizedTxtCaption');
-            let spanRecognizedTxtCaption = document.getElementById('spanRecognizedTxtCaption');
+            recognizedTxtCaption = document.getElementById('recognizedTxtCaption');
+            spanRecognizedTxtCaption = document.getElementById('spanRecognizedTxtCaption');
             const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
 
             if (recognizedTxtCaption && spanRecognizedTxtCaption && arrForbidden.every(value => !opcion.includes(value))) {
-              let recognizedTxt = opcion.replace('Quick mode :', '').replace('>>', '');
+              recognizedTxt = opcion.replace('Quick mode :', '').replace('>>', '');
 
               // LocalStorage and BD Storing
               // END LocalStorage and BD Storing
@@ -625,7 +625,7 @@ var Artyom = (function () {
       document.getElementById('microphoneIcon').classList.remove('border-fw-black')
       document.getElementById('microphoneIcon').classList.add('border-fw-white')
 
-       if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
+      if (document.getElementById('btnActiveRecognizer').getAttribute('data-freesay') == 'true') {
         document.getElementById('microphoneIcon').classList.add('d-none')
       }
 

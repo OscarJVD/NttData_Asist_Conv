@@ -3,6 +3,8 @@ let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag =
 
 if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
 
+if (isProduction()) console.log = function () { }
+
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     document.getElementById('reposoChicoTrack').style.display = 'none';
@@ -16,15 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
 configVideos();
 
 const commands = {
-  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
+  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night', "hola", "buena mañana", "buenas noches", "buenas tardes", "buenos dias", "buenos días", "como estas", "como estás", "cómo estas", "cómo estás", "holi", "oli", "que tal", "qué tal", "saludo", "saludos"],
   modoReposo: ['reposo'],
   modoFrasesLentas: ['lento', 'cortas', 'lento'], // En pruebas(versión beta)
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ['galerías y secciones'],
-  opinionPuntuacion: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
-  // dimeMas: ['Sí, me gustaría', 'No gracias']
+  galeriasysecciones: ["galerias y secciones", "exposicion", "colección", "colecciones", "colecion", "exposición", "galeri", "galeria", "galería", "galerias", "galerías", "obra", "obras", "seccion", "sección", "secciones"], //7
+  siMeGustariaOirMas: ["claro", "confirmar", "dale", "ies", "lles", "me gustaria", "me gustaría", "oc", "ocai", "ok", "okay", "okei", "okey", "oks", "oquei", "oquey", "por supuesto", "si", "sí", "sisi", "vale", "venga", "yes"],
+  noMeGustariaOirMas: ['No gracias', 'No, en otro momento', "no", "ahora no", "la verdad es que no", "mejor no", "mejor que no", "ni de broma", "ni de coña", "no es necesario", "no hace falta", "no me apetece", "no quiero", "paso", "que va", "qué va", "rechazar"],
+  espaciosyarquitectura: ["area", "área", "areas", "áreas", "arquitecto", "arquitectos", "arquitectura", "arquitecturas", "construccion", "construcción", "construcciones", "decoracion", "decoración", "edificacion", "edificación", "edificio", "edificios", "entorno", "espacio", "espacios", "lugar", "pabellon", "pabellón", "sala", "salas"], // 11
+  historia: ["historia", "inauguracion", "inauguración", "origen"],
+  novedadesDosMilVeintiDos: ["Veinti dos", "Dos mil veinti dos", "22", "2022", "año", "edicion", "edición", "novedad", "novedades", "nueva", "nuevo"],
+  puntuacion: ["1", "2", "3", "4", "5", "cinco", "cuatro", "dos", "tres", "uno"]
 }
 
 const arrsCommands = Object.values(commands)
@@ -56,9 +62,9 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       break;
     case 1:
       if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-        playVideo('saludoTrack');
+        playVideo('reposoTrack');
       else
-        playVideo('saludoChicoTrack');
+        playVideo('reposoChicoTrack');
       Jarvis.say("Estoy sin hacer nada");
       break;
     case 2:
@@ -101,16 +107,109 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       Jarvis.shutUp();
       break;
     case 6:
-      if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-        playVideo('galeriasTrack');
-      else
-        playVideo('galeriasChicoTrack');
+      let randomGallery = getRandomArbitrary(1, 8)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+
+        if (random == 1) playVideo('galeriasMasunoSecTrack')
+        else if (random == 2) playVideo('galeriasNuncaFirstTrack')
+        else if (random == 3) playVideo('galeriasNuncaSecTrack')
+        else if (random == 4) playVideo('galeriasOpeningFirstTrack')
+        else if (random == 5) playVideo('galeriasOpeningSecTrack')
+        else if (random == 6) playVideo('galeriasProgramaFirstTrack')
+        else if (random == 7) playVideo('galeriasProgramaSecTrack')
+        else playVideo('galeriasArtistasTrack')
+      } else {
+
+        if (randomGallery == 1) playVideo('galeriasChicoMasunoSecTrack')
+        else if (randomGallery == 2) playVideo('galeriasChicoNuncaFirstTrack')
+        else if (randomGallery == 3) playVideo('galeriasChicoNuncaSecTrack')
+        else if (randomGallery == 4) playVideo('galeriasChicoOpeningFirstTrack')
+        else if (randomGallery == 5) playVideo('galeriasChicoOpeningSecTrack')
+        else if (randomGallery == 6) playVideo('galeriasChicoProgramaFirstTrack')
+        else if (randomGallery == 7) playVideo('galeriasChicoProgramaSecTrack')
+        else playVideo('galeriasChicoArtistasTrack')
+
+      }
       break;
     case 7:
+      // Reinicializar Jarvis sin comandos
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+        playVideo('listYesChicaTrack');
+      }
+      else {
+        playVideo('listYesChicoTrack');
+      }
+
+      document.getElementById("buttonsPartOne").classList.remove('d-none')
+      document.getElementById("buttonsPartBox").classList.remove('d-none')
+      document.getElementById("YesOrNoBox").classList.add('d-none')
+      // if (localStorage.getItem('isGirlAvatarFlag') == 'true')
+      //   playVideo('openQuestionTrack');
+      // else
+      //   playVideo('openQuestionChicoTrack');
+      break;
+    case 8:
       if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-        playVideo('openquestionTrack');
+        playVideo('scoreTrack');
       else
-        playVideo('openquestionChicoTrack');
+        playVideo('scoreChicoTrack');
+      // document.getElementById('btnYes').click()
+      break;
+    case 9:
+      let randomArch = getRandomArbitrary(1, 8)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+
+        if (randomArch == 1) playVideo('architectureFundacionFirstTrack')
+        else if (randomArch == 2) playVideo('architectureFundacionSecTrack')
+        else if (randomArch == 3) playVideo('architectureEspaciosFirstTrack')
+        else if (randomArch == 4) playVideo('architectureEspaciosSecTrack')
+        else if (randomArch == 5) playVideo('architectureProgramaTrack')
+        else if (randomArch == 6) playVideo('architectureSalaTrack')
+        else if (randomArch == 7) playVideo('architectureVipTrack')
+        else playVideo('architectureArcoTrack')
+      } else {
+
+        if (randomArch == 1) playVideo('architectureChicoFundacionFirstTrack')
+        else if (randomArch == 2) playVideo('architectureChicoFundacionSecTrack')
+        else if (randomArch == 3) playVideo('architectureChicoEspaciosFirstTrack')
+        else if (randomArch == 4) playVideo('architectureChicoEspaciosSecTrack')
+        else if (randomArch == 5) playVideo('architectureChicoProgramaTrack')
+        else if (randomArch == 6) playVideo('architectureChicoSalaTrack')
+        else if (randomArch == 7) playVideo('architectureChicoVipTrack')
+        else playVideo('architectureChicoArcoTrack')
+
+      }
+      break;
+    case 10:
+      let randomHistory = getRandomArbitrary(1, 3)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+        if (randomHistory == 1) playVideo('historyArcoFirstTrack')
+        else if (randomHistory == 2) playVideo('historyArcoSecTrack')
+        else playVideo('historyArcoThirdTrack')
+      } else {
+        if (randomHistory == 1) playVideo('historyChicoArcoFirstTrack')
+        else if (randomHistory == 2) playVideo('historyChicoArcoSecTrack')
+        else playVideo('historyChicoArcoThirdTrack')
+      }
+      break;
+    case 11:
+      let randomNews = getRandomArbitrary(1, 3)
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+        if (randomNews == 1) playVideo('newsFirstTrack')
+        else if (randomNews == 2) playVideo('newsSecTrack')
+        else playVideo('newsThirdTrack')
+      } else {
+        if (randomNews == 1) playVideo('newsChicoFirstTrack')
+        else if (randomNews == 2) playVideo('newsChicoSecTrack')
+        else playVideo('newsChicoThirdTrack')
+      }
+      break;
+    case 12:
+      // Puntuación
+      document.getElementById('scoreBox').classList.add('d-none');
+      document.getElementById('buttonsBox').classList.add('d-none');
+      if (localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack');
+      else playVideo('openQuestionChicoTrack');
       break;
   }
 });
@@ -126,7 +225,6 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
         || recognized.toLowerCase().includes(cmd.toLowerCase())
         || cmd.toLowerCase().includes(recognized.toLowerCase())
       )
-      // && isFinal
     ) {
 
       const defCommand = identifySection(arrSec, cmdIndex)
@@ -151,20 +249,29 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
           ask = "silencio"
           break;
         case 6:
-          ask = "¿Galerías y secciones, espacios y arquitectura, historia de arco o novedades 2022?"
+          ask = "Galerias y secciones"
           break;
         case 7:
-          ask = "Puntuación de 1 a 5"
+          ask = "Si quisieron saber mas de la feria"
+          break;
+        case 8:
+          ask = "No quisieron saber mas de la feria, puntuaron"
+          break;
+        case 9:
+          ask = "Espacios y arquitectura"
+          break;
+        case 10:
+          ask = "Historia de Arco"
+          break;
+        case 11:
+          ask = "Novedades 2022"
+          break;
+        case 12:
+          ask = "Respuesta libre por 10 segundos"
           break;
       }
 
       await postData('storeAnswers', { ask, answer: recognized })
     }
   })
-
-  //  reconocimiento libre de 10 segundos
-  // if (freeSayFlag && isFinal) {
-  //   ask = '¿Cómo te imaginas la feria en 10 años?'
-  //   await postData('storeAnswers', { ask, answer: recognized })
-  // }
 });

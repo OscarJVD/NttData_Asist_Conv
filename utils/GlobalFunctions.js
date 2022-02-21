@@ -1,5 +1,9 @@
 const BASE_URL = window.location.origin || "https://jarvisconactivador.herokuapp.com"
 
+function ele(element) {
+  return document.getElementById(element);
+}
+
 const postData = async (url, dataPost) => {
   const res = await fetch(`${BASE_URL}/${url}`, {
     method: 'POST',

@@ -16,6 +16,17 @@ function startOneCommandArtyom() {
   }, 250);
 }
 
+function isProduction() {
+  if (window.location.origin == 'https://my.local.host:50000') {
+    return false;
+  } else {
+    setInterval(() => {
+      console.clear();
+    }, 5000);
+    return true;
+  }
+}
+
 function startArtyom(language, mode, recognizeType = true) {
   if (!language)
     language = Jarvis.getLanguage();
@@ -25,7 +36,7 @@ function startArtyom(language, mode, recognizeType = true) {
       lang: language, // Start artyom with provided language
       continuous: recognizeType ? true : false, // Continuous mode enabled
       listen: true, // Start recognizing
-      debug: true, // Show everything in the console
+      debug: isProduction() ? false : true, // Show everything in the console
       speed: 5, // talk normally
       volume: 1,
       soundex: true, // Use the soundex algorithm to understand different words
@@ -62,11 +73,15 @@ function configVideos() {
   });
 }
 
-function mainBtnsDisabled(isDisabled) {
+function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
   // console.log('aaaaaaa')
   document.querySelectorAll('button').forEach(button => {
-    if (button.id != 'btnReset')
-      button.disabled = isDisabled
+    if (button.id != 'btnReset') {
+      if (alsoTalkBtn && button.id != 'btnActiveRecognizer')
+        button.disabled = isDisabled
+      else
+        button.disabled = isDisabled
+    }
   })
 }
 
@@ -133,10 +148,19 @@ function identifySection(arrSecti, commandIndex) {
 
 function greeting() {
 
-  if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-    playVideo('saludoTrack');
-  else
-    playVideo('saludoChicoTrack');
+  let random = getRandomArbitrary(1, 2)
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+    if (random == 1)
+      playVideo('saludoTrack');
+    else
+      playVideo('saludoSecTrack');
+  }
+  else {
+    if (random == 1)
+      playVideo('saludoChicoTrack');
+    else
+      playVideo('saludoChicoSecTrack');
+  }
 
   document.getElementById("buttonsPartOne").classList.remove('d-none')
   document.getElementById("buttonsPartBox").classList.remove('d-none')
@@ -183,9 +207,9 @@ function getPercentOfNumber(number, percent) {
 
 function videoEnd(videoId) {
   document.getElementById('talkBtnBox').classList.remove('d-none')
-  mainBtnsDisabled(false)
   document.getElementById(videoId).style.display = 'none';
 
+  mainBtnsDisabled(false)
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     document.getElementById('reposoTrack').style.display = 'inherit';
     document.getElementById('reposoTrack').play();
@@ -193,6 +217,11 @@ function videoEnd(videoId) {
     document.getElementById('reposoChicoTrack').style.display = 'inherit';
     document.getElementById('reposoChicoTrack').play();
   }
+
+  document.getElementById('btnGallery').classList.remove('blueHover')
+  document.getElementById('btnPlaces').classList.remove('blueHover')
+  document.getElementById('btnHistory').classList.remove('blueHover')
+  document.getElementById('btnNew').classList.remove('blueHover')
 }
 
 function pauseRestartLoadVideo(video) {
