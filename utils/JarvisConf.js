@@ -211,12 +211,6 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       if (localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack');
       else playVideo('openQuestionChicoTrack');
       break;
-    case 8:
-      document.getElementById('btnYes').click()
-      break;
-    case 9:
-      document.getElementById('btnNo').click()
-      break;
   }
 });
 

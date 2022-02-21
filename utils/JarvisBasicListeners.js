@@ -1326,12 +1326,13 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
   document.getElementById('btnTalkLoader').classList.remove('d-none')
   document.getElementById('microphoneIcon').classList.add('d-none')
 
-  console.log('Reconociendo...', Jarvis.isRecognizing());
+  console.log('Reconociendo...', Jarvis.isRecognizing(), Jarvis.isObeying());
   if (Jarvis.isRecognizing())
     Jarvis.ArtyomWebkitSpeechRecognition.stop()
-  // else
-  // mainBtnsDisabled(true, true)
-
+  else {
+    Jarvis.obey();
+    Jarvis.ArtyomWebkitSpeechRecognition.start()
+  }
   let btnTalk = document.getElementById('btnActiveRecognizer')
 
   if (btnTalk.getAttribute('data-freesay') == 'true') {
@@ -1407,6 +1408,8 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     if (Jarvis.isRecognizing())
       Jarvis.ArtyomWebkitSpeechRecognition.stop()
     else {
+      Jarvis.obey();
+      Jarvis.ArtyomWebkitSpeechRecognition.start()
       startArtyom("es-ES", 'quick', false);
       // mainBtnsDisabled(true, true)
     }
