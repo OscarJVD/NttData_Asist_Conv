@@ -1331,7 +1331,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
     Jarvis.ArtyomWebkitSpeechRecognition.stop()
   else {
     Jarvis.obey();
-    Jarvis.ArtyomWebkitSpeechRecognition.start()
+    // Jarvis.ArtyomWebkitSpeechRecognition.start()
   }
   let btnTalk = document.getElementById('btnActiveRecognizer')
 
@@ -1409,7 +1409,7 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       Jarvis.ArtyomWebkitSpeechRecognition.stop()
     else {
       Jarvis.obey();
-      Jarvis.ArtyomWebkitSpeechRecognition.start()
+      // Jarvis.ArtyomWebkitSpeechRecognition.start()
       startArtyom("es-ES", 'quick', false);
       // mainBtnsDisabled(true, true)
     }
