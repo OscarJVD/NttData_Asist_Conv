@@ -71,8 +71,8 @@ function videoEnd(video) {
 
 async function mountVideo(videoId, videosArr = videoDinamicSrcArr) {
   // console.log(document.querySelector('video[data-id="baseTrack"]'))
-  let baseTrack = document.querySelector('video[data-id="baseTrack"]');
-  let videoObj = null;
+  // console.log(document.querySelector('video'))
+  let baseTrack = document.querySelector('video'), videoObj = null;
 
   videosArr.forEach(video => {
     if (videoId == video.id) videoObj = { src: video.src, id: video.id }
@@ -270,7 +270,7 @@ async function mountVideo(videoId, videosArr = videoDinamicSrcArr) {
       video.play();
     });
   }
-  console.log(document.querySelector('video'))
+  
 }
 
 function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
