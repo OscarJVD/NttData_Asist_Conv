@@ -1,7 +1,10 @@
 // INSTANCIA DE JARVIS
 let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
 
-if (localStorage.getItem('isGirlAvatarFlag') === null) localStorage.setItem('isGirlAvatarFlag', true)
+if (localStorage.getItem('isGirlAvatarFlag') === null) {
+  console.log("GIRL AVATAR")
+  localStorage.setItem('isGirlAvatarFlag', true)
+}
 
 // if (isProduction()) console.log = function () { }
 
@@ -217,26 +220,34 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
 Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
   console.log('TEXTO RECONOCIDO  ', recognized, `isFinal ${isFinal}`);
   if (recognized) {
-    // OWN CODE
     let recogBox = document.getElementById('recognizedTxtCaption');
     let recogTxt = document.getElementById('spanRecognizedTxtCaption');
+
+    // OWN CODE
     const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
 
     if (recogBox && recogTxt && arrForbidden.every(value => !recognized.includes(value))) {
-      let recognizedTxt = recognized.replace('Quick mode :', '').replace('>>', '');
-
-      // LocalStorage and BD Storing
-      // END LocalStorage and BD Storing
-
-      recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
-      recogBox.classList.remove('d-none');
-
-    }
-    
-    if (isFinal) {
-      recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+      // let recognizedTxt = recognized.replace('Quick mode :', '').replace('>>', '');
+      recogBox = document.getElementById('recognizedTxtCaption');
+      recogTxt = document.getElementById('spanRecognizedTxtCaption');
+      recogTxt.textContent = capitalizarPrimeraLetra(recognized);
       recogBox.classList.remove('d-none');
     }
+    // let recognizedBox = document.getElementById('recognizedTxtCaption');
+    // let recognizedTxt = document.getElementById('spanRecognizedTxtCaption');
+
+    //   // LocalStorage and BD Storing
+    //   // END LocalStorage and BD Storing
+
+    //   recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+    //   recogBox.classList.remove('d-none');
+
+
+    // if (isFinal) {
+    //   recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+    //   recogBox.classList.remove('d-none');
+    // }
+
 
     if (!recogBox.classList.contains("d-none")) {
       setTimeout(() => {

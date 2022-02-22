@@ -5,7 +5,7 @@ function startOneCommandArtyom() {
 
   setTimeout(function () { // Esperar 250ms para inicializar
     artyom.initialize({
-      lang: "en-GB", // Más lenguajes son soportados, lee la documentación
+      lang: "es-ES", // Más lenguajes son soportados, lee la documentación
       continuous: false, // Reconoce 1 solo comando y basta de escuchar
       listen: true, // Iniciar !
       debug: true, // Muestra un informe en la consola
@@ -39,7 +39,7 @@ function startArtyom(language, mode, recognizeType = true) {
       debug: isProduction() ? false : true, // Show everything in the console
       speed: 5, // talk normally
       volume: 1,
-      soundex: true, // Use the soundex algorithm to understand different words
+      soundex: false, // Use the soundex algorithm to understand different words
       mode: mode, // Opciones: quick, normal, slow
       // name: "jarvis"
       // obeyKeyword: "start again",

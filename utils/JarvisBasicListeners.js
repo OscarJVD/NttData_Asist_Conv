@@ -1125,16 +1125,15 @@ document.getElementById('byeFirstTrack').ontimeupdate = function () {
   if (getPercentage('byeFirstTrack') == 'preend') {
     // if (flagByeFirstTrack) {
     //   setTimeout(() => {
-        localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-    //   }, 550);
-    //   flagByeFirstTrack = false
-    // }
-
-    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+      //   }, 550);
+      //   flagByeFirstTrack = false
+      // }
+      
+      if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
     else
-      playVideo('reposoTrack');
-
+    playVideo('reposoTrack');
+    
     document.getElementById('microphoneIcon').classList.remove('d-none')
     document.getElementById('timerBoxFreeSay').classList.add('d-none')
     videoEnd('byeFirstTrack')
@@ -1144,6 +1143,8 @@ document.getElementById('byeFirstTrack').ontimeupdate = function () {
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
+
+    localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
   }
 };
 
@@ -1155,25 +1156,25 @@ document.getElementById('byeSecTrack').ontimeupdate = function () {
 
     // if (flagByeSecTrack) {
     //   setTimeout(() => {
-        localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-    //   }, 550);
-    //   flagByeSecTrack = false
-    // }
-
-    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+      //   }, 550);
+      //   flagByeSecTrack = false
+      // }
+      
+      if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
-    else
+      else
       playVideo('reposoTrack');
-
-    document.getElementById('microphoneIcon').classList.remove('d-none')
-    document.getElementById('timerBoxFreeSay').classList.add('d-none')
-    videoEnd('byeSecTrack')
+      
+      document.getElementById('microphoneIcon').classList.remove('d-none')
+      document.getElementById('timerBoxFreeSay').classList.add('d-none')
+      videoEnd('byeSecTrack')
     document.getElementById("YesOrNoBox").classList.add('d-none')
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
+    localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
   }
 };
 
@@ -1183,26 +1184,26 @@ document.getElementById('byeFirstChicoTrack').ontimeupdate = function () {
   if (getPercentage('byeFirstChicoTrack') == 'preend') {
 
     // if (flagFirstChicoTrack) {
-      // setTimeout(() => {
-        localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
+    // setTimeout(() => {
       // }, 550);
       // flagFirstChicoTrack = false
-    // }
-
-    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+      // }
+      
+      if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
-    else
+      else
       playVideo('reposoTrack');
 
-    document.getElementById('microphoneIcon').classList.remove('d-none')
-    document.getElementById('timerBoxFreeSay').classList.add('d-none')
-    videoEnd('byeFirstChicoTrack')
-    document.getElementById("YesOrNoBox").classList.add('d-none')
+      document.getElementById('microphoneIcon').classList.remove('d-none')
+      document.getElementById('timerBoxFreeSay').classList.add('d-none')
+      videoEnd('byeFirstChicoTrack')
+      document.getElementById("YesOrNoBox").classList.add('d-none')
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
+    localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
   }
 };
 
@@ -1212,16 +1213,15 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
   if (getPercentage('byeSecChicoTrack') == 'preend') {
 
     // if (flagSecChicoTrack) {
-      // setTimeout(() => {
-        localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-    //   }, 550);
-    //   flagSecChicoTrack = false
-    // }
-
-    if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+    // setTimeout(() => {
+      //   }, 550);
+      //   flagSecChicoTrack = false
+      // }
+      
+      if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
     else
-      playVideo('reposoTrack');
+    playVideo('reposoTrack');
 
     document.getElementById('microphoneIcon').classList.remove('d-none')
     document.getElementById('timerBoxFreeSay').classList.add('d-none')
@@ -1232,6 +1232,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
     document.getElementById('buttonsBox').classList.remove('d-none');
     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
+    localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
   }
 };
 // END DESPEDIDAS TRACKS
