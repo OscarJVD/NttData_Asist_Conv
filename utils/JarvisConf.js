@@ -1,6 +1,3 @@
-// INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
-
 if (localStorage.getItem('isGirlAvatarFlag') === null) {
   console.log("GIRL AVATAR")
   localStorage.setItem('isGirlAvatarFlag', true)
@@ -19,22 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 configVideos();
-
-const commands = {
-  saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night', "hola", "buena mañana", "buenas noches", "buenas tardes", "buenos dias", "buenos días", "como estas", "como estás", "cómo estas", "cómo estás", "holi", "oli", "que tal", "qué tal", "saludo", "saludos"],
-  modoReposo: ['reposo'],
-  modoFrasesLentas: ['lento', 'cortas', 'lento'], // En pruebas(versión beta)
-  modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
-  modoFrasesLargas: ['largo', 'largas', 'rapido'],
-  silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ["galerias y secciones", "exposicion", "colección", "colecciones", "colecion", "exposición", "galeria", "galería", "galerias", "galerías", "obra", "obras", "seccion", "sección", "secciones"], //7
-  siMeGustariaOirMas: ["claro", "confirmar", "dale", "ies", "lles", "me gustaria", "me gustaría", "oc", "ocai", "ok", "okay", "okei", "okey", "oks", "oquei", "oquey", "por supuesto", "si", "sí", "sisi", "vale", "venga", "yes"],
-  noMeGustariaOirMas: ['No gracias', 'No, en otro momento', "no", "ahora no", "la verdad es que no", "mejor no", "mejor que no", "ni de broma", "ni de coña", "no es necesario", "no hace falta", "no me apetece", "no quiero", "paso", "que va", "qué va", "rechazar"],
-  espaciosyarquitectura: ["area", "área", "areas", "áreas", "arquitecto", "arquitectos", "arquitectura", "arquitecturas", "construccion", "construcción", "construcciones", "decoracion", "decoración", "edificacion", "edificación", "edificio", "edificios", "entorno", "espacio", "espacios", "lugar", "pabellon", "pabellón", "sala", "salas"], // 11
-  historia: ["historia", "inauguracion", "inauguración", "origen"],
-  novedadesDosMilVeintiDos: ["Veinti dos", "Dos mil veinti dos", "22", "2022", "año", "edicion", "edición", "novedad", "novedades", "nueva", "nuevo"],
-  puntuacion: ["1", "2", "3", "4", "5", "cinco", "cuatro", "dos", "tres", "uno"]
-}
 
 const arrsCommands = Object.values(commands)
 const arrAttachedCommands = [].concat(...arrsCommands);

@@ -116,7 +116,7 @@ function gotStream(stream) {
 
   // Altura de onda
   SineWaveGenerator.prototype.ease = function (percent, amplitude) {
-    return amplitude * (Math.sin(percent * PI2 - HALFPI) + 1) * 3.4;
+    return amplitude * (Math.sin(percent * PI2 - HALFPI) + 1) * 3;
   }
 
 
