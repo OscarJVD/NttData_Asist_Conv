@@ -4,7 +4,7 @@ function ele(element) {
   return document.getElementById(element);
 }
 
-const postData = async (url, dataPost) => {
+async function postData(url, dataPost) {
   const res = await fetch(`${BASE_URL}/${url}`, {
     method: 'POST',
     headers: {
