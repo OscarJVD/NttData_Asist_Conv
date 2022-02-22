@@ -102,6 +102,12 @@ async function playVideo(videoId) {
       document.getElementById(video.id).style.display = 'none';
   })
 
+  if (videoId == 'reposoChicoTrack')
+    localStorage.setItem('isGirlAvatarFlag', false);
+
+  if (videoId == 'reposoTrack')
+    localStorage.setItem('isGirlAvatarFlag', true);
+
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
   await video.play();

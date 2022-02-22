@@ -27,7 +27,7 @@ const commands = {
   modoFrasesNormales: ['normal', 'normales', 'normal'], // En pruebas(versión beta)
   modoFrasesLargas: ['largo', 'largas', 'rapido'],
   silenciar: ['silencio', 'callate'], // En pruebas(versión beta)
-  galeriasysecciones: ["galerias y secciones", "exposicion", "colección", "colecciones", "colecion", "exposición", "galeri", "galeria", "galería", "galerias", "galerías", "obra", "obras", "seccion", "sección", "secciones"], //7
+  galeriasysecciones: ["galerias y secciones", "exposicion", "colección", "colecciones", "colecion", "exposición", "galeria", "galería", "galerias", "galerías", "obra", "obras", "seccion", "sección", "secciones"], //7
   siMeGustariaOirMas: ["claro", "confirmar", "dale", "ies", "lles", "me gustaria", "me gustaría", "oc", "ocai", "ok", "okay", "okei", "okey", "oks", "oquei", "oquey", "por supuesto", "si", "sí", "sisi", "vale", "venga", "yes"],
   noMeGustariaOirMas: ['No gracias', 'No, en otro momento', "no", "ahora no", "la verdad es que no", "mejor no", "mejor que no", "ni de broma", "ni de coña", "no es necesario", "no hace falta", "no me apetece", "no quiero", "paso", "que va", "qué va", "rechazar"],
   espaciosyarquitectura: ["area", "área", "areas", "áreas", "arquitecto", "arquitectos", "arquitectura", "arquitecturas", "construccion", "construcción", "construcciones", "decoracion", "decoración", "edificacion", "edificación", "edificio", "edificios", "entorno", "espacio", "espacios", "lugar", "pabellon", "pabellón", "sala", "salas"], // 11
