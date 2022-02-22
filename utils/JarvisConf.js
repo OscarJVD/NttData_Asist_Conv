@@ -299,7 +299,8 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
           break;
       }
 
-      await postData('storeAnswers', { ask, answer: recognized })
+      if (isFinal)
+        await postData('storeAnswers', { ask, answer: recognized })
     }
   })
 });
