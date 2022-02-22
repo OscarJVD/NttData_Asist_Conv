@@ -20,9 +20,9 @@ function isProduction() {
   if (window.location.origin == 'https://my.local.host:50000') {
     return false;
   } else {
-    setInterval(() => {
-      console.clear();
-    }, 5000);
+    // setInterval(() => {
+    //   console.clear();
+    // }, 5000);
     return true;
   }
 }
