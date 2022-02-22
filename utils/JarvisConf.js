@@ -232,6 +232,9 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
       recogTxt = document.getElementById('spanRecognizedTxtCaption');
       recogTxt.textContent = capitalizarPrimeraLetra(recognized);
       recogBox.classList.remove('d-none');
+
+      if (isFinal)
+        recogTxt.textContent = capitalizarPrimeraLetra(recognized);
     }
     // let recognizedBox = document.getElementById('recognizedTxtCaption');
     // let recognizedTxt = document.getElementById('spanRecognizedTxtCaption');

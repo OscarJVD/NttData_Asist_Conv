@@ -66,7 +66,6 @@ document.getElementById('scoreChicoTrack').ontimeupdate = function () {
 document.getElementById('listYesChicaTrack').ontimeupdate = function () {
 
   let video = document.getElementById('listYesChicaTrack')
-
   console.log(video.currentTime, 'video.currentTime');
 
   if (!video.paused) {
