@@ -73,6 +73,7 @@ document.getElementById('listYesChicaTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '7') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '9') {
@@ -107,6 +108,7 @@ document.getElementById('listYesChicoTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '7') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '9') {
@@ -177,6 +179,7 @@ document.getElementById('saludoTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -211,6 +214,7 @@ document.getElementById('saludoSecTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -242,6 +246,7 @@ document.getElementById('saludoChicoTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -276,6 +281,7 @@ document.getElementById('saludoChicoSecTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
