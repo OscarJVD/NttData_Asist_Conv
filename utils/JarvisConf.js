@@ -216,6 +216,34 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
 
 Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
   console.log('TEXTO RECONOCIDO  ', recognized, `isFinal ${isFinal}`);
+  if (recognized) {
+    // OWN CODE
+    let recogBox = document.getElementById('recognizedTxtCaption');
+    let recogTxt = document.getElementById('spanRecognizedTxtCaption');
+    const arrForbidden = ['ERROR', 'SPEECH_SYNTHESIS_START', 'SPEECH_SYNTHESIS_END', 'TEXT_RECOGNIZED', 'COMMAND_RECOGNITION_START', 'COMMAND_RECOGNITION_END', 'COMMAND_MATCHED', 'NOT_COMMAND_MATCHED', 'text chunk pro']
+
+    if (recogBox && recogTxt && arrForbidden.every(value => !recognized.includes(value))) {
+      let recognizedTxt = recognized.replace('Quick mode :', '').replace('>>', '');
+
+      // LocalStorage and BD Storing
+      // END LocalStorage and BD Storing
+
+      recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+      recogBox.classList.remove('d-none');
+
+      if (isFinal) {
+        recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+        recogBox.classList.remove('d-none');
+      }
+    }
+
+    if (!recogBox.classList.contains("d-none")) {
+      setTimeout(() => {
+        if (recogBox)
+          recogBox.classList.add('d-none');
+      }, 10000);
+    }
+  }
 
   let ask;
   arrAttachedCommands.forEach(async (cmd, cmdIndex) => {
