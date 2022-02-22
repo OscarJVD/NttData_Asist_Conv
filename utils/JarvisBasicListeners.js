@@ -69,27 +69,27 @@ document.getElementById('listYesChicaTrack').ontimeupdate = function () {
 
   console.log(video.currentTime, 'video.currentTime');
 
-  // if (!video.paused) {
-  //   if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
-  //   if (video.currentTime.toString().split('.')[0] == '17') {
-  //     document.getElementById('btnGallery').classList.remove('blueHover')
-  //     
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '19') {
-  //     document.getElementById('btnPlaces').classList.remove('blueHover')
-  //     document.getElementById('btnHistory').classList.add('blueHover')
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '21') {
-  //     document.getElementById('btnHistory').classList.remove('blueHover')
-  //     document.getElementById('btnNew').classList.add('blueHover')
+  if (!video.paused) {
+    if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
+    if (video.currentTime.toString().split('.')[0] == '7') {
+      document.getElementById('btnGallery').classList.remove('blueHover')
 
-  //     timeouts.push(
-  //       setTimeout(() => {
-  //         document.getElementById('btnNew').classList.remove('blueHover')
-  //       }, 1400)
-  //     )
-  //   }
-  // }
+    }
+    if (video.currentTime.toString().split('.')[0] == '9') {
+      document.getElementById('btnPlaces').classList.remove('blueHover')
+      document.getElementById('btnHistory').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '11') {
+      document.getElementById('btnHistory').classList.remove('blueHover')
+      document.getElementById('btnNew').classList.add('blueHover')
+
+      timeouts.push(
+        setTimeout(() => {
+          document.getElementById('btnNew').classList.remove('blueHover')
+        }, 1400)
+      )
+    }
+  }
 
   if (getPercentage('listYesChicaTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('listYesChicaTrack'))
@@ -103,27 +103,27 @@ document.getElementById('listYesChicoTrack').ontimeupdate = function () {
 
   console.log(video.currentTime, 'video.currentTime');
 
-  // if (!video.paused) {
-  //   if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
-  //   if (video.currentTime.toString().split('.')[0] == '17') {
-  //     document.getElementById('btnGallery').classList.remove('blueHover')
-  //     
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '19') {
-  //     document.getElementById('btnPlaces').classList.remove('blueHover')
-  //     document.getElementById('btnHistory').classList.add('blueHover')
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '21') {
-  //     document.getElementById('btnHistory').classList.remove('blueHover')
-  //     document.getElementById('btnNew').classList.add('blueHover')
+  if (!video.paused) {
+    if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
+    if (video.currentTime.toString().split('.')[0] == '7') {
+      document.getElementById('btnGallery').classList.remove('blueHover')
 
-  //     timeouts.push(
-  //       setTimeout(() => {
-  //         document.getElementById('btnNew').classList.remove('blueHover')
-  //       }, 1400)
-  //     )
-  //   }
-  // }
+    }
+    if (video.currentTime.toString().split('.')[0] == '9') {
+      document.getElementById('btnPlaces').classList.remove('blueHover')
+      document.getElementById('btnHistory').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '11') {
+      document.getElementById('btnHistory').classList.remove('blueHover')
+      document.getElementById('btnNew').classList.add('blueHover')
+
+      timeouts.push(
+        setTimeout(() => {
+          document.getElementById('btnNew').classList.remove('blueHover')
+        }, 1400)
+      )
+    }
+  }
 
   if (getPercentage('listYesChicoTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('listYesChicoTrack'))
