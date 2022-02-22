@@ -1119,16 +1119,16 @@ document.getElementById('newsChicoThirdTrack').ontimeupdate = function () {
 
 // DESPEDIDAS TRACKS
 document.getElementById('byeFirstTrack').ontimeupdate = function () {
-  let flagByeFirstTrack = true;
+  // let flagByeFirstTrack = true;
   console.log(getPercentage('byeFirstTrack'));
 
   if (getPercentage('byeFirstTrack') == 'preend') {
-    if (flagByeFirstTrack) {
-      setTimeout(() => {
+    // if (flagByeFirstTrack) {
+    //   setTimeout(() => {
         localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-      }, 550);
-      flagByeFirstTrack = false
-    }
+    //   }, 550);
+    //   flagByeFirstTrack = false
+    // }
 
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
@@ -1148,17 +1148,17 @@ document.getElementById('byeFirstTrack').ontimeupdate = function () {
 };
 
 document.getElementById('byeSecTrack').ontimeupdate = function () {
-  let flagByeSecTrack = true;
+  // let flagByeSecTrack = true;
   console.log(getPercentage('byeSecTrack'));
 
   if (getPercentage('byeSecTrack') == 'preend') {
 
-    if (flagByeSecTrack) {
-      setTimeout(() => {
+    // if (flagByeSecTrack) {
+    //   setTimeout(() => {
         localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-      }, 550);
-      flagByeSecTrack = false
-    }
+    //   }, 550);
+    //   flagByeSecTrack = false
+    // }
 
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
@@ -1177,17 +1177,17 @@ document.getElementById('byeSecTrack').ontimeupdate = function () {
   }
 };
 
-let flagFirstChicoTrack = true;
+// let flagFirstChicoTrack = true;
 document.getElementById('byeFirstChicoTrack').ontimeupdate = function () {
   console.log(getPercentage('byeFirstChicoTrack'));
   if (getPercentage('byeFirstChicoTrack') == 'preend') {
 
-    if (flagFirstChicoTrack) {
-      setTimeout(() => {
+    // if (flagFirstChicoTrack) {
+      // setTimeout(() => {
         localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-      }, 550);
-      flagFirstChicoTrack = false
-    }
+      // }, 550);
+      // flagFirstChicoTrack = false
+    // }
 
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
@@ -1206,17 +1206,17 @@ document.getElementById('byeFirstChicoTrack').ontimeupdate = function () {
   }
 };
 
-let flagSecChicoTrack = true;
+// let flagSecChicoTrack = true;
 document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
   console.log(getPercentage('byeSecChicoTrack'));
   if (getPercentage('byeSecChicoTrack') == 'preend') {
 
-    if (flagSecChicoTrack) {
-      setTimeout(() => {
+    // if (flagSecChicoTrack) {
+      // setTimeout(() => {
         localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? 'false' : 'true');
-      }, 550);
-      flagSecChicoTrack = false
-    }
+    //   }, 550);
+    //   flagSecChicoTrack = false
+    // }
 
     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
       playVideo('reposoChicoTrack');
@@ -1236,17 +1236,17 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 };
 // END DESPEDIDAS TRACKS
 
-document.getElementById('reposoTrack').ontimeupdate = function () {
-  flagByeFirstTrack = false;
-  flagByeSecTrack = false;
-  flagFirstChicoTrack = false;
-}
+// document.getElementById('reposoTrack').ontimeupdate = function () {
+//   flagByeFirstTrack = false;
+//   flagByeSecTrack = false;
+//   flagFirstChicoTrack = false;
+// }
 
-document.getElementById('reposoChicoTrack').ontimeupdate = function () {
-  flagByeFirstTrack = false;
-  flagByeSecTrack = false;
-  flagFirstChicoTrack = false;
-}
+// document.getElementById('reposoChicoTrack').ontimeupdate = function () {
+//   flagByeFirstTrack = false;
+//   flagByeSecTrack = false;
+//   flagFirstChicoTrack = false;
+// }
 
 document.querySelectorAll('video').forEach(video => {
   if (video.id != 'reposoTrack' || video.id != 'reposoChicoTrack') {
@@ -1411,6 +1411,9 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       Jarvis.obey();
       // Jarvis.ArtyomWebkitSpeechRecognition.start()
       startArtyom("es-ES", 'quick', false);
+
+      Jarvis.obey();
+
       // mainBtnsDisabled(true, true)
     }
   }
