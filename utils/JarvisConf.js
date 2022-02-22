@@ -231,10 +231,11 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
       recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
       recogBox.classList.remove('d-none');
 
-      if (isFinal) {
-        recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
-        recogBox.classList.remove('d-none');
-      }
+    }
+    
+    if (isFinal) {
+      recogTxt.textContent = capitalizarPrimeraLetra(recognizedTxt);
+      recogBox.classList.remove('d-none');
     }
 
     if (!recogBox.classList.contains("d-none")) {
