@@ -169,7 +169,7 @@
   <!-- REPOSO -->
   <video class="videoIA" style="display:none;" src="/media/Videos/VIDEOSCHICOARCO2022/11.IDLE/IDLE.mp4" autoplay muted loop preload="auto" width="100%" id="reposoChicoTrack">
     Tu navegador no soporta HTML5 video.
-  </video>
+  </video> -->
   <!-- END REPOSO -->
 
   <!-- SALUDO -->
@@ -347,19 +347,19 @@
         <div id="scoreBox" class="d-none row justify-content-center">
 
           <div class="col-md-12 d-flex text-center justify-content-center align-items-center h-100">
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '1' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnOne" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">1
+            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '1' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') mountVideo('openQuestionTrack'); else mountVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnOne" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">1
             </button>
 
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '2' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnTwo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">2
+            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '2' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') mountVideo('openQuestionTrack'); else mountVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnTwo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">2
             </button>
 
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '3' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnThree" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">3
+            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '3' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') mountVideo('openQuestionTrack'); else mountVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnThree" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">3
             </button>
 
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '4' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnFour" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">4
+            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '4' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') mountVideo('openQuestionTrack'); else mountVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnFour" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">4
             </button>
 
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '5' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack');" id="btnFive" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">5
+            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '5' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') mountVideo('openQuestionTrack'); else mountVideo('openQuestionChicoTrack');" id="btnFive" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">5
             </button>
 
           </div>
@@ -404,11 +404,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/GlobalFunctions.js"></script>
-    <script src="/JarvisFunctions.js"></script>
     <script src="/artyom.window.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/audioViewer.js"></script>
+    <script src="/JarvisVariables.js"></script>
+    <script src="/GlobalFunctions.js"></script>
+    <script src="/JarvisFunctions.js"></script>
     <script src="/JarvisConf.js"></script>
     <script src="/JarvisNativeListeners.js"></script>
     <script src="/JarvisBasicListeners.js"></script>
