@@ -66,30 +66,30 @@ document.getElementById('scoreChicoTrack').ontimeupdate = function () {
 document.getElementById('listYesChicaTrack').ontimeupdate = function () {
 
   let video = document.getElementById('listYesChicaTrack')
-
   console.log(video.currentTime, 'video.currentTime');
 
-  // if (!video.paused) {
-  //   if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
-  //   if (video.currentTime.toString().split('.')[0] == '17') {
-  //     document.getElementById('btnGallery').classList.remove('blueHover')
-  //     
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '19') {
-  //     document.getElementById('btnPlaces').classList.remove('blueHover')
-  //     document.getElementById('btnHistory').classList.add('blueHover')
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '21') {
-  //     document.getElementById('btnHistory').classList.remove('blueHover')
-  //     document.getElementById('btnNew').classList.add('blueHover')
+  if (!video.paused) {
+    if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
+    if (video.currentTime.toString().split('.')[0] == '7') {
+      document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
-  //     timeouts.push(
-  //       setTimeout(() => {
-  //         document.getElementById('btnNew').classList.remove('blueHover')
-  //       }, 1400)
-  //     )
-  //   }
-  // }
+    }
+    if (video.currentTime.toString().split('.')[0] == '9') {
+      document.getElementById('btnPlaces').classList.remove('blueHover')
+      document.getElementById('btnHistory').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '11') {
+      document.getElementById('btnHistory').classList.remove('blueHover')
+      document.getElementById('btnNew').classList.add('blueHover')
+
+      timeouts.push(
+        setTimeout(() => {
+          document.getElementById('btnNew').classList.remove('blueHover')
+        }, 1400)
+      )
+    }
+  }
 
   if (getPercentage('listYesChicaTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('listYesChicaTrack'))
@@ -103,27 +103,28 @@ document.getElementById('listYesChicoTrack').ontimeupdate = function () {
 
   console.log(video.currentTime, 'video.currentTime');
 
-  // if (!video.paused) {
-  //   if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
-  //   if (video.currentTime.toString().split('.')[0] == '17') {
-  //     document.getElementById('btnGallery').classList.remove('blueHover')
-  //     
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '19') {
-  //     document.getElementById('btnPlaces').classList.remove('blueHover')
-  //     document.getElementById('btnHistory').classList.add('blueHover')
-  //   }
-  //   if (video.currentTime.toString().split('.')[0] == '21') {
-  //     document.getElementById('btnHistory').classList.remove('blueHover')
-  //     document.getElementById('btnNew').classList.add('blueHover')
+  if (!video.paused) {
+    if (video.currentTime.toString().split('.')[0] == '4') document.getElementById('btnGallery').classList.add('blueHover')
+    if (video.currentTime.toString().split('.')[0] == '7') {
+      document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
-  //     timeouts.push(
-  //       setTimeout(() => {
-  //         document.getElementById('btnNew').classList.remove('blueHover')
-  //       }, 1400)
-  //     )
-  //   }
-  // }
+    }
+    if (video.currentTime.toString().split('.')[0] == '9') {
+      document.getElementById('btnPlaces').classList.remove('blueHover')
+      document.getElementById('btnHistory').classList.add('blueHover')
+    }
+    if (video.currentTime.toString().split('.')[0] == '11') {
+      document.getElementById('btnHistory').classList.remove('blueHover')
+      document.getElementById('btnNew').classList.add('blueHover')
+
+      timeouts.push(
+        setTimeout(() => {
+          document.getElementById('btnNew').classList.remove('blueHover')
+        }, 1400)
+      )
+    }
+  }
 
   if (getPercentage('listYesChicoTrack') == 'preend') {
     // pauseRestartLoadVideo(document.getElementById('listYesChicoTrack'))
@@ -177,6 +178,7 @@ document.getElementById('saludoTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -211,6 +213,7 @@ document.getElementById('saludoSecTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -242,6 +245,7 @@ document.getElementById('saludoChicoTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -276,6 +280,7 @@ document.getElementById('saludoChicoSecTrack').ontimeupdate = function () {
     if (video.currentTime.toString().split('.')[0] == '14') document.getElementById('btnGallery').classList.add('blueHover')
     if (video.currentTime.toString().split('.')[0] == '17') {
       document.getElementById('btnGallery').classList.remove('blueHover')
+      document.getElementById('btnPlaces').classList.add('blueHover')
 
     }
     if (video.currentTime.toString().split('.')[0] == '19') {
@@ -1280,13 +1285,13 @@ document.querySelectorAll('video').forEach(video => {
 
 document.querySelectorAll('button').forEach(button => {
   let btnRestart = document.getElementById('btnReset')
-  if (button.id != 'btnReset'
-    //  && button.id != 'btnActiveRecognizer'
-  ) {
+  // if (button.id != 'btnReset'
+  //   //  && button.id != 'btnActiveRecognizer'
+  // ) {
     button.addEventListener('click', () => {
       btnRestart.removeAttribute('disabled')
     })
-  }
+  // }
 })
 
 document.getElementById('btnReset').addEventListener('click', async () => {
@@ -1413,7 +1418,6 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
       // Jarvis.ArtyomWebkitSpeechRecognition.start()
       startArtyom("es-ES", 'quick', false);
 
-      Jarvis.obey();
 
       // mainBtnsDisabled(true, true)
     }
@@ -1480,14 +1484,12 @@ document.getElementById('btnPlaces').addEventListener('click', function () {
 
 document.getElementById('btnHistory').addEventListener('click', function () {
 
-  let random = getRandomArbitrary(1, 3)
+  let random = getRandomArbitrary(1, 2)
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
     if (random == 1) playVideo('historyArcoFirstTrack')
-    else if (random == 2) playVideo('historyArcoSecTrack')
     else playVideo('historyArcoThirdTrack')
   } else {
     if (random == 1) playVideo('historyChicoArcoFirstTrack')
-    else if (random == 2) playVideo('historyChicoArcoSecTrack')
     else playVideo('historyChicoArcoThirdTrack')
   }
 

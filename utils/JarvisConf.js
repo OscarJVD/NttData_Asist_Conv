@@ -113,13 +113,13 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       let randomGallery = getRandomArbitrary(1, 8)
       if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
 
-        if (random == 1) playVideo('galeriasMasunoSecTrack')
-        else if (random == 2) playVideo('galeriasNuncaFirstTrack')
-        else if (random == 3) playVideo('galeriasNuncaSecTrack')
-        else if (random == 4) playVideo('galeriasOpeningFirstTrack')
-        else if (random == 5) playVideo('galeriasOpeningSecTrack')
-        else if (random == 6) playVideo('galeriasProgramaFirstTrack')
-        else if (random == 7) playVideo('galeriasProgramaSecTrack')
+        if (randomGallery == 1) playVideo('galeriasMasunoSecTrack')
+        else if (randomGallery == 2) playVideo('galeriasNuncaFirstTrack')
+        else if (randomGallery == 3) playVideo('galeriasNuncaSecTrack')
+        else if (randomGallery == 4) playVideo('galeriasOpeningFirstTrack')
+        else if (randomGallery == 5) playVideo('galeriasOpeningSecTrack')
+        else if (randomGallery == 6) playVideo('galeriasProgramaFirstTrack')
+        else if (randomGallery == 7) playVideo('galeriasProgramaSecTrack')
         else playVideo('galeriasArtistasTrack')
       } else {
 
@@ -184,14 +184,12 @@ Jarvis.on(arrAttachedCommands).then(function (i) {
       }
       break;
     case 10:
-      let randomHistory = getRandomArbitrary(1, 3)
+      let randomHisotry = getRandomArbitrary(1, 2)
       if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-        if (randomHistory == 1) playVideo('historyArcoFirstTrack')
-        else if (randomHistory == 2) playVideo('historyArcoSecTrack')
+        if (randomHisotry == 1) playVideo('historyArcoFirstTrack')
         else playVideo('historyArcoThirdTrack')
       } else {
-        if (randomHistory == 1) playVideo('historyChicoArcoFirstTrack')
-        else if (randomHistory == 2) playVideo('historyChicoArcoSecTrack')
+        if (randomHisotry == 1) playVideo('historyChicoArcoFirstTrack')
         else playVideo('historyChicoArcoThirdTrack')
       }
       break;
@@ -232,6 +230,9 @@ Jarvis.redirectRecognizedTextOutput(async (recognized, isFinal) => {
       recogTxt = document.getElementById('spanRecognizedTxtCaption');
       recogTxt.textContent = capitalizarPrimeraLetra(recognized);
       recogBox.classList.remove('d-none');
+
+      if (isFinal)
+        recogTxt.textContent = capitalizarPrimeraLetra(recognized);
     }
     // let recognizedBox = document.getElementById('recognizedTxtCaption');
     // let recognizedTxt = document.getElementById('spanRecognizedTxtCaption');

@@ -110,7 +110,8 @@ async function playVideo(videoId) {
 
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
-  await video.play();
+  
+  video.play();
 }
 
 function pauseVideo(video) {
