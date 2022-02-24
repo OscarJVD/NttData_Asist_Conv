@@ -98,7 +98,6 @@ expressApp.set("views", path.resolve(__dirname, "views"));
 expressApp.use(express.static(path.join(__dirname, 'public')));
 expressApp.use(express.static(path.join(__dirname, 'utils')));
 
-
 expressApp.get('/', function (req, res) {
   res.render('index.html');
 });

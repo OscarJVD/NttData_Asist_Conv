@@ -325,16 +325,18 @@ async function playVideo(videoId) {
 
   let videoElements = document.querySelectorAll('.videoIA');
   videoElements.forEach(video => {
-    document.getElementById(video.id).pause()
-    document.getElementById(video.id).currentTime = 0;
-    document.getElementById(video.id).muted = true
-    document.getElementById(video.id).loop = false
+    // document.getElementById(video.id).pause()
+    // document.getElementById(video.id).currentTime = 0;
+    // document.getElementById(video.id).muted = true
+    // document.getElementById(video.id).loop = false
 
     if (video.id != videoId){
-      document.getElementById(video.id).style.display = 'none';
+      document.getElementById(video.id).pause()
+      document.getElementById(video.id).currentTime = 0;
       document.getElementById(video.id).muted = true
       // document.getElementById(video.id).autoplay = false
       document.getElementById(video.id).loop = false
+      document.getElementById(video.id).style.display = 'none';
     }
   })
 
