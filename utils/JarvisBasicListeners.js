@@ -5,6 +5,14 @@ if (isProduction()) {
   };
 }
 
+document.getElementById('reposoTrack').addEventListener('play', function(){
+  mainBtnsDisabled(false)
+})
+
+document.getElementById('reposoChicoTrack').addEventListener('play', function(){
+  mainBtnsDisabled(false)
+})
+
 // PREGUNTA ABIERTA FERIA EN 10 AÑOS 
 document.getElementById('openQuestionTrack').ontimeupdate = function () {
   // console.log(getPercentage('openQuestionTrack') == 'preend');
@@ -132,6 +140,7 @@ document.getElementById('listYesChicoTrack').ontimeupdate = function () {
   }
 };
 // end respuesta si
+
 
 // dime mas de la feria
 document.getElementById('anotherThemeTrack').ontimeupdate = function () {

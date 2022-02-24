@@ -56,8 +56,10 @@ function startArtyom(language, mode, recognizeType = true) {
 function videoEnd(video) {
   document.getElementById(video).muted = true
   // document.getElementById(video).pause()
-  // document.getElementById(video).autoplay = false
-  // document.getElementById(video).currentTime = 0
+  document.getElementById(video).autoplay = false
+  document.getElementById(video).currentTime = 0
+
+  clearTimeOuts(timeouts)
   // document.getElementById(video).load()
 
   mainBtnsDisabled(false)
@@ -311,7 +313,7 @@ function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
 // }
 
 async function playVideo(videoId) {
-  console.log('videoId', videoId);
+  console.warn('videoId', videoId);
 
   // Hide talk button
   if (videoId != 'reposoTrack' && videoId != 'reposoChicoTrack')
