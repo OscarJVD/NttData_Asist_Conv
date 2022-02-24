@@ -292,7 +292,7 @@ function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
 function videoEnd(video) {
 
   console.log('VIDEO TERMINO', video, document.getElementById(video))
-  document.getElementById(video).pause()
+  // document.getElementById(video).pause()
   document.getElementById(video).muted = true
   // document.getElementById(video).muted = true
   // document.getElementById(video).autoplay = false
