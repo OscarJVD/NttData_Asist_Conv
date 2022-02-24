@@ -54,6 +54,12 @@ function startArtyom(language, mode, recognizeType = true) {
 }
 
 function videoEnd(video) {
+  document.getElementById(video).muted = true
+  // document.getElementById(video).pause()
+  // document.getElementById(video).autoplay = false
+  // document.getElementById(video).currentTime = 0
+  // document.getElementById(video).load()
+
   mainBtnsDisabled(false)
   document.getElementById('talkBtnBox').classList.remove('d-none')
 
@@ -326,10 +332,12 @@ async function playVideo(videoId) {
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
-  // video.pause()
-  // video.currentTime = 0
+  video.muted = false
+  // video.muted = false
+  video.currentTime = 0
   // video.load()
   // video.play();
+  // video.autoplay = true
   await video.play();
 }
 
