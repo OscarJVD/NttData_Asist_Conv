@@ -5,15 +5,15 @@ if (localStorage.getItem('isGirlAvatarFlag') === null) {
 
 // if (isProduction()) console.log = function () { }
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-//     document.getElementById('reposoChicoTrack').style.display = 'none';
-//     document.getElementById('reposoTrack').style.display = 'inherit';
-//   } else {
-//     document.getElementById('reposoTrack').style.display = 'none';
-//     document.getElementById('reposoChicoTrack').style.display = 'inherit';
-//   }
-// })
+document.addEventListener('DOMContentLoaded', function () {
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
+    document.getElementById('reposoChicoTrack').style.display = 'none';
+    document.getElementById('reposoTrack').style.display = 'inherit';
+  } else {
+    document.getElementById('reposoTrack').style.display = 'none';
+    document.getElementById('reposoChicoTrack').style.display = 'inherit';
+  }
+})
 
 // playVideo('saludoTrack', videoDinamicSrcArr);
 // configVideos();

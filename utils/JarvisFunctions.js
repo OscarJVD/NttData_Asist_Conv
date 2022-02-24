@@ -351,6 +351,10 @@ async function playVideo(videoId) {
   video.muted = false
   // // video.muted = false
   video.currentTime = 0
+
+  if(video.id == 'reposoTrack' || video.id == 'reposoChicoTrack'){
+    video.loop = true
+  }
   // // video.load()
   // // video.play();
   // video.autoplay = true

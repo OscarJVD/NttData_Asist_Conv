@@ -2506,32 +2506,34 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 // //   flagFirstChicoTrack = false;
 // // }
 
-// document.querySelectorAll('video').forEach(video => {
-//   if (video.id != 'reposoTrack' || video.id != 'reposoChicoTrack') {
-//     video.addEventListener('play', function () {
-//       Jarvis.dontObey();
-//     });
+document.querySelectorAll('video').forEach(video => {
+  if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
+    video.addEventListener('play', function () {
+      Jarvis.dontObey();
+      mainBtnsDisabled(true)
+    });
 
-//     video.addEventListener('ended', function () {
-//       setTimeout(() => {
-//         Jarvis.obey();
-//       }, 500);
-//     });
+    video.addEventListener('ended', function () {
+      setTimeout(() => {
+        Jarvis.obey();
+      }, 500);
+      mainBtnsDisabled(false)
+    });
 
-//     video.addEventListener('pause', function () {
-//       setTimeout(() => {
-//         Jarvis.obey();
-//       }, 500);
-//     });
+    video.addEventListener('pause', function () {
+      setTimeout(() => {
+        Jarvis.obey();
+      }, 500);
+    });
 
-//     video.addEventListener('load', function () {
-//       setTimeout(() => {
-//         Jarvis.obey();
-//       }, 500);
-//     });
-//   }
+    video.addEventListener('load', function () {
+      setTimeout(() => {
+        Jarvis.obey();
+      }, 500);
+    });
+  }
 
-// });
+});
 // // END TRACK LISTENERS
 
 
