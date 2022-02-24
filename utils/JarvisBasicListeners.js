@@ -5,11 +5,11 @@ if (isProduction()) {
   };
 }
 
-document.getElementById('reposoTrack').addEventListener('play', function(){
+document.getElementById('reposoTrack').addEventListener('play', function () {
   mainBtnsDisabled(false)
 })
 
-document.getElementById('reposoChicoTrack').addEventListener('play', function(){
+document.getElementById('reposoChicoTrack').addEventListener('play', function () {
   mainBtnsDisabled(false)
 })
 
@@ -2507,8 +2507,14 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 // // }
 
 document.querySelectorAll('video').forEach(video => {
+  video.onerror = function () {
+    console.log("Error " + videoElement.error.code + "; details: " + videoElement.error.message);
+  }
+
   if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
     video.addEventListener('play', function () {
+      console.warn('VIDEO play', video.id, video)
+
       Jarvis.dontObey();
       mainBtnsDisabled(true)
     });
@@ -2521,12 +2527,15 @@ document.querySelectorAll('video').forEach(video => {
     });
 
     video.addEventListener('pause', function () {
+      console.warn('VIDEO PAUSADO', video.id, video)
       setTimeout(() => {
         Jarvis.obey();
       }, 500);
     });
 
     video.addEventListener('load', function () {
+      console.warn('VIDEO load', video.id, video)
+
       setTimeout(() => {
         Jarvis.obey();
       }, 500);
@@ -2542,9 +2551,9 @@ document.querySelectorAll('button').forEach(button => {
   // if (button.id != 'btnReset'
   //   //  && button.id != 'btnActiveRecognizer'
   // ) {
-    button.addEventListener('click', () => {
-      btnRestart.removeAttribute('disabled')
-    })
+  button.addEventListener('click', () => {
+    btnRestart.removeAttribute('disabled')
+  })
   // }
 })
 

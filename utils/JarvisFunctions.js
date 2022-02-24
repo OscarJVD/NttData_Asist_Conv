@@ -292,12 +292,13 @@ function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
 function videoEnd(video) {
 
   console.log('VIDEO TERMINO', video, document.getElementById(video))
-  // document.getElementById(video).pause()
+  document.getElementById(video).pause()
   document.getElementById(video).muted = true
   // document.getElementById(video).muted = true
   // document.getElementById(video).autoplay = false
   document.getElementById(video).loop = false
   document.getElementById(video).currentTime = 0
+  // document.getElementById(video).load()
 
   // clearTimeOuts(timeouts)
   // document.getElementById(video).load()
@@ -326,17 +327,15 @@ async function playVideo(videoId) {
   let videoElements = document.querySelectorAll('.videoIA');
   videoElements.forEach(video => {
     // document.getElementById(video.id).pause()
-    // document.getElementById(video.id).currentTime = 0;
-    // document.getElementById(video.id).muted = true
-    // document.getElementById(video.id).loop = false
+    document.getElementById(video.id).currentTime = 0;
+    document.getElementById(video.id).muted = true
+    document.getElementById(video.id).loop = false
 
-    if (video.id != videoId){
-      document.getElementById(video.id).pause()
-      document.getElementById(video.id).currentTime = 0;
+    if (video.id != videoId) {
+      document.getElementById(video.id).style.display = 'none';
       document.getElementById(video.id).muted = true
       // document.getElementById(video.id).autoplay = false
       document.getElementById(video.id).loop = false
-      document.getElementById(video.id).style.display = 'none';
     }
   })
 
@@ -354,14 +353,29 @@ async function playVideo(videoId) {
   // // video.muted = false
   video.currentTime = 0
 
-  if(video.id == 'reposoTrack' || video.id == 'reposoChicoTrack'){
+  if (video.id == 'reposoTrack' || video.id == 'reposoChicoTrack') {
     video.loop = true
   }
   // // video.load()
   // // video.play();
   // video.autoplay = true
   // video.loop = true
-  await video.play();
+  console.warn('ESTA LISTO PARA REPRODUCIR?', video.readyState)
+  if (video.readyState == 3 || video.readyState == 4)
+    await video.play();
+  else {
+    // video.load()
+    // await video.play();
+    let id = setInterval(async function () {
+      let flag = false;
+      if (video.readyState == 3 || video.readyState == 4) {
+        console.log('video', video)
+        await video.play();
+        flag = true
+      }
+      if (flag) clearInterval(id);
+    }, 100);
+  }
 }
 
 // function pauseVideo(video) {
