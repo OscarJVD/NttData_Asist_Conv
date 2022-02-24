@@ -111,7 +111,8 @@ expressApp.post('/storeAnswers', async (req, res) => {
   try {
     const database = await db()
 
-    console.log('req.body', req.body);
+    // console.log('req.body', req.body);
+    console.log('Guardado en Base de datos: ', req.body);
     let { ask, answer } = req.body
     console.log('ask, answer', ask, answer);
 
