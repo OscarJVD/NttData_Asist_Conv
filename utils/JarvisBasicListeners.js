@@ -916,24 +916,24 @@ document.getElementById('historyArcoFirstTrack').ontimeupdate = function () {
   }
 };
 
-document.getElementById('historyArcoSecTrack').ontimeupdate = function () {
-  // console.log(getPercentage('historyArcoSecTrack'));
-  if (getPercentage('historyArcoSecTrack') == 'preend') {
-    // Contenido
-    console.log('DINOSAURIO');
+// document.getElementById('historyArcoSecTrack').ontimeupdate = function () {
+//   // console.log(getPercentage('historyArcoSecTrack'));
+//   if (getPercentage('historyArcoSecTrack') == 'preend') {
+//     // Contenido
+//     console.log('DINOSAURIO');
 
-    // pauseRestartLoadVideo(document.getElementById('historyArcoSecTrack'))
+//     // pauseRestartLoadVideo(document.getElementById('historyArcoSecTrack'))
 
-    document.getElementById('btnPlaces').classList.remove('blueHover')
+//     document.getElementById('btnPlaces').classList.remove('blueHover')
 
-    timeouts.push(setTimeout(() => {
-      playVideo('anotherThemeTrack')
-    }, 1500))
+//     timeouts.push(setTimeout(() => {
+//       playVideo('anotherThemeTrack')
+//     }, 1500))
 
-    videoEnd('historyArcoSecTrack')
-    mainBtnsDisabled(true)
-  }
-};
+//     videoEnd('historyArcoSecTrack')
+//     mainBtnsDisabled(true)
+//   }
+// };
 
 document.getElementById('historyArcoThirdTrack').ontimeupdate = function () {
   // console.log(getPercentage('historyArcoThirdTrack'));
@@ -971,24 +971,24 @@ document.getElementById('historyChicoArcoFirstTrack').ontimeupdate = function ()
   }
 };
 
-document.getElementById('historyChicoArcoSecTrack').ontimeupdate = function () {
-  // console.log(getPercentage('historyChicoArcoSecTrack'));
-  if (getPercentage('historyChicoArcoSecTrack') == 'preend') {
-    // Contenido
-    console.log('DINOSAURIO');
+// document.getElementById('historyChicoArcoSecTrack').ontimeupdate = function () {
+//   // console.log(getPercentage('historyChicoArcoSecTrack'));
+//   if (getPercentage('historyChicoArcoSecTrack') == 'preend') {
+//     // Contenido
+//     console.log('DINOSAURIO');
 
-    // pauseRestartLoadVideo(document.getElementById('historyChicoArcoSecTrack'))
+//     // pauseRestartLoadVideo(document.getElementById('historyChicoArcoSecTrack'))
 
-    document.getElementById('btnPlaces').classList.remove('blueHover')
+//     document.getElementById('btnPlaces').classList.remove('blueHover')
 
-    timeouts.push(setTimeout(() => {
-      playVideo('anotherThemeChicoTrack')
-    }, 1500))
+//     timeouts.push(setTimeout(() => {
+//       playVideo('anotherThemeChicoTrack')
+//     }, 1500))
 
-    videoEnd('historyChicoArcoSecTrack')
-    mainBtnsDisabled(true)
-  }
-};
+//     videoEnd('historyChicoArcoSecTrack')
+//     mainBtnsDisabled(true)
+//   }
+// };
 
 document.getElementById('historyChicoArcoThirdTrack').ontimeupdate = function () {
   // console.log(getPercentage('historyChicoArcoThirdTrack'));
@@ -1555,7 +1555,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // Contenido
 //     console.log('DINOSAURIO')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasMasunoSecTrack')
@@ -1573,7 +1573,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasNuncaFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasNuncaFirstTrack')
@@ -1590,7 +1590,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasNuncaSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasNuncaSecTrack')
@@ -1608,7 +1608,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasOpeningFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasOpeningFirstTrack')
@@ -1626,7 +1626,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasOpeningSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasOpeningSecTrack')
@@ -1644,7 +1644,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasProgramaFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasProgramaFirstTrack')
@@ -1662,7 +1662,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasProgramaSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasProgramaSecTrack')
@@ -1680,7 +1680,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasArtistasTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasArtistasTrack')
@@ -1697,7 +1697,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // Contenido
 //     console.log('DINOSAURIO')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoMasunoSecTrack')
@@ -1715,7 +1715,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoNuncaFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoNuncaFirstTrack')
@@ -1732,7 +1732,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoNuncaSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoNuncaSecTrack')
@@ -1750,7 +1750,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoOpeningFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoOpeningFirstTrack')
@@ -1768,7 +1768,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoOpeningSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoOpeningSecTrack')
@@ -1786,7 +1786,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoProgramaFirstTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoProgramaFirstTrack')
@@ -1804,7 +1804,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoProgramaSecTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoProgramaSecTrack')
@@ -1822,7 +1822,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     // pauseRestartLoadVideo(document.getElementById('galeriasChicoArtistasTrack'))
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('galeriasChicoArtistasTrack')
@@ -1840,7 +1840,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureFundacionFirstTrack')
@@ -1860,7 +1860,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureFundacionSecTrack')
@@ -1879,7 +1879,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureEspaciosFirstTrack')
@@ -1898,7 +1898,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureEspaciosSecTrack')
@@ -1918,7 +1918,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureProgramaTrack')
@@ -1937,7 +1937,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureSalaTrack')
@@ -1957,7 +1957,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureVipTrack')
@@ -1977,7 +1977,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('architectureArcoTrack')
@@ -1995,7 +1995,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoFundacionFirstTrack')
@@ -2015,7 +2015,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoFundacionSecTrack')
@@ -2034,7 +2034,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoEspaciosFirstTrack')
@@ -2053,7 +2053,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoEspaciosSecTrack')
@@ -2073,7 +2073,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoProgramaTrack')
@@ -2092,7 +2092,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoSalaTrack')
@@ -2112,7 +2112,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoVipTrack')
@@ -2132,7 +2132,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('architectureChicoArcoTrack')
@@ -2150,7 +2150,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('historyArcoFirstTrack')
@@ -2170,7 +2170,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('historyArcoSecTrack')
@@ -2189,7 +2189,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('historyArcoThirdTrack')
@@ -2205,7 +2205,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('historyChicoArcoFirstTrack')
@@ -2225,7 +2225,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('historyChicoArcoSecTrack')
@@ -2244,7 +2244,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('historyChicoArcoThirdTrack')
@@ -2261,7 +2261,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('newsFirstTrack')
@@ -2281,7 +2281,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('newsSecTrack')
@@ -2300,7 +2300,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeTrack')
+//       playVideo('anotherThemeTrack')
 //     }, 1500))
 
 //     videoEnd('newsThirdTrack')
@@ -2316,7 +2316,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     console.log('DINOSAURIO');
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('newsChicoFirstTrack')
@@ -2336,7 +2336,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('newsChicoSecTrack')
@@ -2355,7 +2355,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById('btnPlaces').classList.remove('blueHover')
 
 //     timeouts.push(setTimeout(() => {
-//       mountVideo('anotherThemeChicoTrack')
+//       playVideo('anotherThemeChicoTrack')
 //     }, 1500))
 
 //     videoEnd('newsChicoThirdTrack')
@@ -2379,9 +2379,9 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 
 //     localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
 //     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
-//       mountVideo('reposoChicoTrack');
+//       playVideo('reposoChicoTrack');
 //     else
-//       mountVideo('reposoTrack');
+//       playVideo('reposoTrack');
 
 //     document.getElementById('microphoneIcon').classList.remove('d-none')
 //     document.getElementById('timerBoxFreeSay').classList.add('d-none')
@@ -2410,9 +2410,9 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
 
 //     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
-//       mountVideo('reposoChicoTrack');
+//       playVideo('reposoChicoTrack');
 //     else
-//       mountVideo('reposoTrack');
+//       playVideo('reposoTrack');
 
 //     document.getElementById('microphoneIcon').classList.remove('d-none')
 //     document.getElementById('timerBoxFreeSay').classList.add('d-none')
@@ -2439,9 +2439,9 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
 
 //     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
-//       mountVideo('reposoChicoTrack');
+//       playVideo('reposoChicoTrack');
 //     else
-//       mountVideo('reposoTrack');
+//       playVideo('reposoTrack');
 
 //     document.getElementById('microphoneIcon').classList.remove('d-none')
 //     document.getElementById('timerBoxFreeSay').classList.add('d-none')
@@ -2468,9 +2468,9 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     localStorage.setItem('isGirlAvatarFlag', localStorage.getItem('isGirlAvatarFlag') == 'true' ? false : true);
 
 //     if (localStorage.getItem('isGirlAvatarFlag') != 'true')
-//       mountVideo('reposoChicoTrack');
+//       playVideo('reposoChicoTrack');
 //     else
-//       mountVideo('reposoTrack');
+//       playVideo('reposoTrack');
 
 //     document.getElementById('microphoneIcon').classList.remove('d-none')
 //     document.getElementById('timerBoxFreeSay').classList.add('d-none')
@@ -2544,18 +2544,18 @@ document.getElementById('btnReset').addEventListener('click', async () => {
 document.getElementById('btnNo').addEventListener('click', function () {
 
   if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-    mountVideo('scoreTrack');
+    playVideo('scoreTrack');
   else
-    mountVideo('scoreChicoTrack');
+    playVideo('scoreChicoTrack');
 
 })
 
 document.getElementById('btnYes').addEventListener('click', function () {
 
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-    mountVideo('listYesChicaTrack');
+    playVideo('listYesChicaTrack');
   } else {
-    mountVideo('listYesChicoTrack');
+    playVideo('listYesChicoTrack');
   }
 
   document.getElementById("buttonsPartOne").classList.remove('d-none')
@@ -2624,12 +2624,12 @@ document.getElementById('btnActiveRecognizer').addEventListener('click', functio
 
         let random = getRandomArbitrary(1, 2)
         if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-          if (random == 1) mountVideo('byeFirstTrack')
-          else mountVideo('byeSecTrack')
+          if (random == 1) playVideo('byeFirstTrack')
+          else playVideo('byeSecTrack')
         }
         else {
-          if (random == 1) mountVideo('byeFirstChicoTrack')
-          else mountVideo('byeSecChicoTrack')
+          if (random == 1) playVideo('byeFirstChicoTrack')
+          else playVideo('byeSecChicoTrack')
         }
 
         UserDictation.stop();
@@ -2663,24 +2663,24 @@ document.getElementById('btnGallery').addEventListener('click', function () {
   let random = getRandomArbitrary(1, 8)
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
 
-    if (random == 1) mountVideo('galeriasMasunoSecTrack')
-    else if (random == 2) mountVideo('galeriasNuncaFirstTrack')
-    else if (random == 3) mountVideo('galeriasNuncaSecTrack')
-    else if (random == 4) mountVideo('galeriasOpeningFirstTrack')
-    else if (random == 5) mountVideo('galeriasOpeningSecTrack')
-    else if (random == 6) mountVideo('galeriasProgramaFirstTrack')
-    else if (random == 7) mountVideo('galeriasProgramaSecTrack')
-    else mountVideo('galeriasArtistasTrack')
+    if (random == 1) playVideo('galeriasMasunoSecTrack')
+    else if (random == 2) playVideo('galeriasNuncaFirstTrack')
+    else if (random == 3) playVideo('galeriasNuncaSecTrack')
+    else if (random == 4) playVideo('galeriasOpeningFirstTrack')
+    else if (random == 5) playVideo('galeriasOpeningSecTrack')
+    else if (random == 6) playVideo('galeriasProgramaFirstTrack')
+    else if (random == 7) playVideo('galeriasProgramaSecTrack')
+    else playVideo('galeriasArtistasTrack')
   } else {
 
-    if (random == 1) mountVideo('galeriasChicoMasunoSecTrack')
-    else if (random == 2) mountVideo('galeriasChicoNuncaFirstTrack')
-    else if (random == 3) mountVideo('galeriasChicoNuncaSecTrack')
-    else if (random == 4) mountVideo('galeriasChicoOpeningFirstTrack')
-    else if (random == 5) mountVideo('galeriasChicoOpeningSecTrack')
-    else if (random == 6) mountVideo('galeriasChicoProgramaFirstTrack')
-    else if (random == 7) mountVideo('galeriasChicoProgramaSecTrack')
-    else mountVideo('galeriasChicoArtistasTrack')
+    if (random == 1) playVideo('galeriasChicoMasunoSecTrack')
+    else if (random == 2) playVideo('galeriasChicoNuncaFirstTrack')
+    else if (random == 3) playVideo('galeriasChicoNuncaSecTrack')
+    else if (random == 4) playVideo('galeriasChicoOpeningFirstTrack')
+    else if (random == 5) playVideo('galeriasChicoOpeningSecTrack')
+    else if (random == 6) playVideo('galeriasChicoProgramaFirstTrack')
+    else if (random == 7) playVideo('galeriasChicoProgramaSecTrack')
+    else playVideo('galeriasChicoArtistasTrack')
 
   }
 
@@ -2692,24 +2692,24 @@ document.getElementById('btnPlaces').addEventListener('click', function () {
   let random = getRandomArbitrary(1, 8)
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
 
-    if (random == 1) mountVideo('architectureFundacionFirstTrack')
-    else if (random == 2) mountVideo('architectureFundacionSecTrack')
-    else if (random == 3) mountVideo('architectureEspaciosFirstTrack')
-    else if (random == 4) mountVideo('architectureEspaciosSecTrack')
-    else if (random == 5) mountVideo('architectureProgramaTrack')
-    else if (random == 6) mountVideo('architectureSalaTrack')
-    else if (random == 7) mountVideo('architectureVipTrack')
-    else mountVideo('architectureArcoTrack')
+    if (random == 1) playVideo('architectureFundacionFirstTrack')
+    else if (random == 2) playVideo('architectureFundacionSecTrack')
+    else if (random == 3) playVideo('architectureEspaciosFirstTrack')
+    else if (random == 4) playVideo('architectureEspaciosSecTrack')
+    else if (random == 5) playVideo('architectureProgramaTrack')
+    else if (random == 6) playVideo('architectureSalaTrack')
+    else if (random == 7) playVideo('architectureVipTrack')
+    else playVideo('architectureArcoTrack')
   } else {
 
-    if (random == 1) mountVideo('architectureChicoFundacionFirstTrack')
-    else if (random == 2) mountVideo('architectureChicoFundacionSecTrack')
-    else if (random == 3) mountVideo('architectureChicoEspaciosFirstTrack')
-    else if (random == 4) mountVideo('architectureChicoEspaciosSecTrack')
-    else if (random == 5) mountVideo('architectureChicoProgramaTrack')
-    else if (random == 6) mountVideo('architectureChicoSalaTrack')
-    else if (random == 7) mountVideo('architectureChicoVipTrack')
-    else mountVideo('architectureChicoArcoTrack')
+    if (random == 1) playVideo('architectureChicoFundacionFirstTrack')
+    else if (random == 2) playVideo('architectureChicoFundacionSecTrack')
+    else if (random == 3) playVideo('architectureChicoEspaciosFirstTrack')
+    else if (random == 4) playVideo('architectureChicoEspaciosSecTrack')
+    else if (random == 5) playVideo('architectureChicoProgramaTrack')
+    else if (random == 6) playVideo('architectureChicoSalaTrack')
+    else if (random == 7) playVideo('architectureChicoVipTrack')
+    else playVideo('architectureChicoArcoTrack')
 
   }
 
@@ -2734,13 +2734,13 @@ document.getElementById('btnNew').addEventListener('click', function () {
 
   let random = getRandomArbitrary(1, 3)
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-    if (random == 1) mountVideo('newsFirstTrack')
-    else if (random == 2) mountVideo('newsSecTrack')
-    else mountVideo('newsThirdTrack')
+    if (random == 1) playVideo('newsFirstTrack')
+    else if (random == 2) playVideo('newsSecTrack')
+    else playVideo('newsThirdTrack')
   } else {
-    if (random == 1) mountVideo('newsChicoFirstTrack')
-    else if (random == 2) mountVideo('newsChicoSecTrack')
-    else mountVideo('newsChicoThirdTrack')
+    if (random == 1) playVideo('newsChicoFirstTrack')
+    else if (random == 2) playVideo('newsChicoSecTrack')
+    else playVideo('newsChicoThirdTrack')
   }
 
   document.getElementById('btnNew').classList.add('blueHover');
