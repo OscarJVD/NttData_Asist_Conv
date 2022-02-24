@@ -349,7 +349,7 @@ async function playVideo(videoId) {
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
-  video.pause()
+  // video.pause()
   video.muted = false
   // // video.muted = false
   video.currentTime = 0
