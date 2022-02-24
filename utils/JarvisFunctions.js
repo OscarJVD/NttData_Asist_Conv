@@ -53,29 +53,6 @@ function startArtyom(language, mode, recognizeType = true) {
   setTimeout(_startArtyom, 250);
 }
 
-function videoEnd(video) {
-  document.getElementById(video).muted = true
-  // document.getElementById(video).pause()
-  document.getElementById(video).autoplay = false
-  document.getElementById(video).currentTime = 0
-
-  clearTimeOuts(timeouts)
-  // document.getElementById(video).load()
-
-  mainBtnsDisabled(false)
-  document.getElementById('talkBtnBox').classList.remove('d-none')
-
-  if (localStorage.getItem('isGirlAvatarFlag') == 'true')
-    playVideo('reposoTrack')
-  else
-    playVideo('reposoChicoTrack')
-
-  document.getElementById('btnGallery').classList.remove('blueHover')
-  document.getElementById('btnPlaces').classList.remove('blueHover')
-  document.getElementById('btnHistory').classList.remove('blueHover')
-  document.getElementById('btnNew').classList.remove('blueHover')
-}
-
 function getPercentage(videoId) {
   let myPlayer = document.getElementById(videoId);
 
@@ -312,6 +289,33 @@ function mainBtnsDisabled(isDisabled, alsoTalkBtn = false) {
 //   return document.querySelectorAll('.videoIA')
 // }
 
+function videoEnd(video) {
+
+  console.log('VIDEO TERMINO', video, document.getElementById(video))
+  document.getElementById(video).pause()
+  document.getElementById(video).muted = true
+  // document.getElementById(video).muted = true
+  // document.getElementById(video).autoplay = false
+  document.getElementById(video).loop = false
+  document.getElementById(video).currentTime = 0
+
+  // clearTimeOuts(timeouts)
+  // document.getElementById(video).load()
+
+  mainBtnsDisabled(false)
+  document.getElementById('talkBtnBox').classList.remove('d-none')
+
+  if (localStorage.getItem('isGirlAvatarFlag') == 'true')
+    playVideo('reposoTrack')
+  else
+    playVideo('reposoChicoTrack')
+
+  document.getElementById('btnGallery').classList.remove('blueHover')
+  document.getElementById('btnPlaces').classList.remove('blueHover')
+  document.getElementById('btnHistory').classList.remove('blueHover')
+  document.getElementById('btnNew').classList.remove('blueHover')
+}
+
 async function playVideo(videoId) {
   console.warn('videoId', videoId);
 
@@ -321,8 +325,17 @@ async function playVideo(videoId) {
 
   let videoElements = document.querySelectorAll('.videoIA');
   videoElements.forEach(video => {
-    if (video.id != videoId)
+    document.getElementById(video.id).pause()
+    document.getElementById(video.id).currentTime = 0;
+    document.getElementById(video.id).muted = true
+    document.getElementById(video.id).loop = false
+
+    if (video.id != videoId){
       document.getElementById(video.id).style.display = 'none';
+      document.getElementById(video.id).muted = true
+      // document.getElementById(video.id).autoplay = false
+      document.getElementById(video.id).loop = false
+    }
   })
 
   if (videoId == 'reposoChicoTrack')
@@ -334,12 +347,14 @@ async function playVideo(videoId) {
   let video = document.getElementById(videoId);
   video.style.display = 'inherit';
 
+  video.pause()
   video.muted = false
-  // video.muted = false
+  // // video.muted = false
   video.currentTime = 0
-  // video.load()
-  // video.play();
+  // // video.load()
+  // // video.play();
   // video.autoplay = true
+  // video.loop = true
   await video.play();
 }
 
