@@ -316,6 +316,19 @@ document.getElementById('saludoChicoSecTrack').ontimeupdate = function () {
 
 
 // GALERIAS CHICA TRACKS LISTENERS
+document.getElementById('galeriasMasunoFirstTrack').ontimeupdate = function () {
+  if (getPercentage('galeriasMasunoFirstTrack') == 'preend') {
+    // Contenido
+    console.log('DINOSAURIO')
+    timeouts.push(setTimeout(() => {
+      playVideo('anotherThemeTrack')
+    }, 1500))
+
+    videoEnd('galeriasMasunoFirstTrack')
+    mainBtnsDisabled(true)
+  }
+};
+
 document.getElementById('galeriasMasunoSecTrack').ontimeupdate = function () {
   if (getPercentage('galeriasMasunoSecTrack') == 'preend') {
     // Contenido

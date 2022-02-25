@@ -1,3 +1,7 @@
+// chrome.storage.local.set({'extension-status': 'on'}, function() {
+//   console.log('extension on status stored');
+// })
+
 if (localStorage.getItem('isGirlAvatarFlag') === null) {
   console.log("GIRL AVATAR")
   localStorage.setItem('isGirlAvatarFlag', true)
