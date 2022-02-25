@@ -1169,7 +1169,7 @@ document.getElementById('byeFirstTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
 
   }
@@ -1200,7 +1200,7 @@ document.getElementById('byeSecTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
   }
 };
@@ -1229,7 +1229,7 @@ document.getElementById('byeFirstChicoTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
   }
 };
@@ -1258,7 +1258,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
     document.getElementById("buttonsPartOne").classList.remove('d-none')
     document.getElementById("buttonsPartBox").classList.remove('d-none')
     document.getElementById('buttonsBox').classList.remove('d-none');
-    document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+    // document.querySelectorAll('video').forEach(video => video.style.height = '71%');
     document.getElementById('talkBtnBox').style.top = '50%'
   }
 };
@@ -2412,7 +2412,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById("buttonsPartOne").classList.remove('d-none')
 //     document.getElementById("buttonsPartBox").classList.remove('d-none')
 //     document.getElementById('buttonsBox').classList.remove('d-none');
-//     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+// document.querySelectorAll('video').forEach(video => video.style.height = '71%');
 //     document.getElementById('talkBtnBox').style.top = '50%'
 
 //   }
@@ -2443,7 +2443,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById("buttonsPartOne").classList.remove('d-none')
 //     document.getElementById("buttonsPartBox").classList.remove('d-none')
 //     document.getElementById('buttonsBox').classList.remove('d-none');
-//     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+// document.querySelectorAll('video').forEach(video => video.style.height = '71%');
 //     document.getElementById('talkBtnBox').style.top = '50%'
 //   }
 // };
@@ -2472,7 +2472,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById("buttonsPartOne").classList.remove('d-none')
 //     document.getElementById("buttonsPartBox").classList.remove('d-none')
 //     document.getElementById('buttonsBox').classList.remove('d-none');
-//     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+// document.querySelectorAll('video').forEach(video => video.style.height = '71%');
 //     document.getElementById('talkBtnBox').style.top = '50%'
 //   }
 // };
@@ -2501,7 +2501,7 @@ document.getElementById('byeSecChicoTrack').ontimeupdate = function () {
 //     document.getElementById("buttonsPartOne").classList.remove('d-none')
 //     document.getElementById("buttonsPartBox").classList.remove('d-none')
 //     document.getElementById('buttonsBox').classList.remove('d-none');
-//     document.querySelectorAll('video').forEach(video => video.style.height = '71%');
+// document.querySelectorAll('video').forEach(video => video.style.height = '71%');
 //     document.getElementById('talkBtnBox').style.top = '50%'
 //   }
 // };
@@ -2575,7 +2575,12 @@ document.querySelectorAll('button').forEach(button => {
 })
 
 document.getElementById('btnReset').addEventListener('click', async () => {
-  return location.reload();
+  clearTimeOuts(timeouts)
+  if (localStorage.getItem('isGirlAvatarFlag') != 'true')
+    playVideo('reposoChicoTrack');
+  else
+    playVideo('reposoTrack');
+  // return location.reload();
 })
 
 document.getElementById('btnNo').addEventListener('click', function () {
