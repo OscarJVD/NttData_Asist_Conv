@@ -2511,6 +2511,10 @@ document.querySelectorAll('video').forEach(video => {
     console.log("Error " + videoElement.error.code + "; details: " + videoElement.error.message);
   }
 
+  video.addEventListener('oncanplaythrough', function () {
+    canPlayVideo[video.id] = true;
+  });
+
   if (video.id != 'reposoTrack' && video.id != 'reposoChicoTrack') {
     video.addEventListener('play', function () {
       console.warn('VIDEO play', video.id, video)

@@ -1,5 +1,5 @@
 // INSTANCIA DE JARVIS
-let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false;
+let Jarvis = new Artyom(), respuestaMode = 'quick', timeouts = [], freeSayFlag = false, canPlayVideo = {};
 
 const commands = {
   saludos: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Buenas', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],

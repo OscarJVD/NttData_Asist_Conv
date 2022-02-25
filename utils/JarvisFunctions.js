@@ -361,21 +361,27 @@ async function playVideo(videoId) {
   // video.autoplay = true
   // video.loop = true
   console.warn('ESTA LISTO PARA REPRODUCIR?', video.readyState)
-  if (video.readyState == 3 || video.readyState == 4)
-    await video.play();
-  else {
-    // video.load()
-    // await video.play();
-    let id = setInterval(async function () {
-      let flag = false;
-      if (video.readyState == 3 || video.readyState == 4) {
-        console.log('video', video)
+  // if (video.readyState == 3 || video.readyState == 4)
+  //   await video.play();
+  // else {
+  // video.load()
+  // await video.play();
+  let id = setInterval(async function () {
+    let flag = false;
+    // if (video.readyState == 3 || video.readyState == 4) {
+    console.log('video', video)
+    canPlayVideo[video.id] = true;
+    if (canPlayVideo && Object.keys(canPlayVideo).length > 0) {
+      if (canPlayVideo.hasOwnProperty(video.id) && canPlayVideo[video.id] == true) {
         await video.play();
         flag = true
       }
-      if (flag) clearInterval(id);
-    }, 100);
-  }
+    }
+
+    // }
+    if (flag) clearInterval(id);
+  }, 100);
+  // }
 }
 
 // function pauseVideo(video) {
