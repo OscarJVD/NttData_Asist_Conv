@@ -177,38 +177,13 @@
     <div class="container-fluid h-100 align-items-center" style="display: grid;">
       <div class="row justify-content-center text-center">
 
-        <div id="timerBoxFreeSay" class="row justify-content-center text-center d-none align-items-center h-100 d-flex">
-          <span class="text-white fw-bolder" style="font-size: 10.5rem;" id="timerFreeSay"></span>
-        </div>
-
-        <div id="scoreBox" class="d-none row justify-content-center">
-
-          <div class="col-md-12 d-flex text-center justify-content-center align-items-center h-100">
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '1' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnOne" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">1
-            </button>
-
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '2' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnTwo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">2
-            </button>
-
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '3' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnThree" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">3
-            </button>
-
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '4' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack'); document.getElementById('btnActiveRecognizer').disabled = true;" id="btnFour" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">4
-            </button>
-
-            <button onclick="postData('storeAnswers', { ask: 'Puntuación', answer: '5' }); document.getElementById('scoreBox').classList.add('d-none'); document.getElementById('buttonsBox').classList.add('d-none'); if(localStorage.getItem('isGirlAvatarFlag') == 'true') playVideo('openQuestionTrack'); else playVideo('openQuestionChicoTrack');" id="btnFive" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 mx-3" width="20%" type="button">5
-            </button>
-
-          </div>
-        </div>
-
         <div id="YesOrNoBox" class="d-none row justify-content-center">
 
           <div class="col-md-12 d-flex text-center justify-content-center align-items-center h-100">
-            <button id="btnYes" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Sí, me gustaría
+            <button id="btnYes" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Sí, buena idea
             </button>
 
-            <button id="btnNo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">En otro momento
+            <button id="btnNo" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">De momento no
             </button>
           </div>
         </div>
@@ -216,11 +191,11 @@
         <div class="row mb-4" id="buttonsPartOne">
           <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
 
-            <button id="btnGallery" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Galerías y secciones <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729642/icons/kisspng-computer-icons-photo-gallery-5b21af37aa13d6.9788079415289341996967_oofqzm.png" width="50" class="p-0 m-0" />
+            <button id="btnGallery" class="btns-ia btn btn-lg text-light bg-dark-orange orangeHover btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Predicciones
             </button>
 
-            <button id="btnPlaces" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">
-              <span class="d-block" style="font-size: 1.57rem;">Espacios y arquitectura</span> <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729643/icons/transparent-handout-icon-print-icon-road-map-icon-5fd3c435816667.12508880160771384553_dcfg3t.png" width="50" class="p-0 m-0" />
+            <button id="btnPlaces" class="btns-ia btn btn-lg text-light bg-dark-orange orangeHover btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">
+              <span class="d-block" style="font-size: 1.57rem;">¿Sabías que...?</span>
             </button>
           </div>
         </div>
@@ -228,10 +203,10 @@
         <div class="row" id="buttonsPartBox">
           <div class="col-md-12 d-flex text-center justify-content-evenly align-items-center h-100">
 
-            <button id="btnHistory" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Historia de Arco <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-computer-icons-art-story-5ac43b2e903792.5535584715228096465907_qqktbi.png" width="50" class="p-0 m-0" />
+            <button id="btnHistory" class="btns-ia btn btn-lg text-light bg-dark-orange orangeHover btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Asistentes conversacionales en AWS
             </button>
 
-            <button id="btnNew" class="btns-ia btn btn-lg text-light bg-dark-blue btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">Novedades 2022 <img src="https://res.cloudinary.com/solumobil/image/upload/v1644729640/icons/kisspng-watercolor-painting-drawing-camera-photography-hand-painted-cameras-creative-5a9f7a8e929199.4775883515204010386004_1_qp7ohv.png" width="50" class="p-0 m-0" />
+            <button id="btnNew" class="btns-ia btn btn-lg text-light bg-dark-orange orangeHover btn-rounded btn-light-blue zIndexNueveMilCien h-100 w-50 mx-3" type="button">NTT Data AWS
             </button>
 
           </div>

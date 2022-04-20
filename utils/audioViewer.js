@@ -224,9 +224,9 @@ function gotStream(stream) {
 
     resizeEvent: function () {
       var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-      gradient.addColorStop(0, 'rgba(51, 107, 255, 0)');
-      gradient.addColorStop(0.5, 'rgba(51, 107, 255, 0.5)');
-      gradient.addColorStop(1, 'rgba(51, 107, 255, 0)');
+      gradient.addColorStop(0, 'rgb(255, 143, 0)');
+      gradient.addColorStop(0.5, 'rgb(255, 143, 0)');
+      gradient.addColorStop(1, 'rgb(255, 143, 0)');
       // gradient.addColorStop(1.5,'rgba(0, 0, 0, 0)');
 
       var index = -1;

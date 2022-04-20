@@ -13,6 +13,12 @@ body {
   opacity: 1 !important;
 }
 
+.orangeHover:hover{
+  background-color: #c67000 !important;
+  outline: 3px solid white;
+  opacity: 1 !important;
+}
+
 .videoIA{
   position: fixed;
    overflow: hidden;
@@ -28,6 +34,10 @@ body {
 
 .bg-dark-blue {
   background-color: #5694f8;
+}
+
+.bg-dark-orange{
+  background-color: #FF8F00;
 }
 
 .text-link {

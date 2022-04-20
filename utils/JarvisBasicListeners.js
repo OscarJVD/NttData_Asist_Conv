@@ -9,10 +9,6 @@ document.getElementById('reposoTrack').addEventListener('play', function () {
   mainBtnsDisabled(false)
 })
 
-document.getElementById('reposoChicoTrack').addEventListener('play', function () {
-  mainBtnsDisabled(false)
-})
-
 // PREGUNTA ABIERTA FERIA EN 10 AÑOS 
 document.getElementById('openQuestionTrack').ontimeupdate = function () {
   // console.log(getPercentage('openQuestionTrack') == 'preend');
