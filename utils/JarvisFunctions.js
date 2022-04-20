@@ -318,7 +318,9 @@ function videoEnd(video) {
 }
 
 async function playVideo(videoId) {
-  console.warn('videoId', videoId);
+  try{
+
+    console.warn('videoId', videoId);
 
   // Hide talk button
   if (videoId != 'reposoTrack' && videoId != 'reposoChicoTrack')
@@ -382,21 +384,24 @@ async function playVideo(videoId) {
     if (flag) clearInterval(id);
   }, 100);
   // }
+}catch(err){
+  console.log('ERROR EN PLAYVIDEO', err)
+}
 }
 
 // function pauseVideo(video) {
-//   // Initializing values
-//   let isPlayingVid = true;
+  //   // Initializing values
+  //   let isPlayingVid = true;
 
-//   // On video playing toggle values
+  //   // On video playing toggle values
 //   video.onplaying = function () {
 //     isPlayingVid = true;
 //   };
 
 //   // On video pause toggle values
 //   video.onpause = function () {
-//     isPlayingVid = false;
-//   };
+  //     isPlayingVid = false;
+  //   };
 
 //   // Pause video function
 //   if (!video.paused && !isPlayingVid)
@@ -405,7 +410,7 @@ async function playVideo(videoId) {
 
 function identifySection(arrSecti, commandIndex) {
   let lastIndex = 0,
-    defValue = 0;
+  defValue = 0;
 
   arrSecti.forEach((elem, index) => {
 

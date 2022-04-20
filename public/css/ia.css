@@ -8,7 +8,7 @@ body {
 }
 
 .blueHover{
-  background-color: #2274f8 !important;
+  background-color: #FF8F00 !important;
   outline: 3px solid white;
   opacity: 1 !important;
 }
@@ -17,7 +17,7 @@ body {
   position: fixed;
    overflow: hidden;
     padding: 0;
-   margin: 0; 
+   margin: 0;
    top: 0 !important;
 }
 
@@ -185,7 +185,9 @@ video {
   border-radius: 7px;
   /* box-shadow: 0 0 9px 0 #000; */
 }
-
+.bg-dark-orange{
+  background-color: #FECF6A  !important;
+}
 
 /* LOADERS */
 [class*=loader-] {

@@ -11,11 +11,11 @@ if (localStorage.getItem('isGirlAvatarFlag') === null) {
 
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('isGirlAvatarFlag') == 'true') {
-    document.getElementById('reposoChicoTrack').style.display = 'none';
+    // document.getElementById('reposoChicoTrack').style.display = 'none';
     document.getElementById('reposoTrack').style.display = 'inherit';
   } else {
     document.getElementById('reposoTrack').style.display = 'none';
-    document.getElementById('reposoChicoTrack').style.display = 'inherit';
+    // document.getElementById('reposoChicoTrack').style.display = 'inherit';
   }
 })
 
