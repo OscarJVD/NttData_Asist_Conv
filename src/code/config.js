@@ -13,6 +13,7 @@ function configApp(){
         commands,
         constants,
         videos:{
+            [constants.IDLE]:BASE_URL+"6_IDLE.mp4",
             [constants.SALUDO]: BASE_URL+"1_SALUDO_INICIAL.mp4",
             [constants.PREDICTIONS]: BASE_URL+"4_TEGUSTARIAHABLAROTRATEMATICA.mp4",
             [constants.DESPEDIDA]: BASE_URL+"5_DESPEDIDA.mp4",
