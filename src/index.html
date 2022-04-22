@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./code/lib/artyom.window.js"></script>
+    <script src="./code/lib/jquery3.2.1.min.js"></script>
 </head>
 <body>
+    <a href="#"></a>
+    <!-- All videos Here -->
+    <button id="start-app">Start app</button>
+    <div id="app">
+        <div id="videos"></div>
+        <div id="menu">
+            <div id="menu-general">
+                <button id="predictions">Predictions</button>
+                <button id="sabias-que">Sabias que?</button>
+                <button id="assistant">Assitant</button>
+                <button id="nttdata">NttData AWS</button>
+            </div>
+            <div id="menu-confirmacion">
+                <button id="confirmacion-si">Si</button>
+                <button id="confirmacion-no">No</button>
+            </div>
+        </div>
+    </div>
 
+    <div id="waves"></div>
     <script src="./code/config.js"></script>
-    <script src="./code/arytom.js"></script>
+    <script src="./code/flows/predictions.js"></script>
+    <script src="./code/flows/saludo.js"></script>
+    <script src="./code/flows/idle.js"></script>
+    <script src="./code/artyom.js"></script>
+    <script src="./code/audioViewer.js"></script>
     <script src="./code/index.js"></script>
 </body>
 </html>
