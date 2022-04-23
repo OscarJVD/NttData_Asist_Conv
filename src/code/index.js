@@ -10,9 +10,14 @@ const showIdle = (videosIn, config)=>{
     console.log("HIDEyES", videosIn[config.IDLE].video)
   };
   const hideIdle = (videosIn, config)=>{
-    videosIn[config.IDLE].video.style ="display:none";
-    videosIn[config.IDLE].video.pause();
-    console.log("HIDE", videosIn[config.IDLE].video)
+    try{
+
+        videosIn[config.IDLE].video.style ="display:none";
+        videosIn[config.IDLE].video.pause();
+        console.log("HIDE", videosIn[config.IDLE].video)
+    }catch(err){
+        console.log("Failed to pause, IDLE", err)
+    }
   };
 
 const loadVideo= (key, url, isIdle = false) => {
@@ -52,7 +57,13 @@ async function bootstrap(){
     Object.entries(videlosLoaded).forEach(([key,value])=> videos.appendChild(value.video))
     // init
     videlosLoaded.__proto__.pauseAll = function(){
-        Object.values(this).forEach(video => video.video.pause());
+        Object.values(this).forEach(video => {
+            try{
+                video.video.pause()
+            }catch(err){
+                console.log("Faile to pause of all", err)
+            }
+        });
     }
     videlosLoaded.__proto__.hideAll = function(){
         Object.values(this).forEach(video => video.video.style ="display:none");

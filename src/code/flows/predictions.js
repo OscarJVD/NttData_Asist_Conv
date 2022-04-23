@@ -1,4 +1,5 @@
 
+
 async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, predictionsYes, predictionsNo, menus, menuMain){
     const handleEndVIdeo = (artyom,commands,  buttonsYesOrNot, predictionsYes, predictionsNo, menusIn) => {
         artyom.emptyCommands();
@@ -11,6 +12,7 @@ async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, 
                 predictionsNo(artyom, commands.main, menusIn)
             }
         })
+
     }
     const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus, menuMain)
     videos.pauseAll()

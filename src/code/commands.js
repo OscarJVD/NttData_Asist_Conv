@@ -1,3 +1,4 @@
+window.alreadyLoaded = false;
 function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu){
     console.log(menus, "menus2");
     const resetMenubButtonsConfirmation = (menusIn) => {
@@ -28,24 +29,27 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             console.log(err)
         }
     };
-    mainMenu({
-        handleNttdata: ()=>{
-            console.log("nttdata")
-            NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
-        },
-        handlePredictions:()=>{
-            console.log("predictions")
-            Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
-        },
-        handleSabiasQue:()=>{
-            console.log("sabiasQue")
-            SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
-        },
-        handleAssistant:()=>{
-            console.log("assistant")
-            AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
-        }
-    })
+    if(!window.alreadyLoaded){
+        window.alreadyLoaded = true;
+        mainMenu({
+                handleNttdata: ()=>{
+                console.log("nttdata")
+                NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+            },
+            handlePredictions:()=>{
+                console.log("predictions")
+                Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+            },
+            handleSabiasQue:()=>{
+                console.log("sabiasQue")
+                SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+            },
+            handleAssistant:()=>{
+                console.log("assistant")
+                AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+            }
+        });
+    }
     const mainOut = [
         {
             indexes:commands.assitenteAws,
