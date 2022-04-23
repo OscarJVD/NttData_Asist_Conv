@@ -1,4 +1,4 @@
-function ArtyomInit(constants, commands){
+function ArtyomInit(constants, commandsConfig){
     const artyom =  new Artyom();
     return {
         getInstance(){
@@ -14,35 +14,10 @@ function ArtyomInit(constants, commands){
             });
             return artyom
         },
-        async loadCommands(videos){
-            console.log(commands)
-            artyom.addCommands([
-                {
-                    indexes:["Predicciones","predicciones","prediciones","predictions"],
-                    action:async function(e){
-                        try{
-                            artyom.dontObey();
-                            console.log("Obey unactivated")
-                            Predictions(videos, constants, artyom);
-                        }catch(err){
-                            console.log(err)
-                        }
-                    }
-                },
-                {
-                    indexes: commands.saludo,
-                    action:function(...e){
-                        try{
-
-                            artyom.dontObey();
-                            console.log("Obey unactivated")
-                            initFlow(videos, constants, artyom);
-                        }catch(err){
-                            console.log(err)
-                        }
-                    }
-                }
-            ]);
+        async loadCommands(videos, buttonsYesOrNot, menus){
+            console.log("menus", menus)
+            const commands = Commands(commandsConfig, videos, constants, artyom, buttonsYesOrNot, menus);
+            artyom.addCommands(commands.main);
         }
     }
 };

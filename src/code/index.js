@@ -29,7 +29,7 @@ const loadVideo= (key, url, isIdle = false) => {
     return [key, { video }]
 };
 async function bootstrap(){
-    const { constants, commands, videos: config } = configApp();
+    const { constants, commands: commandsConfig, videos: config } = configApp();
     //videos
     const videos = document.querySelector("#videos")
     //buttons
@@ -37,7 +37,11 @@ async function bootstrap(){
     const sabiasQue = document.querySelector("#sabias-que")
     const assistant = document.querySelector("#assistant")
     const nttdata = document.querySelector("#nttdata")
-    const artyomInit = ArtyomInit(constants,commands)
+    const menuGeneral = document.querySelector("#menu-general")
+    const menuConfirmation = document.querySelector("#menu-confirmacion")
+    const buttonConfirmationYes = document.querySelector("#confirmacion-si")
+    const buttonConfirmationNo = document.querySelector("#confirmacion-no")
+    const artyomInit = ArtyomInit(constants,commandsConfig)
     const artyom = await artyomInit.createInstance();
     // process
     let videlosLoaded = Object.entries(config).map(([key,value]) => {
@@ -78,9 +82,21 @@ async function bootstrap(){
     }
     videlosLoaded.addEventDontObey()
     videlosLoaded.addEventObey()
-    await artyomInit.loadCommands(videlosLoaded)
+    const menus = { menuGeneral, menuConfirmation };
+    //buttons yes - not
+    menuConfirmation.style.display = "none"
+    const buttonsYesOrNot = MenuYesOrNo(buttonConfirmationYes, buttonConfirmationNo, menuGeneral, menuConfirmation)
+    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus)
+
     Idle(videlosLoaded, constants, artyom)
     AudioViewer().then(()=>console.log("well")).catch(console.error)
+    setInterval(() => {
+        console.log("Id Obeying: ",
+            artyom.isObeying(),
+            artyom.isRecognizing(),
+            artyom.getAvailableCommands().map(({ indexes }) => indexes)
+        )
+    }, 2000);
 }
 
 
