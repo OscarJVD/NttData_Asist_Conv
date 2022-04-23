@@ -1,5 +1,5 @@
 
-async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, predictionsYes, predictionsNo, menus){
+async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, predictionsYes, predictionsNo, menus, menuMain){
     const handleEndVIdeo = (artyom,commands,  buttonsYesOrNot, predictionsYes, predictionsNo, menusIn) => {
         artyom.emptyCommands();
         artyom.addCommands(commands.yesOrNo);
@@ -12,7 +12,7 @@ async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, 
             }
         })
     }
-    const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus)
+    const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus, menuMain)
     videos.pauseAll()
     videos.hideAll()
     videos[config.PREDICTIONS].video.play()

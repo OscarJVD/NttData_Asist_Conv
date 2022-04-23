@@ -1,5 +1,5 @@
 
-async function SabiasQue(videos, config, artyom, commandsIn, buttonsYesOrNot, predictionsYes, predictionsNo, menus){
+async function SabiasQue(videos, config, artyom, commandsIn, buttonsYesOrNot, predictionsYes, predictionsNo, menus, menuMain){
     const handleEndVIdeo = (artyom,commands,  buttonsYesOrNot, predictionsYes, predictionsNo, menusIn) => {
         artyom.emptyCommands();
         artyom.addCommands(commands.yesOrNo);
@@ -12,7 +12,7 @@ async function SabiasQue(videos, config, artyom, commandsIn, buttonsYesOrNot, pr
             }
         })
     }
-    const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus)
+    const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus, menuMain)
     videos.pauseAll()
     videos.hideAll()
     videos[config.SABIAS_QUE].video.play()

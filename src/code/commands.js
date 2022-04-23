@@ -1,4 +1,4 @@
-function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus){
+function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu){
     console.log(menus, "menus2");
     const resetMenubButtonsConfirmation = (menusIn) => {
         console.log(menusIn)
@@ -28,13 +28,50 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus){
             console.log(err)
         }
     };
-
+    mainMenu({
+        handleNttdata: ()=>{
+            console.log("nttdata")
+            NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+        },
+        handlePredictions:()=>{
+            console.log("predictions")
+            Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+        },
+        handleSabiasQue:()=>{
+            console.log("sabiasQue")
+            SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+        },
+        handleAssistant:()=>{
+            console.log("assistant")
+            AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+        }
+    })
     const mainOut = [
+        {
+            indexes:commands.assitenteAws,
+            action:async function(e){
+                try{
+                    AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                }catch(err){
+                    console.log(err)
+                }
+            }
+        },
+        {
+            indexes:commands.nttData,
+            action:async function(e){
+                try{
+                    NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                }catch(err){
+                    console.log(err)
+                }
+            }
+        },
         {
             indexes:commands.prediction,
             action:async function(e){
                 try{
-                    Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus);
+                    Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
                 }catch(err){
                     console.log(err)
                 }
@@ -44,7 +81,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus){
             indexes:commands.sabiasQue,
             action:async function(e){
                 try{
-                    SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus);
+                    SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
                 }catch(err){
                     console.log(err)
                 }

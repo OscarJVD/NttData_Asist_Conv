@@ -6,14 +6,19 @@ function configApp(){
         SABIAS_QUE:"sabias-que",
         IDLE:"idle",
         DESPEDIDA:"despedida",
+        NTT_DATA:"ntt-data",
+        ASSISTANT:"assistant",
     }
     const commands = {
         saludo: ['Hola', 'hola', 'Holi', 'Buenos dias', 'Buenas tardes', 'Buenas noches', 'Buenas', 'Hello', 'Hi', 'Good Morning', 'Good afternoon', 'Good night'],
         sabiasQue: ['sabias que', 'sabias', '¿Sabías que?', "sabias que?"],
         prediction: ["Predicciones","predicciones","prediciones","predictions"],
+        assitenteAws: ["asistente","Aws"],
+        nttData: ["nttdata","ntt data"],
         confirmacion:["Sí.","si", "dale caña", "esta bien"],
         negacion:["No.", "no", "deja asi"]
     }
+
     return {
         commands,
         constants,

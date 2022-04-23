@@ -14,9 +14,9 @@ function ArtyomInit(constants, commandsConfig){
             });
             return artyom
         },
-        async loadCommands(videos, buttonsYesOrNot, menus){
-            console.log("menus", menus)
-            const commands = Commands(commandsConfig, videos, constants, artyom, buttonsYesOrNot, menus);
+        async loadCommands(videos, buttonsYesOrNot, menus, buttonsMenu){
+            console.log("menus", buttonsMenu)
+            const commands = Commands(commandsConfig, videos, constants, artyom, buttonsYesOrNot, menus, buttonsMenu);
             artyom.addCommands(commands.main);
         }
     }

@@ -37,6 +37,7 @@ async function bootstrap(){
     const sabiasQue = document.querySelector("#sabias-que")
     const assistant = document.querySelector("#assistant")
     const nttdata = document.querySelector("#nttdata")
+    //
     const menuGeneral = document.querySelector("#menu-general")
     const menuConfirmation = document.querySelector("#menu-confirmacion")
     const buttonConfirmationYes = document.querySelector("#confirmacion-si")
@@ -82,12 +83,19 @@ async function bootstrap(){
     }
     videlosLoaded.addEventDontObey()
     videlosLoaded.addEventObey()
+    const menusMain = {
+        predictions,
+        sabiasQue,
+        assistant,
+        nttdata,
+    }
     const menus = { menuGeneral, menuConfirmation };
     //buttons yes - not
     menuConfirmation.style.display = "none"
     const buttonsYesOrNot = MenuYesOrNo(buttonConfirmationYes, buttonConfirmationNo, menuGeneral, menuConfirmation)
-    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus)
-
+    const buttonsMenu = MenuMain(menusMain);
+    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus, buttonsMenu)
+    console.log(menusMain)
     Idle(videlosLoaded, constants, artyom)
     AudioViewer().then(()=>console.log("well")).catch(console.error)
     setInterval(() => {
