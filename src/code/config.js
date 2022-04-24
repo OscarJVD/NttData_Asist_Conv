@@ -1,5 +1,5 @@
 function configApp(){
-    const BASE_URL = 'http://localhost:9001/videos/';
+    const BASE_URL = './static/videos/';
     const constants = {
         PREDICTIONS:"predicciones",
         SALUDO:"saludo",
