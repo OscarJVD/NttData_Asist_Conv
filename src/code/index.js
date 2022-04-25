@@ -102,14 +102,22 @@ async function bootstrap(){
     }
     videlosLoaded.__proto__.addEventDontObey = function(){
 
+        const handleEventPlay = (e)=>{
+            console.log("Obey unactivated: ",e.type)
+            disableAllButtons({...menusMain, ...menus})
+            artyom.dontObey();
+        };
+
         Object.values(this).forEach(video => {
             if(video.video.id == ID_IDLE) return;
-            video.video.addEventListener("playing",(e)=>{
-                console.log("Obey unactivated: ",e.type)
-                disableAllButtons({...menusMain, ...menus})
-                artyom.dontObey();
-            })
+            video.video.addEventListener("playing", handleEventPlay)
         });
+        videlosLoaded.__proto__.removeEventDontObey = function(){
+            Object.values(this).forEach(video => {
+                if(video.video.id == ID_IDLE) return;
+                video.video.removeEventListener("playing", handleEventPlay)
+            });
+        }
     }
     videlosLoaded.addEventDontObey()
     videlosLoaded.addEventObey()
@@ -117,7 +125,7 @@ async function bootstrap(){
     menuConfirmation.style.display = "none"
     const buttonsYesOrNot = MenuYesOrNo(buttonConfirmationYes, buttonConfirmationNo, menuGeneral, menuConfirmation)
     const buttonsMenu = MenuMain(menusMain);
-    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus, buttonsMenu, allButtons)
+    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus, buttonsMenu, allButtons,buttonReload)
     console.log(menusMain)
     console.log("Videos", videlosLoaded)
     Idle(videlosLoaded, constants, artyom)
@@ -131,9 +139,14 @@ async function bootstrap(){
         )
     }, 2000);
     //extras
-    buttonReload.addEventListener("click", ()=>{
-        console.log("Click reload")
-        window.location.reload(true)
+
+    //logic microphone
+    buttonMicrophone.addEventListener("click",()=>{
+        if(artyom.isObeying() && artyom.isRecognizing()){
+            artyom.dontObey();
+        }else{
+            artyom.obey();
+        }
     })
     //This setTinterval is only for watch info
     setInterval(() => {
