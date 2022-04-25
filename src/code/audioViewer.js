@@ -1,14 +1,4 @@
 async function AudioViewer(){
-
-  var audioContext = null;
-  var meter = null;
-
-  // Event listener for the sound test start
-  document.querySelector("body").onclick = function () {
-
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    audioContext = new AudioContext();
-
     try {
       navigator.getUserMedia =
       navigator.getUserMedia ||
@@ -42,6 +32,9 @@ async function AudioViewer(){
 
   // Successfully got the audio stream
   function gotStream(stream) {
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioContext = new AudioContext();
     mediaStreamSource = audioContext.createMediaStreamSource(stream);
     meter = createAudioMeter(audioContext);
     mediaStreamSource.connect(meter);
@@ -295,4 +288,4 @@ async function AudioViewer(){
     this.volume = Math.max(rms, this.volume * this.averaging);
   }
 
-}
+// }

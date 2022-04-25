@@ -1,30 +1,23 @@
 window.alreadyLoaded = false;
-function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu){
-    console.log(menus, "menus2");
-    const resetMenubButtonsConfirmation = (menusIn) => {
-        console.log(menusIn)
-        menusIn.menuGeneral.style.display = "block"
-        menusIn.menuConfirmation.style.display = "none"
-    }
-
+function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu, allButtons){
+    console.log(allButtons, "HERE-OUT")
     const userSayYes = async (artyom, mainOut, menusIn)=>{
         try{
-            await artyom.say("Muy bien")
             artyom.emptyCommands();
             artyom.addCommands(mainOut);
-            artyom.obey()
-            resetMenubButtonsConfirmation(menusIn)
+            initFlow(videos, constants, artyom, false)
+            resetMenuButtonsConfirmation(menusIn)
         }catch(err){
             console.log(err)
         }
     };
-    const userSayNo = async (artyom, mainOut, menusIn)=>{
+    const userSayNo = async (artyom, mainOut, menusIn, allButtons)=>{
         try{
-            await artyom.say("Aqui hemos terminado")
+            console.log(allButtons, "HERE")
             artyom.emptyCommands();
             artyom.addCommands(mainOut);
-            artyom.obey()
-            resetMenubButtonsConfirmation(menusIn)
+            Despedida(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons)
+            resetMenuButtonsConfirmation(menusIn)
         }catch(err){
             console.log(err)
         }
@@ -38,7 +31,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             },
             handlePredictions:()=>{
                 console.log("predictions")
-                Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handleSabiasQue:()=>{
                 console.log("sabiasQue")
@@ -75,7 +68,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.prediction,
             action:async function(e){
                 try{
-                    Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                    Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
                 }
@@ -111,7 +104,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             },
             {
                 indexes:commands.negacion,
-                action: ()=> userSayNo(artyom, mainOut, menus)
+                action: ()=> userSayNo(artyom, mainOut, menus, allButtons)
             }
         ]
     }

@@ -1,4 +1,5 @@
 
+window.nttdata = {} // It's a global variable
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const ID_IDLE = "DFSDFSD"
 //CODIGO RARO
@@ -35,20 +36,36 @@ const loadVideo= (key, url, isIdle = false) => {
 };
 async function bootstrap(){
     const { constants, commands: commandsConfig, videos: config } = configApp();
+    window.nttdata[constants.STORAGE_PREDICTIONS] = []
+    window.nttdata[constants.STORAGE_SABIAS_QUE] = []
+    window.nttdata[constants.STORAGE_AWS] = []
+    window.nttdata[constants.STORAGE_NTTDATA] = []
+    window.nttdata[constants.STORAGE_DESPEDIDA] = []
     //videos
     const videos = document.querySelector("#videos")
     //buttons
     const predictions = document.querySelector("#predictions")
     const sabiasQue = document.querySelector("#sabias-que")
     const assistant = document.querySelector("#assistant")
-    const nttdata = document.querySelector("#nttdata")
-    //
+    const nttdata = document.querySelector("#nttdata-button")
+    const qrCodeSpace = document.querySelector("#qr-code-space")
     const menuGeneral = document.querySelector("#menu-general")
     const menuConfirmation = document.querySelector("#menu-confirmacion")
     const buttonConfirmationYes = document.querySelector("#confirmacion-si")
     const buttonConfirmationNo = document.querySelector("#confirmacion-no")
+    const buttonReload = document.querySelector("#reload")
+    const buttonMicrophone = document.querySelector("#microphone")
     const artyomInit = ArtyomInit(constants,commandsConfig)
     const artyom = await artyomInit.createInstance();
+    const menusMain = {
+        predictions,
+        sabiasQue,
+        assistant,
+        nttdata,
+    }
+    const menus = { menuGeneral, menuConfirmation };
+    const allButtons = {...menusMain, buttonConfirmationYes, buttonConfirmationNo, qrCodeSpace }
+    qrCodeSpace.style.display = "none"
     // process
     let videlosLoaded = Object.entries(config).map(([key,value]) => {
         return loadVideo(key, value, key === constants.IDLE)
@@ -72,6 +89,7 @@ async function bootstrap(){
     videlosLoaded.__proto__.addEventObey = function(){
         const handleObey = (e) => {
             Idle(videlosLoaded, constants, artyom)
+            enableAllButtons({...menusMain, ...menus})
             artyom.obey();
             console.log("Obey activaded: ",e.type)
         };
@@ -88,27 +106,23 @@ async function bootstrap(){
             if(video.video.id == ID_IDLE) return;
             video.video.addEventListener("playing",(e)=>{
                 console.log("Obey unactivated: ",e.type)
+                disableAllButtons({...menusMain, ...menus})
                 artyom.dontObey();
             })
         });
     }
     videlosLoaded.addEventDontObey()
     videlosLoaded.addEventObey()
-    const menusMain = {
-        predictions,
-        sabiasQue,
-        assistant,
-        nttdata,
-    }
-    const menus = { menuGeneral, menuConfirmation };
     //buttons yes - not
     menuConfirmation.style.display = "none"
     const buttonsYesOrNot = MenuYesOrNo(buttonConfirmationYes, buttonConfirmationNo, menuGeneral, menuConfirmation)
     const buttonsMenu = MenuMain(menusMain);
-    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus, buttonsMenu)
+    await artyomInit.loadCommands(videlosLoaded, buttonsYesOrNot, menus, buttonsMenu, allButtons)
     console.log(menusMain)
+    console.log("Videos", videlosLoaded)
     Idle(videlosLoaded, constants, artyom)
     AudioViewer().then(()=>console.log("well")).catch(console.error)
+    //TESTTING
     setInterval(() => {
         console.log("Id Obeying: ",
             artyom.isObeying(),
@@ -116,6 +130,19 @@ async function bootstrap(){
             artyom.getAvailableCommands().map(({ indexes }) => indexes)
         )
     }, 2000);
+    //extras
+    buttonReload.addEventListener("click", ()=>{
+        console.log("Click reload")
+        window.location.reload(true)
+    })
+    //This setTinterval is only for watch info
+    setInterval(() => {
+        if(artyom.isObeying() && artyom.isRecognizing()){
+            buttonMicrophone.textContent = "Microphone: ON"
+        }else{
+            buttonMicrophone.textContent = "Microphone: OFF"
+        }
+    }, 1000);
 }
 
 
