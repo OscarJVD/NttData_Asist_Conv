@@ -51,3 +51,39 @@ const hideQr =(menus, allButtons)=>{
     Object.values(menus).forEach(menu=> menu.style.display = "block");
     allButtons.qrCodeSpace.style.display = "none";
 };
+
+
+const handleEndVideo = (artyom,commands,menusIn, buttonsYesOrNotCallback, actionYes, actionNo) => {
+    artyom.emptyCommands();
+    artyom.addCommands(commands.yesOrNo);
+    artyom.obey();
+    buttonsYesOrNotCallback((button)=>{
+        if(button) {
+            actionYes(artyom, commands.main, menusIn)
+        }else{
+            actionNo(artyom, commands.main, menusIn)
+        }
+    })
+}
+const handleRandomVideo = (videos,configVideoKey, artyom,commands,menusIn, buttonsYesOrNotCallback, actionYes, actionNo)=>{
+    videos.pauseAll()
+    videos.hideAll()
+    const video = videos[configVideoKey].video;
+    video.play()
+    video.style ="display:block"
+    video.removeEventListener("ended", (e)=> handleEndVideo(artyom,commands,menusIn, buttonsYesOrNotCallback,  actionYes, actionNo))
+    video.addEventListener("ended", (e)=> handleEndVideo(artyom,commands,menusIn, buttonsYesOrNotCallback,  actionYes, actionNo))
+};
+
+
+const commonModules = (videos, config, artyom, commandsIn, buttonsYesOrNot, actionYes, actionNo, menus, menuMain, allButtons, keysConfig)=>{
+    const commands = Commands(commandsIn, videos, config, artyom,buttonsYesOrNot, menus, menuMain, allButtons)
+    videos.pauseAll()
+    videos.hideAll()
+    const keyRandom  = getARandomKeyModule(videos, keysConfig.STORAGE, keysConfig.ID_RANDOM)
+    const video = videos[keyRandom].video;
+    video.play()
+    video.style ="display:block"
+    video.removeEventListener("ended", (e)=> handleRandomVideo(videos,keysConfig.QUESTION, artyom,commands,menus, buttonsYesOrNot,  actionYes, actionNo))
+    video.addEventListener("ended", (e)=> handleRandomVideo(videos,keysConfig.QUESTION, artyom,commands,menus, buttonsYesOrNot,  actionYes, actionNo))
+}

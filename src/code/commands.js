@@ -1,6 +1,6 @@
 window.alreadyLoaded = false;
 function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu, allButtons){
-    console.log(allButtons, "HERE-OUT")
+
     const userSayYes = async (artyom, mainOut, menusIn)=>{
         try{
             artyom.emptyCommands();
@@ -27,7 +27,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
         mainMenu({
                 handleNttdata: ()=>{
                 console.log("nttdata")
-                NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handlePredictions:()=>{
                 console.log("predictions")
@@ -35,11 +35,11 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             },
             handleSabiasQue:()=>{
                 console.log("sabiasQue")
-                SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handleAssistant:()=>{
                 console.log("assistant")
-                AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             }
         });
     }
@@ -48,7 +48,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.assitenteAws,
             action:async function(e){
                 try{
-                    AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                    AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
                 }
@@ -58,7 +58,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.nttData,
             action:async function(e){
                 try{
-                    NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                    NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
                 }
@@ -78,7 +78,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.sabiasQue,
             action:async function(e){
                 try{
-                    SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu);
+                    SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
                 }
