@@ -87,3 +87,18 @@ const commonModules = (videos, config, artyom, commandsIn, buttonsYesOrNot, acti
     video.removeEventListener("ended", (e)=> handleRandomVideo(videos,keysConfig.QUESTION, artyom,commands,menus, buttonsYesOrNot,  actionYes, actionNo))
     video.addEventListener("ended", (e)=> handleRandomVideo(videos,keysConfig.QUESTION, artyom,commands,menus, buttonsYesOrNot,  actionYes, actionNo))
 }
+
+const addNewRecordOnStorage = async (questions, answer) => {
+    try{
+        const newRecord = {
+            question: questions,
+            answer: answer
+        }
+        return await fetch(`${location.origin}/api/questions`, {
+            method: 'POST',
+            body: JSON.stringify(newRecord),
+        });
+    }catch(err){
+        console.log("Failed to save data",err)
+    }
+}

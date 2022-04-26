@@ -49,11 +49,17 @@ async function Predictions(videos, config, artyom, commandsIn, buttonsYesOrNot, 
         artyom.addCommands([
             {
                 indexes:commandsIn.confirmacion,
-                action: ()=> userSayYesOverride(artyom,commands, buttonsYesOrNot, predictionsYes, predictionsNo, menus)
+                action: (e)=> {
+                    addNewRecordOnStorage("Quieres ver otra prediccion?",commandsIn.confirmacion[e])
+                    userSayYesOverride(artyom,commands, buttonsYesOrNot, predictionsYes, predictionsNo, menus)
+                }
             },
             {
                 indexes:commandsIn.negacion,
-                action: ()=> userSayNoOverride(artyom,commands, buttonsYesOrNot, predictionsYes, predictionsNo, menus)
+                action: (e)=> {
+                    userSayNoOverride(artyom,commands, buttonsYesOrNot, predictionsYes, predictionsNo, menus)
+                    addNewRecordOnStorage("Quieres ver otra prediccion?",commandsIn.negacion[e])
+                }
             }
         ]);
         artyom.obey();

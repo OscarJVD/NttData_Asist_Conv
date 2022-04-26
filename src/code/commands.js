@@ -1,6 +1,11 @@
 window.alreadyLoaded = false;
 function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu, allButtons){
 
+    const questionNttdata = (e)=> endRecognizedData("Que tematica elijes?", commands.nttData[e])
+    const questionPrediction = (e)=> endRecognizedData("Que tematica elijes?", commands.prediction[e])
+    const questionSabiasQue = (e)=> endRecognizedData("Que tematica elijes?", commands.sabiasQue[e])
+    const questionAws = (e)=> endRecognizedData("Que tematica elijes?", commands.aws[e]);
+
     const userSayYes = async (artyom, mainOut, menusIn)=>{
         try{
             artyom.emptyCommands();
@@ -25,20 +30,24 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
     if(!window.alreadyLoaded){
         window.alreadyLoaded = true;
         mainMenu({
-                handleNttdata: ()=>{
+                handleNttdata: (e)=>{
                 console.log("nttdata")
+                questionNttdata(0)
                 NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handlePredictions:()=>{
                 console.log("predictions")
+                questionPrediction(0)
                 Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handleSabiasQue:()=>{
                 console.log("sabiasQue")
+                questionSabiasQue(0)
                 SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             },
             handleAssistant:()=>{
                 console.log("assistant")
+                questionAws(0)
                 AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
             }
         });
@@ -48,6 +57,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.assitenteAws,
             action:async function(e){
                 try{
+                    questionAws(e)
                     AsistenteAws(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
@@ -58,6 +68,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.nttData,
             action:async function(e){
                 try{
+                    questionNttdata(e)
                     NttData(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
@@ -68,6 +79,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.prediction,
             action:async function(e){
                 try{
+                    questionPrediction(e)
                     Predictions(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
@@ -78,6 +90,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes:commands.sabiasQue,
             action:async function(e){
                 try{
+                    questionSabiasQue(e)
                     SabiasQue(videos, constants, artyom, commands, buttonsYesOrNot, userSayYes, userSayNo, menus, mainMenu, allButtons);
                 }catch(err){
                     console.log(err)
@@ -88,6 +101,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             indexes: commands.saludo,
             action:function(e){
                 try{
+                    addNewRecordOnStorage("Saludo",commands.saludo[e])
                     initFlow(videos, constants, artyom, commands);
                 }catch(err){
                     console.log(err)
@@ -100,11 +114,17 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
         yesOrNo:[
             {
                 indexes:commands.confirmacion,
-                action: ()=> userSayYes(artyom, mainOut, menus),
+                action: (e)=> {
+                    userSayYes(artyom, mainOut, menus)
+                    addNewRecordOnStorage("Te gustaria ver otra tematica?",commands.confirmacion[e])
+                },
             },
             {
                 indexes:commands.negacion,
-                action: ()=> userSayNo(artyom, mainOut, menus, allButtons)
+                action: (e)=> {
+                    serSayNo(artyom, mainOut, menus, allButtons)
+                    addNewRecordOnStorage("Te gustaria ver otra tematica?",commands.negacion[e])
+                }
             }
         ]
     }
