@@ -97,6 +97,9 @@ const addNewRecordOnStorage = async (questions, answer) => {
         return await fetch(`${location.origin}/api/questions`, {
             method: 'POST',
             body: JSON.stringify(newRecord),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
     }catch(err){
         console.log("Failed to save data",err)

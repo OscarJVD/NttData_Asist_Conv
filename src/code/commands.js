@@ -1,10 +1,10 @@
 window.alreadyLoaded = false;
 function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, mainMenu, allButtons){
 
-    const questionNttdata = (e)=> endRecognizedData("Que tematica elijes?", commands.nttData[e])
-    const questionPrediction = (e)=> endRecognizedData("Que tematica elijes?", commands.prediction[e])
-    const questionSabiasQue = (e)=> endRecognizedData("Que tematica elijes?", commands.sabiasQue[e])
-    const questionAws = (e)=> endRecognizedData("Que tematica elijes?", commands.aws[e]);
+    const questionNttdata = (e)=> addNewRecordOnStorage("Que tematica elijes?", commands.nttData[e])
+    const questionPrediction = (e)=> addNewRecordOnStorage("Que tematica elijes?", commands.prediction[e])
+    const questionSabiasQue = (e)=> addNewRecordOnStorage("Que tematica elijes?", commands.sabiasQue[e])
+    const questionAws = (e)=> addNewRecordOnStorage("Que tematica elijes?", commands.aws[e]);
 
     const userSayYes = async (artyom, mainOut, menusIn)=>{
         try{
