@@ -122,7 +122,7 @@ function Commands(commands, videos, constants, artyom, buttonsYesOrNot, menus, m
             {
                 indexes:commands.negacion,
                 action: (e)=> {
-                    serSayNo(artyom, mainOut, menus, allButtons)
+                    userSayNo(artyom, mainOut, menus, allButtons)
                     addNewRecordOnStorage("Te gustaria ver otra tematica?",commands.negacion[e])
                 }
             }
